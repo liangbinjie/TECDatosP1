@@ -1,6 +1,8 @@
 # TECDatosP1
 Proyecto 1 | TEC Estructuras de Datos | Base de datos de Restaurantes
 
+Nicole Parra y Binjie Liang
+
 ## Manual de Uso
 Despues de haber descargado y descomprimido el proyecto en un directorio, la forma mas rapida de ejecutarla seria por medio de la terminal usando gcc (si lo tienes instalado).
 
