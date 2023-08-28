@@ -23,12 +23,17 @@ void ListaPais::insertar(int codPais, string nombre) {
     if (listaVacia()) {
         primero = new NodoPais(codPais, nombre);
     } else {
-        pNodoPais aux = primero;
-        while (aux->siguiente != NULL) {
-            aux = aux->siguiente;
+        if (existePais(codPais)) {
+            cout << "Este pais ya existe" << endl;
+        } else {
+            pNodoPais aux = primero;
+            while (aux->siguiente != NULL) {
+                aux = aux->siguiente;
+            }
+            aux->siguiente = new NodoPais(codPais, nombre);
+            aux->siguiente->anterior = aux;
+            cout << "Nuevo pais insertado" << endl;
         }
-        aux->siguiente = new NodoPais(codPais, nombre);
-        aux->siguiente->anterior = aux;
     }
 }
 
@@ -70,15 +75,15 @@ void ListaPais::eliminar(int codPais) {
         pNodoPais aux = primero;
         if (aux->codigoPais == codPais) {
             borrarInicio();
+        } else {
+            while (aux->codigoPais != codPais) {
+                aux = aux->siguiente;
+            }
+            pNodoPais temp = aux;
+            aux = aux->anterior;
+            aux->siguiente = temp->siguiente;
+            delete temp;
         }
-        cout << aux->codigoPais;
-        while (aux->codigoPais != codPais) {
-            aux = aux->siguiente;
-        }
-        pNodoPais temp = aux;
-        aux = aux->siguiente;
-        aux->siguiente->anterior = aux->anterior;
-        delete temp;
     }
 }
 
@@ -95,7 +100,6 @@ bool ListaPais::existePais(int codPais) {
             }
             aux = aux->siguiente;
         }
-        
     }
     cout << "El pais no existe";
     return false;
