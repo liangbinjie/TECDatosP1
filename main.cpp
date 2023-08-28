@@ -80,7 +80,5 @@ int main() {
     LPaises.mostrar();
     clearScreen();
     menu(LPaises);
-
-
     return 0;
 }
