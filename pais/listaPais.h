@@ -20,6 +20,7 @@ class ListaPais {
         void mostrar();
         void eliminar(int codPais);
         bool existePais(int codPais);
+        void borrarInicio();
 };
 
 #endif
