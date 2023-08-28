@@ -1,4 +1,5 @@
 #include "listaPais.h"
+#include "../ciudad/listaCiudad.h"
 
 
 ListaPais::ListaPais() {
@@ -19,7 +20,11 @@ bool ListaPais::listaVacia() {
     return primero == NULL;
 }
 
-void ListaPais::insertar(int codPais, string nombre) {
+pNodoPais ListaPais::obtenerPrimerNodo() {
+    return primero;
+}
+
+void ListaPais::insertarP(int codPais, string nombre) {
     if (listaVacia()) {
         primero = new NodoPais(codPais, nombre);
     } else {
@@ -68,6 +73,18 @@ void ListaPais::borrarInicio() {
     }
 }
 
+ListaCiudad* ListaPais::obtenerListaCiudades(int codPais) {
+    pNodoPais aux = primero;
+    while (aux != nullptr) {
+        if (aux->codigoPais == codPais) {
+            return aux->ciudadList; // Devuelve el puntero a la lista de ciudades
+        }
+        aux = aux->siguiente;
+    }
+    return nullptr; // Si no se encuentra el país
+}
+
+
 void ListaPais::eliminar(int codPais) {
     if (listaVacia()) {
         cout << "No se puede eliminar, lista vacia" << endl;
@@ -115,7 +132,7 @@ void ListaPais::cargarPaises() {
             int id = std::stoi(str.substr(0, pos));
             string name = str.substr(pos + 1);
 
-            ListaPais::insertar(id,name);
+            ListaPais::insertarP(id,name);
         }
     }
     archivo.close();
