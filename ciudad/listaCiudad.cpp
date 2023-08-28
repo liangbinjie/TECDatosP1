@@ -19,7 +19,38 @@ bool ListaCiudad::listaVacia() {
     return primero == NULL;
 }
 
-void ListaCiudad::insertar(int codPais, int codCiudad, string nombre) {
+   void ListaCiudad::insertar(int codPais, int codCiudad, string nombre) {
+    pNodoPais auxP = primero;
+    while (auxP->siguiente != NULL) {
+        if (auxP->codigoPais == codPais) {
+
+            if (listaVacia()) {
+                primero = new NodoCiudad(codPais, codCiudad, nombre);
+            } else {
+                pNodoCiudad auxC = primero;
+                 while (auxC->siguiente != NULL) {
+                    if (auxC->codigoCiudad == codCiudad) {
+                        cout << "La ciudad ya existe" ;
+                        break;
+                    }
+                    else{
+                     auxC = auxC->siguiente;
+                 }
+                 }
+                 auxC->siguiente = new NodoCiudad(codPais, codCiudad, nombre);\
+                 auxC->siguiente->anterior = auxC;
+                    
+    }
+
+
+            return aux; // Se encontró el país con el código especificado
+        }
+        aux = aux->siguiente;
+
+
+
+    aux = aux->siguiente;
+    }
     if (listaVacia()) {
         primero = new NodoPais(codPais, nombre);
     } else {
@@ -30,6 +61,8 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre) {
         aux->siguiente = new NodoPais(codPais, nombre);
         aux->siguiente->anterior = aux;
     }
+}
+
 }
 
 void ListaCiudad::mostrar() {
