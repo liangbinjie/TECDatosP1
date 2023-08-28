@@ -95,12 +95,29 @@ bool ListaPais::existePais(int codPais) {
         aux = primero;
         while(aux) {
             if (aux->codigoPais == codPais) {
-                cout << "El pais si existe" << endl;
+                // cout << "El pais si existe" << endl;
                 return true;
             }
             aux = aux->siguiente;
         }
     }
-    cout << "El pais no existe";
+    // cout << "El pais no existe" << endl;
     return false;
+}
+
+void ListaPais::cargarPaises() {
+    string str;
+    ifstream archivo;
+    archivo.open("Archivos/Paises.txt");
+    while (archivo >> str) {
+        size_t pos = str.find(';');
+        if (pos != string::npos) {
+            int id = std::stoi(str.substr(0, pos));
+            string name = str.substr(pos + 1);
+
+            ListaPais::insertar(id,name);
+        }
+    }
+    archivo.close();
+    str="";
 }
