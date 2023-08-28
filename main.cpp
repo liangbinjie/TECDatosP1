@@ -1,4 +1,5 @@
 #include "pais/listaPais.h"
+#include "ciudad/listaCiudad.h"
 #include <iostream>
 using namespace std;
 
@@ -6,7 +7,7 @@ void clearScreen() {
     cout << string(50, '\n');
 }
 
-void menu(ListaPais& lPais) {
+void menu(ListaPais& lPais, ListaCiudad lCiudad) {
     cout << "Bienvenido, que desea realizar?" << endl;
     cout << "1. Insertar" << endl;
     cout << "2. Eliminar" << endl;
@@ -15,6 +16,8 @@ void menu(ListaPais& lPais) {
     int opcion;
     cout << "> ";
     cin >> opcion;
+    string nombre;
+    int codPais, codCiudad;
     switch(opcion) {
         case 1:
             cout << "Que deseas insertar?" << endl;
@@ -24,13 +27,21 @@ void menu(ListaPais& lPais) {
             cin >> opcion;
             switch(opcion) {
                 case 1:
-                    string nombre;
-                    int codigo;
                     cout << "Ingrese el codigo del pais: " << endl;
-                    cin >> codigo;
+                    cin >> codPais;
                     cout << "Ingrese el nombre del pais: " << endl;
                     cin >> nombre;
-                    lPais.insertar(codigo, nombre);
+                    lPais.insertar(codPais, nombre);
+                    break;
+
+                case 2:
+                    cout << "Ingres el codigo del pais: " << endl;
+                    cin >> codPais;
+                    cout << "Ingrese el codigo de la ciudad: " << endl;
+                    cin >> codCiudad;
+                    cout << "Ingrese el nombre de la ciudad: " << endl;
+                    cin >> nombre;
+                    lCiudad.insertar(codPais, codCiudad, nombre, lPais);
                     break;
             }
             break;
@@ -50,7 +61,7 @@ void menu(ListaPais& lPais) {
                         lPais.eliminar(codigo);
                         cout << "Pais eliminado" << endl;
                     } else {
-                        cout << "No se encontro el pais";
+                        cout << "No se encontro el pais" << endl;
                     }
                     break;
             }
@@ -66,19 +77,23 @@ void menu(ListaPais& lPais) {
                 case 1:
                     lPais.mostrar();
                     break;
+                case 2:
+                    lCiudad.mostrar();
+                    break;
             }
             break;
         case 4:
             return;
     }
-    menu(lPais);
+    menu(lPais, lCiudad);
 }
 
 int main() {
     ListaPais LPaises;
     LPaises.cargarPaises();
+    ListaCiudad LCiudad;
     LPaises.mostrar();
     clearScreen();
-    menu(LPaises);
+    menu(LPaises, LCiudad);
     return 0;
 }

@@ -26,7 +26,7 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
         // falta validar si la ciudad existe
         // si existe, no insertar
         // if ....
-        pNodoCiudad nuevoNodo = new NodoCiudad(codCiudad, nombre);
+        pNodoCiudad nuevoNodo = new NodoCiudad(codPais, codCiudad, nombre);
 
         if (listaVacia()) {
             primero = nuevoNodo;
