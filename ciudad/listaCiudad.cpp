@@ -1,4 +1,5 @@
 #include "listaCiudad.h"
+#include "../pais/listaPais.h"
 
 
 ListaCiudad::ListaCiudad() {
@@ -19,66 +20,44 @@ bool ListaCiudad::listaVacia() {
     return primero == NULL;
 }
 
-   void ListaCiudad::insertar(int codPais, int codCiudad, string nombre) {
-    pNodoPais auxP = primero;
-    while (auxP->siguiente != NULL) {
-        if (auxP->codigoPais == codPais) {
+void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises) {
+    if (lPaises.existePais(codPais)) {
+        cout << "insertando";
+        // falta validar si la ciudad existe
+        // si existe, no insertar
+        // if ....
+        pNodoCiudad nuevoNodo = new NodoCiudad(codCiudad, nombre);
 
-            if (listaVacia()) {
-                primero = new NodoCiudad(codPais, codCiudad, nombre);
-            } else {
-                pNodoCiudad auxC = primero;
-                 while (auxC->siguiente != NULL) {
-                    if (auxC->codigoCiudad == codCiudad) {
-                        cout << "La ciudad ya existe" ;
-                        break;
-                    }
-                    else{
-                     auxC = auxC->siguiente;
-                 }
-                 }
-                 auxC->siguiente = new NodoCiudad(codPais, codCiudad, nombre);\
-                 auxC->siguiente->anterior = auxC;
-                    
-    }
-
-
-            return aux; // Se encontró el país con el código especificado
+        if (listaVacia()) {
+            primero = nuevoNodo;
+        } else {
+            pNodoCiudad aux = primero;
+            while (aux->siguiente != NULL) {
+                aux = aux->siguiente;
+            }
+            aux->siguiente = nuevoNodo;
+            nuevoNodo->anterior = aux;
         }
-        aux = aux->siguiente;
-
-
-
-    aux = aux->siguiente;
-    }
-    if (listaVacia()) {
-        primero = new NodoPais(codPais, nombre);
+        cout << "Nueva ciudad insertada en la lista." << endl;
     } else {
-        pNodoPais aux = primero;
-        while (aux->siguiente != NULL) {
-            aux = aux->siguiente;
-        }
-        aux->siguiente = new NodoPais(codPais, nombre);
-        aux->siguiente->anterior = aux;
+        cout << "No se encontro el pais";
     }
-}
-
 }
 
 void ListaCiudad::mostrar() {
     NodoCiudad *aux;
-    if (primero== NULL)
+    if (primero==NULL)
         cout << "No hay elementos";  
     else {
         aux = primero;
         while(aux) {
-        cout << aux->codigoPais << " : " << aux->nombre << " -> ";
+        cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
         aux = aux->siguiente;
         }
     cout << endl;
     }
 }
-
+/*
 void ListaCiudad::eliminar(int codPais) {
     if (listaVacia()) {
         cout << "No se puede eliminar, lista vacia" << endl;
@@ -94,3 +73,4 @@ void ListaCiudad::eliminar(int codPais) {
         delete temp;
     }
 }
+*/
