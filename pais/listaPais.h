@@ -2,6 +2,7 @@
 #define LISTAPAIS_H
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 #include "nodoPais.h"
@@ -15,11 +16,13 @@ class ListaPais {
         ListaPais();
         ~ListaPais();
 
+        void cargarPaises();
         bool listaVacia();
         void insertar(int codPais, string nombre);
         void mostrar();
         void eliminar(int codPais);
         bool existePais(int codPais);
+        void borrarInicio();
 };
 
 #endif
