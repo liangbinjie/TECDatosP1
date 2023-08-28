@@ -18,7 +18,7 @@ ListaCiudad::~ListaCiudad() {
 bool ListaCiudad::listaVacia() {
     return primero == NULL;
 }
-
+/*
    void ListaCiudad::insertar(int codPais, int codCiudad, string nombre) {
     pNodoPais auxP = primero;
     while (auxP->siguiente != NULL) {
@@ -63,7 +63,7 @@ bool ListaCiudad::listaVacia() {
     }
 }
 
-}
+*/
 
 void ListaCiudad::mostrar() {
     NodoCiudad *aux;
@@ -78,7 +78,7 @@ void ListaCiudad::mostrar() {
     cout << endl;
     }
 }
-
+/*
 void ListaCiudad::eliminar(int codPais) {
     if (listaVacia()) {
         cout << "No se puede eliminar, lista vacia" << endl;
@@ -94,3 +94,4 @@ void ListaCiudad::eliminar(int codPais) {
         delete temp;
     }
 }
+*/
