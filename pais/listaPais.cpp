@@ -24,7 +24,7 @@ void ListaPais::insertar(int codPais, string nombre) {
         primero = new NodoPais(codPais, nombre);
     } else {
         if (existePais(codPais)) {
-            cout << "Este pais ya existe" << endl;
+            cout << endl;
         } else {
             pNodoPais aux = primero;
             while (aux->siguiente != NULL) {
@@ -32,7 +32,6 @@ void ListaPais::insertar(int codPais, string nombre) {
             }
             aux->siguiente = new NodoPais(codPais, nombre);
             aux->siguiente->anterior = aux;
-            cout << "Nuevo pais insertado" << endl;
         }
     }
 }
