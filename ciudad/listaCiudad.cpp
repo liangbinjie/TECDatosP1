@@ -55,8 +55,8 @@ void ListaCiudad::mostrar() {
     else {
         aux = primero;
         while(aux) {
-        cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
-        aux = aux->siguiente;
+            cout << aux->codigoPais << " : " << aux->codigoCiudad << " : " << aux->nombre << " -> ";
+            aux = aux->siguiente;
         }
     cout << endl;
     }
@@ -106,8 +106,11 @@ void ListaCiudad::cargarCiudades(ListaPais& lPais) {
         size_t pos = str.find(';');
         if (pos != string::npos) {
             int idP = std::stoi(str.substr(0, pos));
-            int idC = std::stoi(str.substr(1, pos));
-            string name = str.substr(pos + 2);
+            int idC = std::stoi(str.substr(pos + 1));
+            cout << idP << endl;
+            cout << idC << endl;;
+            string name = str.substr(pos + 3);
+            cout << name << endl;
 
             ListaCiudad::insertar(idP, idC, name, lPais);
         }
