@@ -16,8 +16,8 @@ class NodoRest {
         friend class ListaRest;
 
     public:
-        NodoRest(int pCodPais, int pCodCiudad, int pCodRest);
-        NodoRest(int pCodPais, int pCodCiudad, int pCodRest, NodoRest* sigNodo);
-}
+        NodoRest(int pCodPais, int pCodCiudad, int pCodRest, string nombre);
+        NodoRest(int pCodPais, int pCodCiudad, int pCodRest, string nombre, NodoRest* sigNodo);
+};
 
 #endif

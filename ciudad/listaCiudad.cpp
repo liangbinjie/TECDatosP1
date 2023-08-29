@@ -55,8 +55,8 @@ void ListaCiudad::mostrar() {
     else {
         aux = primero;
         while(aux) {
-        cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
-        aux = aux->siguiente;
+            cout << aux->codigoPais << " : " << aux->codigoCiudad << " : " << aux->nombre << " -> ";
+            aux = aux->siguiente;
         }
     cout << endl;
     }
@@ -103,14 +103,24 @@ void ListaCiudad::cargarCiudades(ListaPais& lPais) {
     ifstream archivo;
     archivo.open("Archivos/Ciudades.txt");
     while (archivo >> str) {
-        size_t pos = str.find(';');
-        if (pos != string::npos) {
-            int idP = std::stoi(str.substr(0, pos));
-            int idC = std::stoi(str.substr(1, pos));
-            string name = str.substr(pos + 2);
-
-            ListaCiudad::insertar(idP, idC, name, lPais);
+        int cont = 0;
+        int idP,idC;
+        string name = "", temp;
+        for (char& c : str) {
+            if (c == ';') {
+                if (cont == 0) {
+                    idP = stoi(temp);
+                } else if (cont == 1) {
+                    idC = stoi(temp);
+                }
+                temp = "";
+                cont++;
+            } else {
+                temp += c;
+            }
         }
+        name = temp;
+        ListaCiudad::insertar(idP, idC, name, lPais);
     }
     archivo.close();
     str="";
