@@ -131,6 +131,10 @@ int main() {
     ListaCiudad LCiudad;
     LCiudad.cargarCiudades(LPaises);
     ListaRest LRest;
+    // LRest.insertar(123,345,456,"mac", LPaises, LCiudad);
+    // LRest.insertar(123,345,876,"qwe", LPaises, LCiudad);
+    // LRest.insertar(123,345,4563,"kfc", LPaises, LCiudad);
+    // LRest.insertar(123,345,687,"pollo", LPaises, LCiudad);
     LPaises.mostrar();
     // clearScreen();
     menu(LPaises, LCiudad, LRest);

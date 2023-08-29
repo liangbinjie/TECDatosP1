@@ -11,10 +11,10 @@ bool ListaRest::listaVacia() {
 bool ListaRest::existeRest(int pCodRest) {
     NodoRest *aux;
     if (primero==NULL) {
-        cout << "No hay elementos";
+        cout << "No hay elementos" << endl;
     } else {
-        aux = primero;
-        while (aux->siguiente!=primero) {
+        aux = primero->siguiente;
+        while (aux!=primero) {
             if (aux->codRest == pCodRest) {
                 return true;
             }
@@ -25,31 +25,25 @@ bool ListaRest::existeRest(int pCodRest) {
 }
 
 void ListaRest::insertar(int codPais, int codCiudad, int codRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudades) {
-    if (listaVacia()) {
-        primero = new NodoRest(codPais, codCiudad, codRest, nombre);
-        primero->anterior=primero;
-        primero->siguiente=primero;
-    } else {
-        if ((lPaises.existePais(codPais)) && (lCiudades.existeCiudad(codCiudad))) { // verificar que la ciudad este en el mismo pais
-            if (!existeRest(codRest)) {
+    if ((lPaises.existePais(codPais)) && (lCiudades.existeCiudad(codCiudad))) { // verificar que la ciudad este en el mismo pais
+        if (!existeRest(codRest)) {
+            if (listaVacia()) {
+                primero = new NodoRest(codPais, codCiudad, codRest, nombre);
+                primero->anterior=primero;
+                primero->siguiente=primero;
+            } else {
                 pNodoRest nuevo = new NodoRest(codPais, codCiudad, codRest, nombre);
                 nuevo->anterior = primero->anterior;
                 nuevo->siguiente = primero;
                 primero->anterior->siguiente = nuevo;
                 primero->anterior = nuevo;
-                cout << "Restaurante nuevo insertado" << endl;
-            } else {
-                cout << "Este restaurante ya existe" << endl;;
             }
+            cout << "Restaurante nuevo insertado" << endl;
         } else {
-            cout << "No se puede agregar porque la ciudad o pais estan mal" << endl;
+            cout << "Este restaurante ya existe" << endl;;
         }
-
-        pNodoRest nuevo = new NodoRest(codPais, codCiudad, codRest, nombre);
-        nuevo->anterior = primero->anterior;
-        nuevo->siguiente = primero;
-        primero->anterior->siguiente = nuevo;
-        primero->anterior = nuevo;
+    } else {
+        cout << "No se puede agregar porque la ciudad o pais estan mal" << endl;
     }
 }
 
@@ -92,9 +86,9 @@ void ListaRest::eliminar(int pCodRest) {
             while (aux->siguiente!=primero && aux->codRest != pCodRest) {
                 aux = aux->siguiente;
             }
-            pNodoRest temp = aux->siguiente;
-            aux->siguiente = aux->siguiente->siguiente;
-            aux->siguiente->anterior = aux;
+            pNodoRest temp = aux;
+            aux->anterior->siguiente = aux->siguiente;
+            aux->siguiente->anterior = aux->anterior;
             delete temp;
         }
     }
