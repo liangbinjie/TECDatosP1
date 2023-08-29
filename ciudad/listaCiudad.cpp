@@ -1,10 +1,10 @@
 #include "listaCiudad.h"
 #include "../pais/listaPais.h"
 
-
 ListaCiudad::ListaCiudad() {
     primero = NULL;
 }
+
 
 bool ListaCiudad::listaVacia() {
     return primero == NULL;
@@ -48,7 +48,7 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
 }
 
 
-void ListaCiudad::mostrar() {
+void ListaCiudad::mostrar(int ciudad) { // muestra las ciudades de la lista
     NodoCiudad *aux;
     if (primero==NULL)
         cout << "No hay elementos";  
@@ -57,6 +57,22 @@ void ListaCiudad::mostrar() {
         while(aux) {
             cout << aux->codigoPais << " : " << aux->codigoCiudad << " : " << aux->nombre << " -> ";
             aux = aux->siguiente;
+        }
+    cout << endl;
+    }
+}
+
+void ListaCiudadDeUnPais::mostrar(int pais) { // muestra las ciudades de un pais en especifico
+    NodoCiudad *aux;
+    if (primero==NULL)
+        cout << "No hay elementos";  
+    else {
+        aux = primero;
+        while(aux) {
+            if(aux->codigoPais== pais){
+                cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
+            }
+        aux = aux->siguiente;
         }
     cout << endl;
     }
@@ -124,4 +140,6 @@ void ListaCiudad::cargarCiudades(ListaPais& lPais) {
     }
     archivo.close();
     str="";
+}
+
 }

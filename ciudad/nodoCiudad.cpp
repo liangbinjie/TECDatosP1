@@ -1,14 +1,15 @@
 #include "nodoCiudad.h"
 
-NodoCiudad::NodoCiudad(int pCodPais, int pCodigoCiudad, string pNombre) {
-    codigoPais = pCodPais;
+NodoCiudad::NodoCiudad(int pcodPais, int pCodigoCiudad, string pNombre) {
+    codigoPais = pcodPais;
     codigoCiudad= pCodigoCiudad;
     nombre = pNombre;
     siguiente = NULL;
     anterior = NULL;
 }
 
-NodoCiudad::NodoCiudad(int pCodigoCiudad, string pNombre, NodoCiudad *sigNodo) {
+NodoCiudad::NodoCiudad(int pcodPais, int pCodigoCiudad, string pNombre, NodoCiudad *sigNodo) {
+    codigoPais = pcodPais;
     codigoCiudad= pCodigoCiudad;
     nombre = pNombre;
     siguiente = sigNodo;

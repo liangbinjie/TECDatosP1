@@ -18,7 +18,7 @@ class ListaCiudad {
         // ~ListaCiudad();
 
         bool listaVacia();
-        void mostrar();
+        void mostrar(int pais);
         void eliminar(int codCiudad);
         bool existeCiudad(int codCiudad);
         void insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises);

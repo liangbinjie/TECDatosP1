@@ -14,8 +14,8 @@ class NodoCiudad {
         friend class ListaCiudad;
         
     public:
-        NodoCiudad(int pCodPais, int pCodCiudad, string nombre);
-        NodoCiudad(int codigoCiudad, string nombre, NodoCiudad *sigNodo);
+        NodoCiudad(int codPais, int pCodCiudad, string nombre);
+        NodoCiudad(int codPais, int codigoCiudad, string nombre, NodoCiudad *sigNodo);
 };
 
 #endif
