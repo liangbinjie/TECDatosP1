@@ -26,19 +26,19 @@ bool ListaMenuRest::existeCiudad(int codCiudad) {
     return false;
 }
 
-void ListaMenuRest::insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises) {
+void ListaMenuRest::insertar(int codPais, int codCiudad, codRest, codMenuRest, string nombre, ListaPais& lPaises) {
     if (lPaises.existePais(codPais)) {
         if (listaVacia()) {
-            primero = new NodoMenuRest(codPais, codCiudad, nombre);
+            primero = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
         } else {
             if (existeCiudad(codCiudad)) {
                 cout << "Esta ciudad ya existe, no se puede insertar" << endl;
             } else {
-                pNodoCiudad aux = primero;
+                pNodoMenuRest aux = primero;
                 while (aux->siguiente!=NULL) {
                     aux = aux->siguiente;
                 }
-                aux->siguiente = new NodoCiudad(codPais, codCiudad, nombre);
+                aux->siguiente = new NodoMenuRest(codPais, codCiudad, nombre);
                 aux->siguiente->anterior = aux;
             }
         }
@@ -49,7 +49,7 @@ void ListaMenuRest::insertar(int codPais, int codCiudad, string nombre, ListaPai
 
 
 void ListaMenuRest::mostrar() {
-    NodoCiudad *aux;
+    NodoMenuRest *aux;
     if (primero==NULL)
         cout << "No hay elementos";  
     else {
@@ -67,11 +67,11 @@ void ListaMenuRest::borrarInicio() {
         cout << "Lista vacia" << endl;
     } else {
         if (primero->siguiente == NULL) {
-            pNodoCiudad temp = primero;
+            pNodoMenuRest temp = primero;
             primero = NULL;
             delete temp;
         } else {
-            pNodoCiudad aux = primero;
+            pNodoMenuRest aux = primero;
             primero = primero->siguiente;
             primero->anterior = NULL;
             delete aux;
@@ -83,14 +83,14 @@ void ListaMenuRest::eliminar(int codCiudad) {
     if (listaVacia()) {
         cout << "No se puede eliminar, lista vacia" << endl;
     } else {
-        pNodoCiudad aux = primero;
+        pNodoMenuRest aux = primero;
         if (aux->codigoCiudad == codCiudad) {
             borrarInicio();
         } else {
             while (aux->codigoPais != codCiudad) {
                 aux = aux->siguiente;
             }
-            pNodoCiudad temp = aux;
+            pNodoMenuRest temp = aux;
             aux = aux->siguiente;
             aux->siguiente->anterior = aux->anterior;
             delete temp;
