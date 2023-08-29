@@ -20,8 +20,8 @@ class ListaMenuRest {
         bool listaVacia();
         void mostrar();
         void eliminar(int codCiudad);
-        bool existeCiudad(int codCiudad);
-        void insertar(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises);
+        bool existeMenuRest(int codMenuRest);
+        void insertarRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises);
         void borrarInicio();
         void cargarCiudades(ListaPais& lPaises);
 };

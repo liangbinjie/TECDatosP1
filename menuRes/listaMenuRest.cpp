@@ -1,6 +1,7 @@
 #include "listaMenuRest.h"
 #include "../pais/listaPais.h"
-
+#include "../ciudad/listaCiudad.h"
+#include "../menuRes/listaMenuRest.h"
 
 ListaMenuRest::ListaMenuRest(ListaPais& listaPaises): primero(NULL), listaPaises(listaPaises) {
   
@@ -10,14 +11,14 @@ bool ListaMenuRest::listaVacia() {
     return primero == NULL;
 }
 
-bool ListaMenuRest::existeCiudad(int codCiudad) {
+bool ListaMenuRest::existeMenuRest(int pcodMenuRest) {
     NodoMenuRest* aux;
     if (primero == NULL) {
         cout << "No hay elementos";
     } else {
         aux = primero;
         while (aux) {
-            if (aux->codigoCiudad == codCiudad) {
+            if (aux->codMenuRest == pcodMenuRest) {
                 return true;
             }
             aux = aux->siguiente;
@@ -26,22 +27,30 @@ bool ListaMenuRest::existeCiudad(int codCiudad) {
     return false;
 }
 
-void ListaMenuRest::insertar(int codPais, int codCiudad, codRest, codMenuRest, string nombre, ListaPais& lPaises) {
+void ListaMenuRest::insertarRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises) {
     if (lPaises.existePais(codPais)) {
+        if (lPaises.existeCiudad(codPais)) {
+            if (lPaises.existeRest(codRest)) {
         if (listaVacia()) {
             primero = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
         } else {
-            if (existeCiudad(codCiudad)) {
-                cout << "Esta ciudad ya existe, no se puede insertar" << endl;
+            if (existeMenuRest(codMenuRest)) {
+                cout << "Este menu ya existe en este restaurante, no se puede insertar" << endl;
             } else {
                 pNodoMenuRest aux = primero;
                 while (aux->siguiente!=NULL) {
                     aux = aux->siguiente;
                 }
-                aux->siguiente = new NodoMenuRest(codPais, codCiudad, nombre);
+                aux->siguiente = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
                 aux->siguiente->anterior = aux;
             }
         }
+     } else {
+        cout << "Este restaurante no existe" << endl;
+    }   
+    } else {
+        cout << "Esta ciudad no existe" << endl;
+    }
     } else {
         cout << "Este pais no existe" << endl;
     }
@@ -55,7 +64,7 @@ void ListaMenuRest::mostrar() {
     else {
         aux = primero;
         while(aux) {
-        cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
+        cout << aux->codMenuRest << " : " << aux->nombre << " -> ";
         aux = aux->siguiente;
         }
     cout << endl;

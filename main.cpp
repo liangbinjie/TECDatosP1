@@ -33,7 +33,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
                     cin >> codPais;
                     cout << "Ingrese el nombre del pais: " << endl;
                     cin >> nombre;
-                    lPais.insertar(codPais, nombre);
+                    lPais.insertarP(codPais, nombre);
                     break;
 
                 case 2:

@@ -1,5 +1,5 @@
 #include "listaPais.h"
-#include "../ciudad/listaCiudad.h"
+#include <string>
 
 
 ListaPais::ListaPais() {
@@ -18,10 +18,6 @@ ListaPais::~ListaPais() {
 
 bool ListaPais::listaVacia() {
     return primero == NULL;
-}
-
-pNodoPais ListaPais::obtenerPrimerNodo() {
-    return primero;
 }
 
 void ListaPais::insertarP(int codPais, string nombre) {
@@ -71,18 +67,6 @@ void ListaPais::borrarInicio() {
         }
     }
 }
-
-ListaCiudad* ListaPais::obtenerListaCiudades(int codPais) {
-    pNodoPais aux = primero;
-    while (aux != nullptr) {
-        if (aux->codigoPais == codPais) {
-            return aux->ciudadList; // Devuelve el puntero a la lista de ciudades
-        }
-        aux = aux->siguiente;
-    }
-    return nullptr; // Si no se encuentra el país
-}
-
 
 void ListaPais::eliminar(int codPais) {
     if (listaVacia()) {
