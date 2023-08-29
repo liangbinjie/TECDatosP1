@@ -20,6 +20,7 @@ bool ListaCiudad::existeCiudad(int codCiudad) {
             if (aux->codigoCiudad == codCiudad) {
                 return true;
             }
+            aux = aux->siguiente;
         }
     }
     return false;
@@ -31,7 +32,7 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
             primero = new NodoCiudad(codPais, codCiudad, nombre);
         } else {
             if (existeCiudad(codCiudad)) {
-                cout << "Esta ciudad ya existe, no se puede insertar";
+                cout << "Esta ciudad ya existe, no se puede insertar" << endl;
             } else {
                 pNodoCiudad aux = primero;
                 while (aux->siguiente!=NULL) {
@@ -41,6 +42,8 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
                 aux->siguiente->anterior = aux;
             }
         }
+    } else {
+        cout << "Este pais no existe" << endl;
     }
 }
 
@@ -58,20 +61,57 @@ void ListaCiudad::mostrar() {
     cout << endl;
     }
 }
-/*
-void ListaCiudad::eliminar(int codPais) {
+
+void ListaCiudad::borrarInicio() {
+    if (listaVacia()) {
+        cout << "Lista vacia" << endl;
+    } else {
+        if (primero->siguiente == NULL) {
+            pNodoCiudad temp = primero;
+            primero = NULL;
+            delete temp;
+        } else {
+            pNodoCiudad aux = primero;
+            primero = primero->siguiente;
+            primero->anterior = NULL;
+            delete aux;
+        }
+    }
+}
+
+void ListaCiudad::eliminar(int codCiudad) {
     if (listaVacia()) {
         cout << "No se puede eliminar, lista vacia" << endl;
     } else {
-        pNodoPais aux = primero;
-        cout << aux->codigoPais;
-        while (aux->codigoPais != codPais) {
+        pNodoCiudad aux = primero;
+        if (aux->codigoCiudad == codCiudad) {
+            borrarInicio();
+        } else {
+            while (aux->codigoPais != codCiudad) {
+                aux = aux->siguiente;
+            }
+            pNodoCiudad temp = aux;
             aux = aux->siguiente;
+            aux->siguiente->anterior = aux->anterior;
+            delete temp;
         }
-        pNodoPais temp = aux;
-        aux = aux->siguiente;
-        aux->siguiente->anterior = aux->anterior;
-        delete temp;
     }
 }
-*/
+
+void ListaCiudad::cargarCiudades(ListaPais& lPais) {
+    string str;
+    ifstream archivo;
+    archivo.open("Archivos/Ciudades.txt");
+    while (archivo >> str) {
+        size_t pos = str.find(';');
+        if (pos != string::npos) {
+            int idP = std::stoi(str.substr(0, pos));
+            int idC = std::stoi(str.substr(1, pos));
+            string name = str.substr(pos + 2);
+
+            ListaCiudad::insertar(idP, idC, name, lPais);
+        }
+    }
+    archivo.close();
+    str="";
+}

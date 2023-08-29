@@ -22,6 +22,8 @@ class ListaCiudad {
         void eliminar(int codCiudad);
         bool existeCiudad(int codCiudad);
         void insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises);
+        void borrarInicio();
+        void cargarCiudades(ListaPais& lPaises);
 };
 
 #endif

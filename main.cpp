@@ -77,7 +77,14 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
                     }
                     break;
                 case 2:
-                    // codigo para eliminar ciudad
+                    cout << "Ingrese el codigo de la ciudad que quieres eliminar :";
+                    cin >> codCiudad;
+                    if (lCiudad.existeCiudad(codCiudad)) {
+                        lCiudad.eliminar(codCiudad);
+                        cout << "Ciudad eliminada" << endl;
+                    } else {
+                        cout << "No se encontro la ciudad" << endl;
+                    }
                     break;
                 case 3:
                     cout << "Ingrese el codigo del restaurante que quieres eliminar: ";
@@ -122,6 +129,7 @@ int main() {
     ListaPais LPaises;
     LPaises.cargarPaises();
     ListaCiudad LCiudad;
+    LCiudad.cargarCiudades(LPaises);
     // ListaRest LRest;
     LPaises.mostrar();
     clearScreen();
