@@ -18,6 +18,6 @@ class NodoRest {
     public:
         NodoRest(int pCodPais, int pCodCiudad, int pCodRest);
         NodoRest(int pCodPais, int pCodCiudad, int pCodRest, NodoRest* sigNodo);
-}
+};
 
 #endif
