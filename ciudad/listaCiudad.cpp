@@ -62,21 +62,21 @@ void ListaCiudad::mostrar(int ciudad) { // muestra las ciudades de la lista
     }
 }
 
-// void ListaCiudadDeUnPais::mostrar(int pais) { // muestra las ciudades de un pais en especifico
-//     NodoCiudad *aux;
-//     if (primero==NULL)
-//         cout << "No hay elementos";  
-//     else {
-//         aux = primero;
-//         while(aux) {
-//             if(aux->codigoPais== pais){
-//                 cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
-//             }
-//         aux = aux->siguiente;
-//         }
-//     cout << endl;
-//     }
-// }
+void ListaCiudad::mostrarDeUnPais(int pais) { // muestra las ciudades de un pais en especifico
+    NodoCiudad *aux;
+    if (primero==NULL)
+        cout << "No hay elementos";  
+    else {
+        aux = primero;
+        while(aux) {
+            if(aux->codigoPais== pais){
+                cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
+            }
+        aux = aux->siguiente;
+        }
+    cout << endl;
+    }
+}
 
 void ListaCiudad::borrarInicio() {
     if (listaVacia()) {

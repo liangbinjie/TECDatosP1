@@ -24,6 +24,7 @@ class ListaCiudad {
         void insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises);
         void borrarInicio();
         void cargarCiudades(ListaPais& lPaises);
+        void mostrarDeUnPais(int pais); // funcion para mostrar las ciudades de un pais en especifico
 };
 
 #endif
