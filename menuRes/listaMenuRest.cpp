@@ -3,9 +3,6 @@
 #include "../ciudad/listaCiudad.h"
 #include "../menuRes/listaMenuRest.h"
 
-ListaMenuRest::ListaMenuRest(ListaPais& listaPaises): primero(NULL), listaPaises(listaPaises) {
-  
-}
 
 bool ListaMenuRest::listaVacia() {
     return primero == NULL;
@@ -27,7 +24,7 @@ bool ListaMenuRest::existeMenuRest(int pcodMenuRest) {
     return false;
 }
 
-void ListaMenuRest::insertarRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises) {
+/*void ListaMenuRest::insertarRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises) {
     if (lPaises.existePais(codPais)) {
         if (lPaises.existeCiudad(codPais)) {
             if (lPaises.existeRest(codRest)) {
@@ -55,7 +52,7 @@ void ListaMenuRest::insertarRest(int codPais, int codCiudad, int codRest, int co
         cout << "Este pais no existe" << endl;
     }
 }
-
+*/
 
 void ListaMenuRest::mostrar() {
     NodoMenuRest *aux;
@@ -88,7 +85,7 @@ void ListaMenuRest::borrarInicio() {
     }
 }
 
-void ListaMenuRest::eliminar(int codCiudad) {
+/*void ListaMenuRest::eliminar(int codCiudad) {
     if (listaVacia()) {
         cout << "No se puede eliminar, lista vacia" << endl;
     } else {
@@ -106,8 +103,8 @@ void ListaMenuRest::eliminar(int codCiudad) {
         }
     }
 }
-
-void ListaMenuRest::cargarCiudades(ListaPais& lPais) {
+*/
+/*void ListaMenuRest::cargarCiudades(ListaPais& lPais) {
     string str;
     ifstream archivo;
     archivo.open("Archivos/Ciudades.txt");
@@ -124,3 +121,4 @@ void ListaMenuRest::cargarCiudades(ListaPais& lPais) {
     archivo.close();
     str="";
 }
+*/

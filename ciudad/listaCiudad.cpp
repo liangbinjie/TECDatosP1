@@ -1,10 +1,10 @@
 #include "listaCiudad.h"
 #include "../pais/listaPais.h"
 
-
-ListaCiudad::ListaCiudad(ListaPais& listaPaises): primero(NULL), listaPaises(listaPaises) {
-  
+ListaCiudad::ListaCiudad() {
+    primero = NULL;
 }
+
 
 bool ListaCiudad::listaVacia() {
     return primero == NULL;
@@ -29,7 +29,7 @@ bool ListaCiudad::existeCiudad(int codCiudad) {
 void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises) {
     if (lPaises.existePais(codPais)) {
         if (listaVacia()) {
-            primero = new NodoCiudad(codCiudad, nombre);
+            primero = new NodoCiudad(codPais, codCiudad, nombre);
         } else {
             if (existeCiudad(codCiudad)) {
                 cout << "Esta ciudad ya existe, no se puede insertar" << endl;
@@ -38,7 +38,7 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
                 while (aux->siguiente!=NULL) {
                     aux = aux->siguiente;
                 }
-                aux->siguiente = new NodoCiudad(codCiudad, nombre);
+                aux->siguiente = new NodoCiudad(codPais, codCiudad, nombre);
                 aux->siguiente->anterior = aux;
             }
         }

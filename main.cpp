@@ -126,6 +126,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
 }
 
 int main() {
+    cout << "hopa";
     ListaPais LPaises;
     LPaises.cargarPaises();
     ListaCiudad LCiudad;
