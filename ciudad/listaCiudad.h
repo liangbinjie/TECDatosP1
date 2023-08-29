@@ -15,12 +15,12 @@ class ListaCiudad {
 
     public:
         ListaCiudad();
-        ~ListaCiudad();
+        // ~ListaCiudad();
 
         bool listaVacia();
         void mostrar();
-        void eliminar(int codPais); // cambiar a ciudad
-        bool existePais(int codPais); // cambiar a ciudad
+        void eliminar(int codCiudad);
+        bool existeCiudad(int codCiudad);
         void insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises);
 };
 

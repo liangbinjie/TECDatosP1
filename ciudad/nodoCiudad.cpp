@@ -1,6 +1,7 @@
 #include "nodoCiudad.h"
 
-NodoCiudad::NodoCiudad(int pCodigoCiudad, string pNombre) {
+NodoCiudad::NodoCiudad(int pCodPais, int pCodigoCiudad, string pNombre) {
+    codigoPais = pCodPais;
     codigoCiudad= pCodigoCiudad;
     nombre = pNombre;
     siguiente = NULL;
