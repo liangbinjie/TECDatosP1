@@ -20,7 +20,7 @@ bool ListaPais::listaVacia() {
     return primero == NULL;
 }
 
-void ListaPais::insertarP(int codPais, string nombre) {
+void ListaPais::insertar(int codPais, string nombre) {
     if (listaVacia()) {
         primero = new NodoPais(codPais, nombre);
     } else {

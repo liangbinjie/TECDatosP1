@@ -20,7 +20,7 @@ class ListaPais {
 
         void cargarPaises();
         bool listaVacia();
-        void insertarP(int codPais, string nombre);
+        void insertar(int codPais, string nombre);
         void mostrar();
         void eliminar(int codPais);
         bool existePais(int codPais);
