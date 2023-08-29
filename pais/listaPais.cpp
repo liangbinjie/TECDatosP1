@@ -109,13 +109,23 @@ void ListaPais::cargarPaises() {
     ifstream archivo;
     archivo.open("Archivos/Paises.txt");
     while (archivo >> str) {
-        size_t pos = str.find(';');
-        if (pos != string::npos) {
-            int id = std::stoi(str.substr(0, pos));
-            string name = str.substr(pos + 1);
-
-            ListaPais::insertar(id,name);
+        int cont = 0;
+        int idP,idC;
+        string name = "", temp;
+        for (char& c : str) {
+            if (c == ';') {
+                if (cont == 0) {
+                    idP = stoi(temp);
+                }
+                temp = "";
+                cont++;
+            } else {
+                temp += c;
+            }
         }
+        // cout << temp << endl;
+        name = temp;
+        ListaPais::insertar(idP, name);
     }
     archivo.close();
     str="";

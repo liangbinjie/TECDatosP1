@@ -32,7 +32,8 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
                     cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el nombre del pais: " << endl;
-                    cin >> nombre;
+                    cin.ignore();
+                    getline(cin,nombre);
                     lPais.insertar(codPais, nombre);
                     break;
 
@@ -42,7 +43,8 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
                     cout << "Ingrese el codigo de la ciudad: " << endl;
                     cin >> codCiudad;
                     cout << "Ingrese el nombre de la ciudad: " << endl;
-                    cin >> nombre;
+                    cin.ignore();
+                    getline(cin,nombre);
                     lCiudad.insertar(codPais, codCiudad, nombre, lPais);
                     break;
                 case 3:
@@ -53,7 +55,8 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
                     cout << "Ingrese el codigo del rest: " << endl;
                     cin >> codRest;
                     cout << "Ingrese el nombre del restaurante: " << endl;
-                    cin >> nombre;
+                    cin.ignore();
+                    getline(cin,nombre);
                     lRest.insertar(codPais, codCiudad, codRest, nombre, lPais, lCiudad);
                     break;
             }

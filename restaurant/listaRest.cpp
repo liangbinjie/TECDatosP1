@@ -94,3 +94,6 @@ void ListaRest::eliminar(int pCodRest) {
     }
 }
 
+// void ListaRest::cargarRests() {
+
+// }
