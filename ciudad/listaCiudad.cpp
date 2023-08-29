@@ -48,14 +48,16 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
 }
 
 
-void ListaCiudad::mostrar() {
+void ListaCiudad::mostrar(int pais) {
     NodoCiudad *aux;
     if (primero==NULL)
         cout << "No hay elementos";  
     else {
         aux = primero;
         while(aux) {
-        cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
+            if(aux->codigoPais== pais){
+                cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
+            }
         aux = aux->siguiente;
         }
     cout << endl;
@@ -98,7 +100,7 @@ void ListaCiudad::eliminar(int codCiudad) {
     }
 }
 
-void ListaCiudad::cargarCiudades(ListaPais& lPais) {
+/*void ListaCiudad::cargarCiudades(ListaPais& lPais) {
     string str;
     ifstream archivo;
     archivo.open("Archivos/Ciudades.txt");
@@ -108,10 +110,31 @@ void ListaCiudad::cargarCiudades(ListaPais& lPais) {
             int idP = std::stoi(str.substr(0, pos));
             int idC = std::stoi(str.substr(1, pos));
             string name = str.substr(pos + 2);
+            cout << idP;
 
             ListaCiudad::insertar(idP, idC, name, lPais);
         }
     }
     archivo.close();
     str="";
+}
+*/
+
+void ListaCiudad::cargarCiudades(ListaPais& lPais) {
+    string str;
+    ifstream archivo;
+    archivo.open("Archivos/Ciudades.txt");
+    while (archivo >> str) {
+        size_t pos = str.find(';');
+        if (pos != string::npos) {
+            int idP = std::stoi(str.substr(0, pos));
+            int idC = std::stoi(str.substr(pos + 1, str.find(';', pos + 1) - pos - 1));
+            string name = str.substr(str.find(';', pos + 1) + 1);
+
+            cout << "Cargando ciudad: idP=" << idP << ", idC=" << idC << ", name=" << name << endl;
+
+            ListaCiudad::insertar(idP, idC, name, lPais);
+        }
+    }
+    archivo.close();
 }

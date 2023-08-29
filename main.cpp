@@ -14,6 +14,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
     cout << "2. Eliminar" << endl;
     cout << "3. Mostrar" << endl;
     cout << "4. Salir" << endl;
+    int numPais;
     int opcion;
     cout << "> ";
     cin >> opcion;
@@ -112,7 +113,9 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
                     lPais.mostrar();
                     break;
                 case 2:
-                    lCiudad.mostrar();
+                cout << "Ingrese el numero del pais del que quiere ver las ciudades" << endl;
+                    cin >> numPais;
+                    lCiudad.mostrar(numPais);
                     break;
                 case 3:
                     // lRest.mostrar();
