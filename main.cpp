@@ -1,6 +1,6 @@
 #include "pais/listaPais.h"
 #include "ciudad/listaCiudad.h"
-// #include "restaurant/listaRest.h"
+#include "restaurant/listaRest.h"
 #include <iostream>
 using namespace std;
 
@@ -8,7 +8,7 @@ void clearScreen() {
     cout << string(50, '\n');
 }
 
-void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
+void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
     cout << "Bienvenido, que desea realizar?" << endl;
     cout << "1. Insertar" << endl;
     cout << "2. Eliminar" << endl;
@@ -33,8 +33,9 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
                     cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el nombre del pais: " << endl;
-                    cin >> nombre;
-                    lPais.insertarP(codPais, nombre);
+                    cin.ignore();
+                    getline(cin,nombre);
+                    lPais.insertar(codPais, nombre);
                     break;
 
                 case 2:
@@ -43,20 +44,22 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
                     cout << "Ingrese el codigo de la ciudad: " << endl;
                     cin >> codCiudad;
                     cout << "Ingrese el nombre de la ciudad: " << endl;
-                    cin >> nombre;
+                    cin.ignore();
+                    getline(cin,nombre);
                     lCiudad.insertar(codPais, codCiudad, nombre, lPais);
                     break;
-                // case 3:
-                //     cout << "Ingres el codigo del pais: " << endl;
-                //     cin >> codPais;
-                //     cout << "Ingrese el codigo de la ciudad: " << endl;
-                //     cin >> codCiudad;
-                //     cout << "Ingrese el codigo del rest: " << endl;
-                //     cin >> codRest;
-                //     cout << "Ingrese el nombre del restaurante: " << endl;
-                //     cin >> nombre;
-                //     lRest.insertar(codPais, codCiudad, codRest, nombre, lPais, lCiudad);
-                //     break;
+                case 3:
+                    cout << "Ingres el codigo del pais: " << endl;
+                    cin >> codPais;
+                    cout << "Ingrese el codigo de la ciudad: " << endl;
+                    cin >> codCiudad;
+                    cout << "Ingrese el codigo del rest: " << endl;
+                    cin >> codRest;
+                    cout << "Ingrese el nombre del restaurante: " << endl;
+                    cin.ignore();
+                    getline(cin,nombre);
+                    lRest.insertar(codPais, codCiudad, codRest, nombre, lPais, lCiudad);
+                    break;
             }
             break;
         
@@ -91,12 +94,12 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
                     cout << "Ingrese el codigo del restaurante que quieres eliminar: ";
                     int codRest;
                     cin >> codRest;
-                    // if (lRest.existeRest(codigo)) {
-                    //     lRest.eliminar(codigo);
-                    //     cout << "Rest eliminado" << endl;
-                    // } else {
-                    //     cout << "No se encontro el rest" << endl;
-                    // }
+                    if (lRest.existeRest(codRest)) {
+                        lRest.eliminar(codRest);
+                        cout << "Rest eliminado" << endl;
+                    } else {
+                        cout << "No se encontro el rest" << endl;
+                    }
                     break;
             }
             break;
@@ -118,14 +121,14 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad) {
                     lCiudad.mostrar(numPais);
                     break;
                 case 3:
-                    // lRest.mostrar();
+                    lRest.mostrar();
                     break;
             }
             break;
         case 4:
             return;
     }
-    menu(lPais, lCiudad);
+    menu(lPais, lCiudad, lRest);
 }
 
 int main() {
@@ -134,10 +137,14 @@ int main() {
     LPaises.cargarPaises();
     ListaCiudad LCiudad;
     LCiudad.cargarCiudades(LPaises);
-    // ListaRest LRest;
+    ListaRest LRest;
+    // LRest.insertar(123,345,456,"mac", LPaises, LCiudad);
+    // LRest.insertar(123,345,876,"qwe", LPaises, LCiudad);
+    // LRest.insertar(123,345,4563,"kfc", LPaises, LCiudad);
+    // LRest.insertar(123,345,687,"pollo", LPaises, LCiudad);
     LPaises.mostrar();
-    clearScreen();
-    // menu(LPaises, LCiudad, LRest);
-    menu(LPaises,LCiudad);
+    // clearScreen();
+    menu(LPaises, LCiudad, LRest);
+    // menu(LPaises,LCiudad);
     return 0;
 }
