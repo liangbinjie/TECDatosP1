@@ -2,17 +2,7 @@
 #include "../pais/listaPais.h"
 
 
-ListaCiudad::ListaCiudad(ListaPais& listaPaises) : primero(NULL), listaPaises(listaPaises) {
-  
-}
-
-ListaCiudad::~ListaCiudad() {
-    pNodoCiudad aux;
-    while (primero) {
-        aux = primero;
-        primero = primero->siguiente;
-        delete aux;
-    }
+ListaCiudad::ListaCiudad() {
     primero = NULL;
 }
 
@@ -20,89 +10,47 @@ bool ListaCiudad::listaVacia() {
     return primero == NULL;
 }
 
-void ListaCiudad::insertarCiudad(int codCiudad, string nombre) {
-    pNodoCiudad nuevoNodo = new NodoCiudad(codCiudad, nombre);
-
-    if (listaVacia()) {
-        primero = nuevoNodo;
+bool ListaCiudad::existeCiudad(int codCiudad) {
+    NodoCiudad* aux;
+    if (primero == NULL) {
+        cout << "No hay elementos";
     } else {
-        pNodoCiudad aux = primero;
-        while (aux->siguiente != NULL) {
-            aux = aux->siguiente;
-        }
-        aux->siguiente = nuevoNodo;
-        nuevoNodo->anterior = aux;
-    }
-    cout << "Nueva ciudad insertada en la lista." << endl;
-}
-
-
-void ListaCiudad::insertarEnLista(int codPais, int codCiudad, string nombre) {
-   pNodoPais auxP = listaPaises.primero; // Accede al primer nodo de la lista de países
-    while (auxP != NULL) {
-        if (auxP->codigoPais == codPais) {
-            if (auxP->ciudadList == NULL) {
-                auxP->ciudadList = new ListaCiudad(listaPaises); // Crea una nueva lista de ciudades si aún no existe
+        aux = primero;
+        while (aux) {
+            if (aux->codigoCiudad == codCiudad) {
+                return true;
             }
-            auxP->ciudadList->insertarCiudad(codCiudad, nombre); // Llama al método insertar de la lista de ciudades
-            return; // Sale del método luego de realizar la inserción
-        }
-        auxP = auxP->siguiente;
-    }
-    // Resto del código de inserción de ciudades si no se encuentra el país
-}
-
-
-/*
-   void ListaCiudad::insertar(int codPais, int codCiudad, string nombre) {
-    pNodoPais auxP = primero;
-    while (auxP->siguiente != NULL) {
-        if (auxP->codigoPais == codPais) {
-
-            if (listaVacia()) {
-                primero = new NodoCiudad(codPais, codCiudad, nombre);
-            } else {
-                pNodoCiudad auxC = primero;
-                 while (auxC->siguiente != NULL) {
-                    if (auxC->codigoCiudad == codCiudad) {
-                        cout << "La ciudad ya existe" ;
-                        break;
-                    }
-                    else{
-                     auxC = auxC->siguiente;
-                 }
-                 }
-                 auxC->siguiente = new NodoCiudad(codPais, codCiudad, nombre);\
-                 auxC->siguiente->anterior = auxC;
-                    
-    }
-
-
-            return aux; // Se encontró el país con el código especificado
-        }
-        aux = aux->siguiente;
-
-
-
-    aux = aux->siguiente;
-    }
-    if (listaVacia()) {
-        primero = new NodoPais(codPais, nombre);
-    } else {
-        pNodoPais aux = primero;
-        while (aux->siguiente != NULL) {
             aux = aux->siguiente;
         }
-        aux->siguiente = new NodoPais(codPais, nombre);
-        aux->siguiente->anterior = aux;
+    }
+    return false;
+}
+
+void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises) {
+    if (lPaises.existePais(codPais)) {
+        if (listaVacia()) {
+            primero = new NodoCiudad(codPais, codCiudad, nombre);
+        } else {
+            if (existeCiudad(codCiudad)) {
+                cout << "Esta ciudad ya existe, no se puede insertar" << endl;
+            } else {
+                pNodoCiudad aux = primero;
+                while (aux->siguiente!=NULL) {
+                    aux = aux->siguiente;
+                }
+                aux->siguiente = new NodoCiudad(codPais, codCiudad, nombre);
+                aux->siguiente->anterior = aux;
+            }
+        }
+    } else {
+        cout << "Este pais no existe" << endl;
     }
 }
 
-*/
 
 void ListaCiudad::mostrar() {
     NodoCiudad *aux;
-    if (primero== NULL)
+    if (primero==NULL)
         cout << "No hay elementos";  
     else {
         aux = primero;
@@ -113,20 +61,57 @@ void ListaCiudad::mostrar() {
     cout << endl;
     }
 }
-/*
-void ListaCiudad::eliminar(int codPais) {
+
+void ListaCiudad::borrarInicio() {
+    if (listaVacia()) {
+        cout << "Lista vacia" << endl;
+    } else {
+        if (primero->siguiente == NULL) {
+            pNodoCiudad temp = primero;
+            primero = NULL;
+            delete temp;
+        } else {
+            pNodoCiudad aux = primero;
+            primero = primero->siguiente;
+            primero->anterior = NULL;
+            delete aux;
+        }
+    }
+}
+
+void ListaCiudad::eliminar(int codCiudad) {
     if (listaVacia()) {
         cout << "No se puede eliminar, lista vacia" << endl;
     } else {
-        pNodoPais aux = primero;
-        cout << aux->codigoPais;
-        while (aux->codigoPais != codPais) {
+        pNodoCiudad aux = primero;
+        if (aux->codigoCiudad == codCiudad) {
+            borrarInicio();
+        } else {
+            while (aux->codigoPais != codCiudad) {
+                aux = aux->siguiente;
+            }
+            pNodoCiudad temp = aux;
             aux = aux->siguiente;
+            aux->siguiente->anterior = aux->anterior;
+            delete temp;
         }
-        pNodoPais temp = aux;
-        aux = aux->siguiente;
-        aux->siguiente->anterior = aux->anterior;
-        delete temp;
     }
 }
-*/
+
+void ListaCiudad::cargarCiudades(ListaPais& lPais) {
+    string str;
+    ifstream archivo;
+    archivo.open("Archivos/Ciudades.txt");
+    while (archivo >> str) {
+        size_t pos = str.find(';');
+        if (pos != string::npos) {
+            int idP = std::stoi(str.substr(0, pos));
+            int idC = std::stoi(str.substr(1, pos));
+            string name = str.substr(pos + 2);
+
+            ListaCiudad::insertar(idP, idC, name, lPais);
+        }
+    }
+    archivo.close();
+    str="";
+}

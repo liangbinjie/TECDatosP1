@@ -4,25 +4,26 @@
 #include <iostream>
 using namespace std;
 
+#include "../pais/listaPais.h"
+
 #include "nodoCiudad.h"
 typedef NodoCiudad* pNodoCiudad;
-class ListaPais;
 class ListaCiudad {
     private:
         pNodoCiudad primero;
-        ListaPais& listaPaises;
         friend class ListaPais;
 
     public:
-        ListaCiudad(ListaPais& listaPaises);
-        ~ListaCiudad();
+        ListaCiudad();
+        // ~ListaCiudad();
 
         bool listaVacia();
-        void insertarEnLista(int codPais, int codCiudad, string nombre);
         void mostrar();
-        void eliminar(int codPais);
-        bool existePais(int codPais);
-        void insertarCiudad(int codCiudad, string nombre);
+        void eliminar(int codCiudad);
+        bool existeCiudad(int codCiudad);
+        void insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises);
+        void borrarInicio();
+        void cargarCiudades(ListaPais& lPaises);
 };
 
 #endif
