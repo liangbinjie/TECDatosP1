@@ -70,13 +70,13 @@ void ListaCiudad::mostrarDeUnPais(int pais) { // muestra las ciudades de un pais
         cout << "No hay elementos";  
     else {
         aux = primero;
-        while(aux) {
-            if(aux->codigoPais== pais){
+        while(aux != primero) {
+            if(aux->codigoPais==pais){
                 cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
             }
         aux = aux->siguiente;
         }
-    cout << endl;
+    return;
     }
 }
 
@@ -98,6 +98,7 @@ void ListaCiudad::borrarInicio() {
 }
 
 void ListaCiudad::eliminar(int codCiudad) {
+    cout << codCiudad << endl;
     if (listaVacia()) {
         cout << "No se puede eliminar, lista vacia" << endl;
     } else {
@@ -106,11 +107,16 @@ void ListaCiudad::eliminar(int codCiudad) {
             borrarInicio();
         } else {
             while (aux->codigoPais != codCiudad) {
+                if (aux->codigoCiudad == codCiudad) {
+                    cout << aux->codigoCiudad << endl;
+                    break;
+
+                }
                 aux = aux->siguiente;
             }
             pNodoCiudad temp = aux;
-            aux = aux->siguiente;
-            aux->siguiente->anterior = aux->anterior;
+            aux = aux->anterior;
+            aux->siguiente = aux->siguiente;
             delete temp;
         }
     }
@@ -142,4 +148,21 @@ void ListaCiudad::cargarCiudades(ListaPais& lPais) {
     }
     archivo.close();
     str="";
+}
+
+void ListaCiudad::eliminarCiudades(int pais) {
+    NodoCiudad *aux;
+    if (primero==NULL)
+        cout << "No hay elementos";  
+    else {
+        aux = primero;
+        while(aux) {
+            if(aux->codigoPais==pais){
+                cout << aux->codigoCiudad;
+                ListaCiudad::eliminar(aux->codigoCiudad);
+            }
+            aux = aux->siguiente;
+        }
+        cout << endl;
+    }
 }

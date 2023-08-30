@@ -25,6 +25,7 @@ class ListaCiudad {
         void borrarInicio();
         void cargarCiudades(ListaPais& lPaises);
         void mostrarDeUnPais(int pais); // funcion para mostrar las ciudades de un pais en especifico
+        void eliminarCiudades(int pais);
 };
 
 #endif

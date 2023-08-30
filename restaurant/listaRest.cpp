@@ -22,6 +22,7 @@ bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaCiud
             aux = aux->siguiente;
         }
     }
+    return false;
 }
 
 void ListaRest::insertar(int codPais, int codCiudad, int codRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudades) {

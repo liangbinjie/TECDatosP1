@@ -90,11 +90,11 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     cin >> calorias;
                     cout << "Ingrese el precio del producto: " << endl;
                     cin >> precio;
-                    // lProductos.insertar(codPais, codCiudad, codRest, codMenu, codProducto, nombre, calorias, precio, lPais, lCiudad, lRest, lMenu);
+                    lProducto.insertar(codPais, codCiudad, codRest, codMenu, codProducto, nombre, calorias, precio, lPais, lCiudad, lRest, lMenu);
                     break;
 
                 case 6:
-                    cout << "Ingres la identificacion del cliente: " << endl;
+                    cout << "Ingrese la identificacion del cliente: " << endl;
                     cin >> codCliente;
                     cout << "Ingrese el nombre del cliente: " << endl;
                     cin.ignore();
@@ -120,6 +120,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     cin >> codPais;
                     if (lPais.existePais(codPais)) {
                         lPais.eliminar(codPais);
+                        lCiudad.eliminarCiudades(codPais);
                         cout << "Pais eliminado" << endl;
                     } else {
                         cout << "No se encontro el pais" << endl;
@@ -128,6 +129,8 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                 case 2:
                     cout << "Ingrese el codigo de la ciudad que quieres eliminar :";
                     cin >> codCiudad;
+                    cout << "Ingrese el codigo del pais de la ciudad: ";
+                    cin >> codPais;
                     if (lCiudad.existeCiudad(codPais, codCiudad, lPais)) {
                         lCiudad.eliminar(codCiudad);
                         cout << "Ciudad eliminada" << endl;
@@ -139,7 +142,11 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                 case 3:
                     cout << "Ingrese el codigo del restaurante que quieres eliminar: ";
                     cin >> codRest;
-                    if (lRest.existeRest(codRest)) {
+                    cout << "Ingrese el codigo del pais del restaurante: ";
+                    cin >> codPais;
+                    cout << "Ingrese el codigo de ciudad del restaurante: ";
+                    cin >> codCiudad;
+                    if (lRest.existeRest(codPais, codCiudad, codRest, lCiudad, lPais)) {
                         lRest.eliminar(codRest);
                         cout << "Rest eliminado" << endl;
                     } else {
@@ -147,19 +154,18 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     }
                     break;
 
-                //agregar los demas cases
                 case 4:
                     // menus
                     break;
                 
                 case 5:
-//                    cout << "Ingrese el codigo del producto que quieres eliminar :";
-//                    cin >> codProducto;
-//                    if (lProducto.existeProducto(codProducto)) {
-//                        lProducto.eliminar(codProducto);
-//                    } else {
-//                        cout << "No se pudo encontrar el producto" << endl;
-//                    }
+                   cout << "Ingrese el codigo del producto que quieres eliminar :";
+                   cin >> codProducto;
+                   if (lProducto.existeProducto(codProducto)) {
+                       lProducto.eliminar(codProducto);
+                   } else {
+                       cout << "No se pudo encontrar el producto" << endl;
+                   }
                     break;
                 
                 case 6:
@@ -203,7 +209,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
                 
                 case 5:
-                    // lProducto.mostrar();
+                    lProducto.mostrar();
                     break;
 
                 case 6:
@@ -231,7 +237,7 @@ int main() {
     ListaMenuRest LMenu;
     // LMenu.cargarMenu()
     ListaProducto LProducto;
-    // LProducto.cargarProducto();
+    LProducto.cargarProductos(LPaises, LCiudad, LRest, LMenu);
     ListaCliente LCliente;
     LCliente.cargarCliente();
     clearScreen();

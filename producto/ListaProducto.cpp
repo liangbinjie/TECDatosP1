@@ -9,16 +9,18 @@ bool ListaProducto::listaVacia() {
 }
 
 void ListaProducto::insertar(int codPais, int codCiudad, int codRest, int codMenu, int codProducto, string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus) {
-    // validaciones
-    //
-    if (listaVacia()) {
-        primero = new NodoProducto( codPais,  codCiudad,  codRest,  codMenu,  codProducto,  nombre,  kcal,  precio);
-    } else {
-        NodoProducto* aux = primero;
-        while (aux->siguiente) {
-            aux = aux->siguiente;
+    if (lCiudades.existeCiudad(codPais, codCiudad, lPaises)) {
+        if (listaVacia()) {
+            primero = new NodoProducto( codPais,  codCiudad,  codRest,  codMenu,  codProducto,  nombre,  kcal,  precio);
+        } else {
+            NodoProducto* aux = primero;
+            while (aux->siguiente) {
+                aux = aux->siguiente;
+            }
+            aux->siguiente = new NodoProducto(codPais, codCiudad, codRest, codMenu, codProducto,  nombre,  kcal,  precio);
         }
-        aux->siguiente = new NodoProducto(codPais, codCiudad, codRest, codMenu, codProducto,  nombre,  kcal,  precio);
+    } else {
+        cout << "Incongruencias con la ubicacion" << endl;
     }
 }
 
