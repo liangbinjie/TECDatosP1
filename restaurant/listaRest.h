@@ -19,7 +19,7 @@ class ListaRest {
         void insertar(int codPais, int codCiudad, int codRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudades);
         bool listaVacia();
         void mostrar();
-        bool existeRest(int pCodRest);
+        bool existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaCiudad& lCiudad, ListaPais& lPais);
         void eliminar(int codRest);
         void borrarInicio();
         void cargarRests(ListaPais& lPaises, ListaCiudad& lCiudades);
