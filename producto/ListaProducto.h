@@ -7,11 +7,11 @@ using namespace std;
 #include "../pais/listaPais.h"
 #include "../ciudad/listaCiudad.h"
 #include "../restaurant/listaRest.h"
-#include "../menuRes/listaMenuRes.h"
+#include "../menuRes/listaMenuRest.h"
 
 
 #include "NodoProducto.h"
-typedef NodoProducto* pNodoProducto
+typedef NodoProducto* pNodoProducto;
 
 class ListaProducto {
 private:
@@ -20,7 +20,7 @@ private:
 public:
     ListaProducto();
 
-    void insertar(int codPais, int codCiudad, int codRest, int codMenu, int id, std::string nombre, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRes& lMenus);
+    void insertar(int codPais, int codCiudad, int codRest, int codMenu, int id, std::string nombre, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus);
     bool existeProducto(int id);
     void mostrar();
     bool eliminar(int id);

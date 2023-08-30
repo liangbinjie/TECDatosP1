@@ -15,7 +15,6 @@ class ListaMenuRest {
 
     public:
         ListaMenuRest();
-        // ~ListaCiudad();
 
         bool listaVacia();
         void mostrar();

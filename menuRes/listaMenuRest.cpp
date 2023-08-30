@@ -3,7 +3,9 @@
 #include "../ciudad/listaCiudad.h"
 #include "../menuRes/listaMenuRest.h"
 
-
+ListaMenuRest::ListaMenuRest() {
+	primero = NULL;
+}
 bool ListaMenuRest::listaVacia() {
     return primero == NULL;
 }

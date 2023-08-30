@@ -1,7 +1,7 @@
 #include "pais/listaPais.h"
 #include "ciudad/listaCiudad.h"
 #include "restaurant/listaRest.h"
-#include "menuRes/listaMenuRes.h"
+#include "menuRes/listaMenuRest.h"
 #include "producto/listaProducto.h"
 #include "cliente/listaCliente.h"
 #include <iostream>
@@ -11,7 +11,7 @@ void clearScreen() {
     cout << string(50, '\n');
 }
 
-void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes& lMenu, ListaProducto& lProducto, ListaCliente& lCliente) {
+void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenu, ListaProducto& lProducto, ListaCliente& lCliente) {
     cout << "Bienvenido, que desea realizar?" << endl;
     cout << "1. Insertar" << endl;
     cout << "2. Eliminar" << endl;
@@ -152,13 +152,13 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
                 
                 case 5:
-                    cout << "Ingrese el codigo del producto que quieres eliminar :";
-                    cin >> codProducto;
-                    if (lProducto.existeProducto(codProducto)) {
-                        lProducto.eliminar(codProducto);
-                    } else {
-                        cout << "No se pudo encontrar el producto" << endl;
-                    }
+//                    cout << "Ingrese el codigo del producto que quieres eliminar :";
+//                    cin >> codProducto;
+//                    if (lProducto.existeProducto(codProducto)) {
+//                        lProducto.eliminar(codProducto);
+//                    } else {
+//                        cout << "No se pudo encontrar el producto" << endl;
+//                    }
                     break;
                 
                 case 6:
@@ -215,23 +215,25 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
         case 4:
             return;
     }
-    menu(lPais, lCiudad, lRest);
+    menu(lPais, lCiudad, lRest, lMenu, lProducto, lCliente);
 }
 
 int main() {
-    cout << "hopa";
     ListaPais LPaises;
     LPaises.cargarPaises();
     ListaCiudad LCiudad;
     LCiudad.cargarCiudades(LPaises);
     ListaRest LRest;
+    ListaMenuRest LMenu;
+    ListaProducto LProducto;
+    ListaCliente LCliente;
     // LRest.insertar(123,345,456,"mac", LPaises, LCiudad);
     // LRest.insertar(123,345,876,"qwe", LPaises, LCiudad);
     // LRest.insertar(123,345,4563,"kfc", LPaises, LCiudad);
     // LRest.insertar(123,345,687,"pollo", LPaises, LCiudad);
     LPaises.mostrar();
     // clearScreen();
-    menu(LPaises, LCiudad, LRest);
+    menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente);
     // menu(LPaises,LCiudad);
     return 0;
 }
