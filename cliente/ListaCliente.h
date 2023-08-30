@@ -2,6 +2,7 @@
 #define LISTACLIENTE_H
 
 #include "NodoCliente.h"
+#include <fstream>
 
 class ListaCliente {
 private:
@@ -14,6 +15,7 @@ public:
     bool existeCliente(int id);
     void mostrar();
     bool eliminar(int id);
+    void cargarCliente();
 };
 
 #endif

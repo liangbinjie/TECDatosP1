@@ -10,7 +10,7 @@ bool ListaMenuRest::listaVacia() {
     return primero == NULL;
 }
 
-/*bool ListaMenuRest::existeMenuRest(int pcodMenuRest, ListaRest& lRest, ListaCiudad& lCiudad) {
+bool ListaMenuRest::existeMenuRest(int pcodMenuRest) {
     NodoMenuRest* aux;
     if (primero == NULL) {
         cout << "No hay elementos";
@@ -18,7 +18,6 @@ bool ListaMenuRest::listaVacia() {
         aux = primero;
         while (aux) {
             if (aux->codMenuRest == pcodMenuRest) {
-                if(lRest.existeRest(pCodPais, pCodCiudad, int pCodRest, ListaCiudad& lCiudad, ListaPais& lPais))
                 return true;
             }
             aux = aux->siguiente;
@@ -26,11 +25,11 @@ bool ListaMenuRest::listaVacia() {
     }
     return false;
 }
-*/
-/*void ListaMenuRest::insertarMenuRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudad, ListaRest& lRest) {
+
+/*void ListaMenuRest::insertarRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises) {
     if (lPaises.existePais(codPais)) {
-        if (lCiudad.existeCiudad(codPais, codCiudad, lPaises)) {
-            if (lRest.existeRest(codRest)) {
+        if (lPaises.existeCiudad(codPais)) {
+            if (lPaises.existeRest(codRest)) {
         if (listaVacia()) {
             primero = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
         } else {

@@ -3,6 +3,7 @@
 
 #include <iostream>
 using namespace std;
+#include <fstream>
 
 #include "../pais/listaPais.h"
 #include "../ciudad/listaCiudad.h"
@@ -15,16 +16,17 @@ typedef NodoProducto* pNodoProducto;
 
 class ListaProducto {
 private:
-    ListaProducto* primero;
+    NodoProducto* primero;
 
 public:
     ListaProducto();
 
-    void insertar(int codPais, int codCiudad, int codRest, int codMenu, int id, std::string nombre, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus);
+    void insertar(int codPais, int codCiudad, int codRest, int codMenu, int id, std::string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus);
     bool existeProducto(int id);
     void mostrar();
     bool eliminar(int id);
     bool listaVacia();
+    void cargarProductos();
 };
 
 #endif
