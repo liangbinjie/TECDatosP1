@@ -2,7 +2,7 @@ g++ main.cpp pais/*.cpp
 g++ main.cpp pais/*.cpp ciudad/*.cpp
 g++ main.cpp pais/*.cpp ciudad/*.cpp restaurant/*.cpp
 g++ main.cpp pais/*.cpp ciudad/*.cpp restaurant/*.cpp producto/*.cpp
-g++ main.cpp pais/*.cpp ciudad/*.cpp restaurant/*.cpp producto/*.cpp menu/*.cpp
-g++ main.cpp pais/*.cpp ciudad/*.cpp restaurant/*.cpp producto/*.cpp menu/*.cpp cliente/*.cpp
+g++ main.cpp pais/*.cpp ciudad/*.cpp restaurant/*.cpp producto/*.cpp menuRes/*.cpp
+g++ main.cpp pais/*.cpp ciudad/*.cpp restaurant/*.cpp producto/*.cpp menuRes/*.cpp cliente/*.cpp
 
 ./a.out

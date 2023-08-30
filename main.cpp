@@ -128,14 +128,14 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                 case 2:
                     cout << "Ingrese el codigo de la ciudad que quieres eliminar :";
                     cin >> codCiudad;
-                    if (lCiudad.existeCiudad(codCiudad)) {
+                    if (lCiudad.existeCiudad(codPais, codCiudad, lPais)) {
                         lCiudad.eliminar(codCiudad);
                         cout << "Ciudad eliminada" << endl;
                     } else {
                         cout << "No se encontro la ciudad" << endl;
                     }
                     break;
-                case 3:
+                /*case 3:
                     cout << "Ingrese el codigo del restaurante que quieres eliminar: ";
                     cin >> codRest;
                     if (lRest.existeRest(codRest)) {
@@ -145,6 +145,8 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                         cout << "No se encontro el rest" << endl;
                     }
                     break;
+
+                */
 
                 //agregar los demas cases
                 case 4:
@@ -221,9 +223,16 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
 int main() {
     ListaPais LPaises;
     LPaises.cargarPaises();
+    LPaises.mostrar();
     ListaCiudad LCiudad;
+    
     LCiudad.cargarCiudades(LPaises);
     ListaRest LRest;
+    cout << "lll";
+    LRest.mostrar();
+    cout << "bb";
+    LRest.insertar(123, 345, 2, "mcdonald", LPaises, LCiudad);
+    LRest.mostrar();
     ListaMenuRest LMenu;
     ListaProducto LProducto;
     ListaCliente LCliente;

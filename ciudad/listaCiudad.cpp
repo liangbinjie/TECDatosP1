@@ -10,19 +10,22 @@ bool ListaCiudad::listaVacia() {
     return primero == NULL;
 }
 
-bool ListaCiudad::existeCiudad(int codCiudad) {
+bool ListaCiudad::existeCiudad(int codPais, int codCiudad, ListaPais& lPaises) {
     NodoCiudad* aux;
     if (primero == NULL) {
         cout << "No hay elementos";
     } else {
         aux = primero;
         while (aux) {
-            if (aux->codigoCiudad == codCiudad) {
-                return true;
+            if ((aux->codigoCiudad == codCiudad) && (aux->codigoPais == codPais)) {
+                if (lPaises.existePais(aux->codigoPais)){
+                    cout << "sii";
+                    //return true;
+                }
             }
             aux = aux->siguiente;
         }
-    }
+    return false; }
     return false;
 }
 
@@ -31,7 +34,7 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
         if (listaVacia()) {
             primero = new NodoCiudad(codPais, codCiudad, nombre);
         } else {
-            if (existeCiudad(codCiudad)) {
+            if (existeCiudad(codPais, codCiudad, lPaises)) {
                 cout << "Esta ciudad ya existe, no se puede insertar" << endl;
             } else {
                 pNodoCiudad aux = primero;

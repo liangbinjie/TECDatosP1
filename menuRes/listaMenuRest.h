@@ -5,6 +5,8 @@
 using namespace std;
 
 #include "../pais/listaPais.h"
+#include "../ciudad/listaCiudad.h"
+#include "../restaurant/listaRest.h"
 
 #include "nodoMenuRest.h"
 typedef NodoMenuRest* pNodoMenuRest;
@@ -19,8 +21,8 @@ class ListaMenuRest {
         bool listaVacia();
         void mostrar();
         void eliminar(int codCiudad);
-        bool existeMenuRest(int codMenuRest);
-        void insertarRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises);
+        bool existeMenuRest(int pcodMenuRest, ListaRest& lRest, ListaCiudad& lCiudad);
+        void insertarMenuRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudad, ListaRest& lRest);
         void borrarInicio();
         void cargarCiudades(ListaPais& lPaises);
 };
