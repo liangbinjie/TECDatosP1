@@ -1,75 +1,102 @@
-#include "ListaProducto.h"
-#include "../pais/ListaPais.h"
-#include "../ciudad/ListaCiudad.h"
-#include "../restaurant/ListaRest.h"
-#include "../menuRes/listaMenuRest.h"
-#include <iostream>
+#include "listaProducto.h"
 
 ListaProducto::ListaProducto() {
     primero = NULL;
 }
 
-//void ListaProducto::insertar(int codPais, int codCiudad, int codRest, int codMenu, int id, std::string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus) {
-//    // if lPaises.existePais(codPais) && lCiudades.existeCiudad(codCiudad)
-//    // if lRests.existeRest(codRest) && lMenus.existeMenu(codMenu)
-//    if (listaVacia()) {
-//        primero = new NodoProducto(codPais, codCiudad, codRest, codMenu, id, nombre, int kcal, int precio);
-//    } else {
-//
-//    }
-//}
-//
-//bool ListaProducto::existeProducto(int id) {
-//    if (listaVacia()) {
-//        cout << "Lista vacia";
-//    } else {
-//        NodoProducto* aux = primero;
-//        while (aux) {
-//            if (aux->codProducto == id) {
-//                return true;
-//            }
-//            aux = aux->siguiente;
-//        }
-//    }
-//    return false;
-//}
-//
-//bool ListaProducto::listaVacia() {
-//    return primero == NULL;
-//}
-//
-//void ListaProducto::mostrar() {
-//    NodoProducto* aux;
-//    if (primero==NULL) {
-//        cout << "No hay elementos" << endl;
-//    } else {
-//        aux = primero;
-//        while (aux) {
-//            cout << aux->codProducto << " : " << aux->nombre << " : " << aux->kcal << " : $" << aux->precio << endl;
-//            aux = aux->siguiente;
-//        }
-//        cout << endl;
-//    }
-//}
-//
-//ListaProducto::eliminar(int id) {
-//    if (listaVacia()) {
-//        cout << "Lista vacia";
-//    } else {
-//        NodoProducto* aux = primero;
-//        if (aux->codProducto == id) {
-//            pNodoProducto temp = primero;
-//            primero = primero->siguiente;
-//            delete temp;
-//        } else {
-//            aux = aux->siguiente;
-//            while(aux && aux->codProducto!=id) {
-//                aux = aux->siguiente;
-//            }
-//            pNodoProducto temp = aux->siguiente;
-//            aux->siguiente = aux->siguiente->siguiente;
-//            delete temp;
-//        }
-//    }
-//}
+bool ListaProducto::listaVacia() {
+    return primero == NULL;
+}
 
+void ListaProducto::insertar(int codPais, int codCiudad, int codRest, int codMenu, int codProducto, string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus) {
+    // validaciones
+    //
+    if (listaVacia()) {
+        primero = new NodoProducto( codPais,  codCiudad,  codRest,  codMenu,  codProducto,  nombre,  kcal,  precio);
+    } else {
+        NodoProducto* aux = primero;
+        while (aux->siguiente) {
+            aux = aux->siguiente;
+        }
+        aux->siguiente = new NodoProducto(codPais, codCiudad, codRest, codMenu, codProducto,  nombre,  kcal,  precio);
+    }
+}
+
+bool ListaProducto::existeProducto(int id) {
+    NodoProducto* aux = primero;
+    while (aux) {
+        if (aux->codProducto == id) {
+            return true;
+        }
+        aux = aux->siguiente;
+    }
+    return false;
+}
+
+void ListaProducto::eliminar(int id) {
+    if (listaVacia()) {
+        cout << "Lista vacia" << endl; 
+    } else {
+        if (primero->codProducto == id) {
+            NodoProducto* temp = primero;
+            primero = primero->siguiente;
+            delete temp;
+        } else {
+            NodoProducto* temp = primero;
+            while (temp->siguiente && temp->siguiente->codProducto != id) {
+                temp = temp->siguiente;
+            }
+            if (temp->siguiente) {
+                NodoProducto* nodoEliminar = temp->siguiente;
+                temp->siguiente = nodoEliminar->siguiente;
+                delete nodoEliminar;
+            }
+        }
+    }
+}
+
+void ListaProducto::cargarProductos(ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus) {
+    string str;
+    ifstream archivo;
+    archivo.open("Archivos/Productos.txt");
+    while (archivo >> str) {
+        int cont = 0;
+        int idP, idC, idR, idM, id, kcal, precio;
+        string name = "", temp;
+        for (char& c : str) {
+            if (c == ';') {
+                if (cont == 0) {
+                    idP = stoi(temp);
+                } else if (cont == 1) {
+                    idC = stoi(temp);
+                } else if (cont == 2) {
+                    idR = stoi(temp);
+                } else if (cont == 3) {
+                    idM = stoi(temp);
+                }else if (cont == 4) {
+                    id = stoi(temp);
+                } else if (cont == 5) {
+                    name = temp;
+                } else if (cont == 6) {
+                    kcal = stoi(temp);
+                }
+                temp = "";
+                cont++;
+            } else {
+                temp += c;
+            }
+        }
+        precio = stoi(temp);
+        ListaProducto::insertar(idP, idC, idR, idM, id, name, kcal, precio, lPaises, lCiudades, lRests, lMenus);
+    }
+    archivo.close();
+    str="";
+}
+
+void ListaProducto::mostrar() {
+    NodoProducto* temp = primero;
+    while (temp) {
+        std::cout << "ID PRODUCTO: " << temp->codProducto << ", Nombre: " << temp->nombre << std::endl;
+        temp = temp->siguiente;
+    }
+}
