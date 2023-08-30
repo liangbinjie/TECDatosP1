@@ -99,7 +99,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     cout << "Ingrese el nombre del cliente: " << endl;
                     cin.ignore();
                     getline(cin,nombre);
-                    // lClientes.insertar(codCliente, nombre);
+                    lCliente.insertar(codCliente, nombre);
                     break;
             }
             break;
@@ -228,13 +228,13 @@ int main() {
     LCiudad.cargarCiudades(LPaises);
     ListaRest LRest;
     LRest.cargarRests(LPaises, LCiudad);
-
     ListaMenuRest LMenu;
+    // LMenu.cargarMenu()
     ListaProducto LProducto;
+    // LProducto.cargarProducto();
     ListaCliente LCliente;
-    LPaises.mostrar();
-    // clearScreen();
+    LCliente.cargarCliente();
+    clearScreen();
     menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente);
-    // menu(LPaises,LCiudad);
     return 0;
 }

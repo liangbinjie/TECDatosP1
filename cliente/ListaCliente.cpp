@@ -68,3 +68,29 @@ bool ListaCliente::eliminar(int id) {
 
     return false;
 }
+
+void ListaCliente::cargarCliente() {
+    string str;
+    ifstream archivo;
+    archivo.open("Archivos/Clientes.txt");
+    while (archivo >> str) {
+        int cont = 0;
+        int id;
+        string name = "", temp;
+        for (char& c : str) {
+            if (c == ';') {
+                if (cont == 0) {
+                    id = stoi(temp);
+                }
+                temp = "";
+                cont++;
+            } else {
+                temp += c;
+            }
+        }
+        name = temp;
+        ListaCliente::insertar(id, name);
+    }
+    archivo.close();
+    str="";
+}

@@ -1,6 +1,8 @@
 #ifndef LISTACLIENTE_H
 #define LISTACLIENTE_H
 
+#include <fstream>
+
 #include "NodoCliente.h"
 
 class ListaCliente {
@@ -14,6 +16,7 @@ public:
     bool existeCliente(int id);
     void mostrar();
     bool eliminar(int id);
+    void cargarCliente();
 };
 
 #endif
