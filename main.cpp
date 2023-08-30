@@ -1,6 +1,9 @@
 #include "pais/listaPais.h"
 #include "ciudad/listaCiudad.h"
 #include "restaurant/listaRest.h"
+#include "menuRes/listaMenuRes.h"
+#include "producto/listaProducto.h"
+#include "cliente/listaCliente.h"
 #include <iostream>
 using namespace std;
 
@@ -8,7 +11,7 @@ void clearScreen() {
     cout << string(50, '\n');
 }
 
-void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
+void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes& lMenu, ListaProducto& lProducto, ListaCliente& lCliente) {
     cout << "Bienvenido, que desea realizar?" << endl;
     cout << "1. Insertar" << endl;
     cout << "2. Eliminar" << endl;
@@ -134,7 +137,6 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
                     break;
                 case 3:
                     cout << "Ingrese el codigo del restaurante que quieres eliminar: ";
-                    int codRest;
                     cin >> codRest;
                     if (lRest.existeRest(codRest)) {
                         lRest.eliminar(codRest);
@@ -145,6 +147,30 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
                     break;
 
                 //agregar los demas cases
+                case 4:
+                    // menus
+                    break;
+                
+                case 5:
+                    cout << "Ingrese el codigo del producto que quieres eliminar :";
+                    cin >> codProducto;
+                    if (lProducto.existeProducto(codProducto)) {
+                        lProducto.eliminar(codProducto);
+                    } else {
+                        cout << "No se pudo encontrar el producto" << endl;
+                    }
+                    break;
+                
+                case 6:
+                    cout << "Ingrese la identificacion del cliente que quieres eliminar :";
+                    cin >> codCliente;
+                    if (lCliente.existeCliente(codCliente)) {
+                        lCliente.eliminar(codCliente);
+                    } else {
+                        cout << "No se pudo encontrar el cliente" << endl;
+                    }
+                    break;
+
             }
             break;
         
@@ -171,17 +197,17 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
                     lRest.mostrar();
                     break;
 
-                // case 4:
-                //     lMenu.mostrar();
-                //     break;
+                case 4:
+                    // lMenu.mostrar();
+                    break;
                 
-                // case 5:
-                //     lProducto.mostrar();
-                //     break;
+                case 5:
+                    // lProducto.mostrar();
+                    break;
 
-                // case 6:
-                //     lCliente.mostrar();
-                //     break;
+                case 6:
+                    lCliente.mostrar();
+                    break;
                 
 
             }
