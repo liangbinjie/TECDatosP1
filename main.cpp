@@ -135,7 +135,8 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                         cout << "No se encontro la ciudad" << endl;
                     }
                     break;
-                /*case 3:
+
+                case 3:
                     cout << "Ingrese el codigo del restaurante que quieres eliminar: ";
                     cin >> codRest;
                     if (lRest.existeRest(codRest)) {
@@ -145,8 +146,6 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                         cout << "No se encontro el rest" << endl;
                     }
                     break;
-
-                */
 
                 //agregar los demas cases
                 case 4:
@@ -193,7 +192,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                 case 2:
                 cout << "Ingrese el numero del pais del que quiere ver las ciudades" << endl;
                     cin >> numPais;
-                    lCiudad.mostrar(numPais);
+                    lCiudad.mostrarDeUnPais(numPais);
                     break;
                 case 3:
                     lRest.mostrar();
@@ -228,18 +227,11 @@ int main() {
     
     LCiudad.cargarCiudades(LPaises);
     ListaRest LRest;
-    cout << "lll";
-    LRest.mostrar();
-    cout << "bb";
-    LRest.insertar(123, 345, 2, "mcdonald", LPaises, LCiudad);
-    LRest.mostrar();
+    LRest.cargarRests(LPaises, LCiudad);
+
     ListaMenuRest LMenu;
     ListaProducto LProducto;
     ListaCliente LCliente;
-    // LRest.insertar(123,345,456,"mac", LPaises, LCiudad);
-    // LRest.insertar(123,345,876,"qwe", LPaises, LCiudad);
-    // LRest.insertar(123,345,4563,"kfc", LPaises, LCiudad);
-    // LRest.insertar(123,345,687,"pollo", LPaises, LCiudad);
     LPaises.mostrar();
     // clearScreen();
     menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente);

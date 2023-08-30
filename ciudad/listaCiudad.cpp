@@ -19,8 +19,7 @@ bool ListaCiudad::existeCiudad(int codPais, int codCiudad, ListaPais& lPaises) {
         while (aux) {
             if ((aux->codigoCiudad == codCiudad) && (aux->codigoPais == codPais)) {
                 if (lPaises.existePais(aux->codigoPais)){
-                    cout << "sii";
-                    //return true;
+                    return true;
                 }
             }
             aux = aux->siguiente;

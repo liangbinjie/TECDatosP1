@@ -8,7 +8,7 @@ bool ListaRest::listaVacia() {
     return primero == NULL;
 }
 
-bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaCiudad& lCiudad, ListaPais& lPais) {
+bool ListaRest::existeRest(int pCodRest) {
     NodoRest *aux;
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
@@ -16,8 +16,7 @@ bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaCiud
         aux = primero->siguiente;
         while (aux!=primero) {
             if (aux->codRest == pCodRest) {
-                lCiudad.existeCiudad(pCodPais, pCodCiudad, lPais);
-                //return true;
+                return true;
             }
             aux = aux->siguiente;
         }
@@ -26,9 +25,8 @@ bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaCiud
 }
 
 void ListaRest::insertar(int codPais, int codCiudad, int codRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudades) {
-    cout << "ssaa";
-    if ((lPaises.existePais(codPais)) && (lCiudades.existeCiudad(codPais, codCiudad, lPaises))) { // verificar que la ciudad este en el mismo pais
-        if (!existeRest(codPais, codCiudad, codRest, lCiudades, lPaises)) {
+    if (lCiudades.existeCiudad(codPais, codCiudad, lPaises)) { // verificar que la ciudad este en el mismo pais
+        if (!existeRest(codRest)) {
             if (listaVacia()) {
                 primero = new NodoRest(codPais, codCiudad, codRest, nombre);
                 primero->anterior=primero;
@@ -96,6 +94,32 @@ void ListaRest::eliminar(int pCodRest) {
     }
 }
 
-// void ListaRest::cargarRests() {
-
-// }
+void ListaRest::cargarRests(ListaPais& lPaises, ListaCiudad& lCiudades) {
+    string str;
+    ifstream archivo;
+    archivo.open("Archivos/Restaurantes.txt");
+    while (archivo >> str) {
+        int cont = 0;
+        int idP,idC, idR;
+        string name = "", temp;
+        for (char& c : str) {
+            if (c == ';') {
+                if (cont == 0) {
+                    idP = stoi(temp);
+                } else if (cont == 1) {
+                    idC = stoi(temp);
+                } else if (cont == 2) {
+                    idR = stoi(temp);
+                } 
+                temp = "";
+                cont++;
+            } else {
+                temp += c;
+            }
+        }
+        name = temp;
+        ListaRest::insertar(idP, idC, idR, name, lPaises, lCiudades);
+    }
+    archivo.close();
+    str="";
+}
