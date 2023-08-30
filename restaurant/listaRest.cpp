@@ -13,11 +13,15 @@ bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaCiud
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
     } else {
+        if(primero->codRest == pCodRest){
+            if (lCiudad.existeCiudad(pCodPais, pCodCiudad, lPais)==true){;
+            return true;}
+        }
         aux = primero->siguiente;
         while (aux!=primero) {
             if (aux->codRest == pCodRest) {
-                lCiudad.existeCiudad(pCodPais, pCodCiudad, lPais);
-                return true;
+                if(lCiudad.existeCiudad(pCodPais, pCodCiudad, lPais)==true){;
+                return true;}
             }
             aux = aux->siguiente;
         }

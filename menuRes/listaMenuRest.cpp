@@ -10,32 +10,35 @@ bool ListaMenuRest::listaVacia() {
     return primero == NULL;
 }
 
-/*bool ListaMenuRest::existeMenuRest(int pcodMenuRest, ListaRest& lRest, ListaCiudad& lCiudad) {
-    NodoMenuRest* aux;
-    if (primero == NULL) {
-        cout << "No hay elementos";
+
+bool ListaMenuRest::existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenuRest, ListaCiudad& lCiudad, ListaPais& lPais, ListaRest& lRest) {
+    NodoMenuRest *aux;
+    if (primero==NULL) {
+        cout << "No hay elementos" << endl;
     } else {
-        aux = primero;
-        while (aux) {
-            if (aux->codMenuRest == pcodMenuRest) {
-                if(lRest.existeRest(pCodPais, pCodCiudad, int pCodRest, ListaCiudad& lCiudad, ListaPais& lPais))
-                return true;
+        if(primero->codMenuRest == pCodMenuRest){
+            if (lRest.existeRest(pCodPais, pCodCiudad, pCodRest, lCiudad ,lPais)==true){;
+            return true;}
+        }
+        aux = primero->siguiente;
+        while (aux!=primero) {
+            if (aux->codMenuRest == pCodMenuRest) {
+                if(lRest.existeRest(pCodPais, pCodCiudad, pCodRest, lCiudad ,lPais)==true){;
+                return true;}
             }
             aux = aux->siguiente;
         }
     }
     return false;
 }
-*/
-/*void ListaMenuRest::insertarMenuRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudad, ListaRest& lRest) {
-    if (lPaises.existePais(codPais)) {
-        if (lCiudad.existeCiudad(codPais, codCiudad, lPaises)) {
-            if (lRest.existeRest(codRest)) {
+
+void ListaMenuRest::insertarMenuRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudad, ListaRest& lRest) {
+    if (lRest.existeRest(codPais,codCiudad, codRest, lCiudad, lPaises)) {
         if (listaVacia()) {
             primero = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
         } else {
-            if (existeMenuRest(codMenuRest)) {
-                cout << "Este menu ya existe en este restaurante, no se puede insertar" << endl;
+            if (existeMenuRest(codPais, codCiudad, codRest, codMenuRest, lCiudad, lPaises, lRest)) {
+                cout << "Esta ciudad ya existe, no se puede insertar" << endl;
             } else {
                 pNodoMenuRest aux = primero;
                 while (aux->siguiente!=NULL) {
@@ -45,18 +48,32 @@ bool ListaMenuRest::listaVacia() {
                 aux->siguiente->anterior = aux;
             }
         }
-     } else {
-        cout << "Este restaurante no existe" << endl;
-    }   
-    } else {
-        cout << "Esta ciudad no existe" << endl;
-    }
     } else {
         cout << "Este pais no existe" << endl;
     }
 }
+    
+    
+    /*if (existeMenuRest(codPais, codCiudad, codRest, codMenuRest, lCiudad, lPaises, lRest)==false) {
+        if (listaVacia()) {
+            primero = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
+            cout << "";
+        } else {
+            cout <<"Aca";
+            pNodoMenuRest aux = primero;
+            while (aux->siguiente != NULL) {
+                aux = aux->siguiente;
+            }
+            cout << "Hp";
+            pNodoMenuRest nuevoNodo = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
+            aux->siguiente = nuevoNodo;
+            nuevoNodo->anterior = aux;
+        }
+    } else {
+        cout << "ABC";
+    }
+}
 */
-
 void ListaMenuRest::mostrar() {
     NodoMenuRest *aux;
     if (primero==NULL)
@@ -125,3 +142,35 @@ void ListaMenuRest::borrarInicio() {
     str="";
 }
 */
+
+void ListaMenuRest::cargarMenuRest(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
+    string str;
+    ifstream archivo;
+    archivo.open("Archivos/Menu.txt");
+    while (archivo >> str) {
+        int cont = 0;
+        int idP,idC,idR,idMR;
+        string name = "", temp;
+        for (char& c : str) {
+            if (c == ';') {
+                if (cont == 0) {
+                    idP = stoi(temp);
+                } else if (cont == 1) {
+                    idC = stoi(temp);
+                } else if (cont == 2) {
+                    idR = stoi(temp);
+                } else if (cont == 3) {
+                    idMR = stoi(temp);
+                } 
+                temp = "";
+                cont++;
+            } else {
+                temp += c;
+            }
+        }
+        name = temp;
+        ListaMenuRest::insertarMenuRest(idP, idC, idR, idMR, name, lPais, lCiudad, lRest);
+    }
+    archivo.close();
+    str="";
+}

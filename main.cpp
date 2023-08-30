@@ -228,14 +228,17 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
 int main() {
     ListaPais LPaises;
     LPaises.cargarPaises();
-    LPaises.mostrar();
     ListaCiudad LCiudad;
     
     LCiudad.cargarCiudades(LPaises);
     ListaRest LRest;
     LRest.cargarRests(LPaises, LCiudad);
+    LRest.existeRest(123, 346, 34, LCiudad, LPaises);
     ListaMenuRest LMenu;
-    // LMenu.cargarMenu()
+    LMenu.mostrar();
+    //LMenu.cargarMenuRest(LPaises, LCiudad, LRest);
+    //cout << "sss" << endl;
+    //LMenu.mostrar();
     ListaProducto LProducto;
     LProducto.cargarProductos(LPaises, LCiudad, LRest, LMenu);
     ListaCliente LCliente;
