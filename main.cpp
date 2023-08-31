@@ -234,7 +234,19 @@ int main() {
     ListaRest LRest;
     LRest.cargarRests(LPaises, LCiudad);
     LRest.existeRest(123, 346, 34, LCiudad, LPaises);
+    LRest.mostrar();
+    
     ListaMenuRest LMenu;
+    cout << "hols";
+    //LMenu.insertarMenuRest(123,345,34,1,"mcpollo",LPaises, LCiudad, LRest);
+    LPaises.mostrar();
+    LMenu.insertarMenuRest(345,987,456,90,"mcpo",LPaises, LCiudad, LRest);
+    LMenu.mostrar();
+    LMenu.insertarMenuRest(4567,234,876,100,"mcpohh",LPaises, LCiudad, LRest);
+    LMenu.mostrar();
+    LMenu.insertarMenuRest(123,345,2341,2,"llo",LPaises, LCiudad, LRest);
+    LMenu.mostrar();
+    cout << "sss" << endl;
     LMenu.mostrar();
     //LMenu.cargarMenuRest(LPaises, LCiudad, LRest);
     //cout << "sss" << endl;
