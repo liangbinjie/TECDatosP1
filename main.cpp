@@ -209,7 +209,6 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                         cout << "No se pudo encontrar el cliente" << endl;
                     }
                     break;
-
             }
             break;
         
@@ -237,7 +236,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 4:
-                    // lMenu.mostrar();
+                    lMenu.mostrar();
                     break;
                 
                 case 5:
@@ -246,9 +245,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
 
                 case 6:
                     lCliente.mostrar();
-                    break;
-                
-
+                    break; 
             }
             break;
         case 4:
@@ -260,50 +257,24 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
 int main() {
     ListaPais LPaises;
     LPaises.cargarPaises();
+
     ListaCiudad LCiudad;
-    
     LCiudad.cargarCiudades(LPaises);
+
     ListaRest LRest;
     LRest.cargarRests(LPaises, LCiudad);
-    LRest.existeRest(123, 346, 34, LPaises, LCiudad);
-    cout << "................................................"<<endl;
-    LRest.mostrar();
-    cout << "--------------------------------------------"<<endl;
-    LRest.buscarRest(345,987,456, LPaises,LCiudad);
-   // LRest.buscarRest();
-    
+
     ListaMenuRest LMenu;
-    cout << "hols";
-    //LMenu.insertarMenuRest(123,345,34,1,"mcpollo",LPaises, LCiudad, LRest);
-    LPaises.mostrar();
-    LMenu.insertarMenuRest(345,987,456,90,"mcpo",LPaises, LCiudad, LRest);
-    //LMenu.mostrar();
-    LMenu.insertarMenuRest(4567,234,876,100,"mcpohh",LPaises, LCiudad, LRest);
-    //LMenu.mostrar();
-    LMenu.insertarMenuRest(123,345,2341,2,"llo",LPaises, LCiudad, LRest);
-    LMenu.mostrar();
-    cout << "--------------------------------------------"<<endl;
-    cout <<"yoo" << endl;
-    LMenu.buscarMenuRest(123,345,2341,2, LPaises,LCiudad,LRest);
-    //LMenu.insertarMenuRest(123,345,2341,2, "kfc", LPaises, LCiudad, LRest);
-    //LMenu.existeMenuRest(123,345,2321,2, LPaises, LCiudad, LRest);
-    //LMenu.mostrar();
-    //LMenu.cargarMenuRest(LPaises, LCiudad, LRest);
-    //cout << "sss" << endl;
-    //LMenu.mostrar();
-    cout <<"yoo";
+    LMenu.cargarMenuRest(LPaises, LCiudad, LRest);
+
     ListaProducto LProducto;
-    cout << "prooo" << endl;
     LProducto.cargarProductos(LPaises, LCiudad, LRest, LMenu);
-    LProducto.mostrar();
-    LProducto.insertarProducto(345,987,456,90,59,"mcFlurry", 20, 3000, LPaises, LCiudad, LRest, LMenu);
-    LProducto.insertarProducto(345,987,456,90,59,"helaa", 20, 3000, LPaises, LCiudad, LRest, LMenu);
-    cout<<"dddddddddddddddddddddddddddddddddd";
-    LProducto.mostrar();
-    //LMenu.mostrar();
+
     ListaCliente LCliente;
     LCliente.cargarCliente();
-    //clearScreen();
-    //menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente);
+    
+    clearScreen();
+    menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente);
+
     return 0;
 }

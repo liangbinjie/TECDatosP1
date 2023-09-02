@@ -8,7 +8,6 @@ bool ListaProducto::listaVacia() {
     return primero == NULL;
 }
 
-
 void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, int pCodProducto, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRest, ListaMenuRest& lMenu){
     NodoProducto *auxProducto;
     if (primero==NULL) {
@@ -80,6 +79,7 @@ return false;
 
 void ListaProducto::insertarProducto(int codPais, int codCiudad, int codRest, int codMenu, int codProducto, string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenu) {
     if (lMenu.existeMenuRest(codPais, codCiudad, codRest, codMenu, lPaises, lCiudades, lRests)) {
+      
         if (listaVacia()) {
             primero = new NodoProducto( codPais,  codCiudad,  codRest,  codMenu,  codProducto,  nombre,  kcal,  precio);
         } else {
@@ -120,6 +120,7 @@ void ListaProducto::eliminar(int id) {
                 delete nodoEliminar;
             }
         }
+        cout << "Se elimino el producto" << endl;
     }
 }
 
