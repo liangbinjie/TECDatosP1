@@ -13,7 +13,6 @@ bool ListaMenuRest::listaVacia() {
 
 bool ListaMenuRest::existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenuRest, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
     NodoMenuRest *aux;
-    cout << "que onda";
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
     } else {
@@ -37,7 +36,7 @@ bool ListaMenuRest::existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
     return false;
 }
 
-/*NodoMenuRest* ListaMenuRest::punteroMenu(int pcodMenu) {
+NodoMenuRest* ListaMenuRest::punteroMenu(int pcodMenu) {
     NodoMenuRest *auxMenu;
     if (primero== NULL)
         cout << "No hay elementos";  
@@ -51,7 +50,7 @@ bool ListaMenuRest::existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
         }
     }
 }
-*/
+
 void ListaMenuRest::buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRest){
     NodoMenuRest *aux;
     if (primero==NULL) {
@@ -70,7 +69,7 @@ void ListaMenuRest::buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
         }
         }
         aux = primero->siguiente;
-        while (aux!=primero) {
+        while (aux!=NULL) {
             if (aux->codMenuRest == pCodMenu) {
                 if(existeMenuRest(pCodPais,pCodCiudad,pCodRest,pCodMenu,lPaises,lCiudades,lRest)){
                 NodoPais* auxPais = lPaises.punteroPais(pCodPais);
@@ -83,9 +82,9 @@ void ListaMenuRest::buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
                 cout << "Nombre y codigo del menu: "<< aux->nombre<< "  "<< aux->codMenuRest<<endl;    
                 }
             }
-            aux = aux->siguiente;
+            aux = aux->siguiente;  
+            }
         }
-    }
     }
     
 
@@ -145,16 +144,19 @@ void ListaMenuRest::mostrar() {
     }
 }
 
-void ListaMenuRest::borrarInicio() {
+
+
+
+/*void ListaCiudad::borrarInicio() {
     if (listaVacia()) {
         cout << "Lista vacia" << endl;
     } else {
         if (primero->siguiente == NULL) {
-            pNodoMenuRest temp = primero;
+            pNodoCiudad temp = primero;
             primero = NULL;
             delete temp;
         } else {
-            pNodoMenuRest aux = primero;
+            pNodoCiudad aux = primero;
             primero = primero->siguiente;
             primero->anterior = NULL;
             delete aux;
@@ -162,43 +164,49 @@ void ListaMenuRest::borrarInicio() {
     }
 }
 
-/*void ListaMenuRest::eliminar(int codCiudad) {
+void ListaCiudad::eliminar(int codCiudad) {
+    cout << codCiudad << endl;
     if (listaVacia()) {
         cout << "No se puede eliminar, lista vacia" << endl;
     } else {
-        pNodoMenuRest aux = primero;
+        pNodoCiudad aux = primero;
         if (aux->codigoCiudad == codCiudad) {
             borrarInicio();
         } else {
             while (aux->codigoPais != codCiudad) {
+                if (aux->codigoCiudad == codCiudad) {
+                    cout << aux->codigoCiudad << endl;
+                    break;
+
+                }
                 aux = aux->siguiente;
             }
-            pNodoMenuRest temp = aux;
-            aux = aux->siguiente;
-            aux->siguiente->anterior = aux->anterior;
+            pNodoCiudad temp = aux;
+            aux = aux->anterior;
+            aux->siguiente = aux->siguiente;
             delete temp;
         }
     }
 }
-*/
-/*void ListaMenuRest::cargarCiudades(ListaPais& lPais) {
-    string str;
-    ifstream archivo;
-    archivo.open("Archivos/Ciudades.txt");
-    while (archivo >> str) {
-        size_t pos = str.find(';');
-        if (pos != string::npos) {
-            int idP = std::stoi(str.substr(0, pos));
-            int idC = std::stoi(str.substr(1, pos));
-            string name = str.substr(pos + 2);
 
-            ListaMenuRest::insertar(idP, idC, name, lPais);
+void ListaCiudad::eliminarCiudades(int pais) {
+    NodoCiudad *aux;
+    if (primero==NULL)
+        cout << "No hay elementos";  
+    else {
+        aux = primero;
+        while(aux) {
+            if(aux->codigoPais==pais){
+                cout << aux->codigoCiudad;
+                ListaCiudad::eliminar(aux->codigoCiudad);
+            }
+            aux = aux->siguiente;
         }
+        cout << endl;
     }
-    archivo.close();
-    str="";
 }
 */
+
 
 void ListaMenuRest::cargarMenuRest(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
     string str;

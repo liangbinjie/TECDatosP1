@@ -300,9 +300,13 @@ int main() {
     LProducto.insertarProducto(345,987,456,90,59,"helaa", 20, 3000, LPaises, LCiudad, LRest, LMenu);
     cout<<"dddddddddddddddddddddddddddddddddd";
     LProducto.mostrar();
+    LProducto.buscarProducto(345,987,456,90,2,LPaises, LCiudad, LRest, LMenu);
     //LMenu.mostrar();
     ListaCliente LCliente;
     LCliente.cargarCliente();
+    LPaises.mostrar();
+    LPaises.modificarPais(123, "Alemania");
+    LPaises.mostrar();
     //clearScreen();
     //menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente);
     return 0;

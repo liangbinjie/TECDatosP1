@@ -37,6 +37,11 @@ void ListaPais::insertar(int codPais, string nombre) {
     }
 }
 
+void ListaPais::modificarPais(int pCodPaisOriginal, string pnombre){
+    NodoPais* auxPais = punteroPais(pCodPaisOriginal);
+    auxPais->nombre = pnombre;
+}
+
 void ListaPais::mostrar() {
     NodoPais *aux;
     if (primero== NULL)
