@@ -21,8 +21,8 @@ class ListaMenuRest {
         bool listaVacia();
         void mostrar();
         void eliminar(int codCiudad);
-        bool existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenuRest, ListaCiudad& lCiudad, ListaPais& lPais, ListaRest& lRest);
-        void insertarMenuRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudad, ListaRest& lRest);
+        bool existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenuRest, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest);
+        void insertarMenuRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest);
         void borrarInicio();
         void cargarMenuRest(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest);
 };

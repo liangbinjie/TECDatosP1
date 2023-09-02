@@ -11,24 +11,25 @@ bool ListaMenuRest::listaVacia() {
 }
 
 
-bool ListaMenuRest::existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenuRest, ListaCiudad& lCiudad, ListaPais& lPais, ListaRest& lRest) {
+bool ListaMenuRest::existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenuRest, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
     NodoMenuRest *aux;
     cout << "que onda";
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
     } else {
-        cout << "prebamco";
         if(primero->codMenuRest == pCodMenuRest){
-            cout << "bamco";
-            if (lRest.existeRest(pCodPais, pCodCiudad, pCodRest, lCiudad ,lPais)==true){;
-            return true;}
+            if (lRest.existeRest(pCodPais, pCodCiudad, pCodRest, lPais, lCiudad)==true){
+            cout<<"si existe";
+            return true;
+            }
         }
-        cout << "jij";
         aux = primero->siguiente;
         while (aux!=NULL) {
             if (aux->codMenuRest == pCodMenuRest) {
-                if(lRest.existeRest(pCodPais, pCodCiudad, pCodRest, lCiudad ,lPais)==true){;
-                return true;}
+                if(lRest.existeRest(pCodPais, pCodCiudad, pCodRest, lPais, lCiudad)==true){
+                    cout<<"si existe";
+                return true;
+                }
             }
             aux = aux->siguiente;
         }
@@ -37,21 +38,16 @@ bool ListaMenuRest::existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
 }
 
 void ListaMenuRest::insertarMenuRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudad, ListaRest& lRest) {
-    if (lRest.existeRest(codPais,codCiudad, codRest, lCiudad, lPaises)) {
-        cout << "prueba";
+    if (lRest.existeRest(codPais,codCiudad, codRest, lPaises, lCiudad)) {
         if (listaVacia()) {
-            cout << "perdida";
             primero = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
         } else {
-            cout << "jaaj";
-            if (existeMenuRest(codPais, codCiudad, codRest, codMenuRest, lCiudad, lPaises, lRest)) {
+            if (existeMenuRest(codPais, codCiudad, codRest, codMenuRest, lPaises, lCiudad, lRest)) {
                 cout << "Este menu ya existe, no se puede insertar" << endl;
             } else {
-                cout << "sss";
                 pNodoMenuRest aux = primero;
                 while (aux->siguiente!=NULL) {
                     aux = aux->siguiente;
-                    cout<< "cuantas veces";
                 }
                 aux->siguiente = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
                 aux->siguiente->anterior = aux;

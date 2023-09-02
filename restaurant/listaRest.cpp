@@ -8,7 +8,7 @@ bool ListaRest::listaVacia() {
     return primero == NULL;
 }
 
-bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaCiudad& lCiudad, ListaPais& lPais) {
+bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPais, ListaCiudad& lCiudad) {
     NodoRest *aux;
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
@@ -36,7 +36,7 @@ bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaCiud
 
 void ListaRest::insertar(int codPais, int codCiudad, int codRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudades) {
      if ((lPaises.existePais(codPais)) && (lCiudades.existeCiudad(codPais, codCiudad, lPaises))) { // verificar que la ciudad este en el mismo pais
-        if (!existeRest(codPais, codCiudad, codRest, lCiudades, lPaises)) {
+        if (!existeRest(codPais, codCiudad, codRest, lPaises, lCiudades)) {
             if (listaVacia()) {
                 primero = new NodoRest(codPais, codCiudad, codRest, nombre);
                 primero->anterior=primero;
