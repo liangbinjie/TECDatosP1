@@ -70,12 +70,13 @@ void ListaCiudad::mostrarDeUnPais(int pais) { // muestra las ciudades de un pais
         cout << "No hay elementos";  
     else {
         aux = primero;
-        while(aux != primero) {
+        while(aux) {
             if(aux->codigoPais==pais){
                 cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
             }
         aux = aux->siguiente;
         }
+        cout << endl;
     return;
     }
 }
@@ -108,7 +109,7 @@ void ListaCiudad::eliminar(int codCiudad) {
         } else {
             while (aux->codigoPais != codCiudad) {
                 if (aux->codigoCiudad == codCiudad) {
-                    cout << aux->codigoCiudad << endl;
+                    // cout << aux->codigoCiudad << endl;
                     break;
 
                 }

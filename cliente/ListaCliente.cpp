@@ -51,6 +51,7 @@ bool ListaCliente::eliminar(int id) {
         NodoCliente* temp = primero;
         primero = primero->siguiente;
         delete temp;
+        cout << "Se elimino el cliente" << endl; 
         return true;
     }
 
@@ -63,9 +64,11 @@ bool ListaCliente::eliminar(int id) {
         NodoCliente* nodoEliminar = temp->siguiente;
         temp->siguiente = nodoEliminar->siguiente;
         delete nodoEliminar;
+        cout << "Se elimino el cliente" << endl; 
         return true;
     }
 
+    cout << "No se pudo eliminar el cliente" << endl;
     return false;
 }
 

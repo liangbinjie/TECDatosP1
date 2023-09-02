@@ -9,7 +9,7 @@ bool ListaProducto::listaVacia() {
 }
 
 void ListaProducto::insertar(int codPais, int codCiudad, int codRest, int codMenu, int codProducto, string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus) {
-    if (lCiudades.existeCiudad(codPais, codCiudad, lPaises)) {
+    if (lMenus.existeMenuRest(codPais, codCiudad, codRest, codMenu, lCiudades, lPaises, lRests)) {
         if (listaVacia()) {
             primero = new NodoProducto( codPais,  codCiudad,  codRest,  codMenu,  codProducto,  nombre,  kcal,  precio);
         } else {
@@ -54,6 +54,7 @@ void ListaProducto::eliminar(int id) {
                 delete nodoEliminar;
             }
         }
+        cout << "Se elimino el producto" << endl;
     }
 }
 
