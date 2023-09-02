@@ -69,11 +69,22 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
                 
                 case 4:
-                    //Menu
+                    cout << "Ingrese el codigo del pais: " << endl;
+                    cin >> codPais;
+                    cout << "Ingrese el codigo de la ciudad: " << endl;
+                    cin >> codCiudad;
+                    cout << "Ingrese el codigo del rest: " << endl;
+                    cin >> codRest;
+                    cout << "Ingrese el codigo del menu: " << endl;
+                    cin >> codMenu;
+                    cout << "Ingrese el nombre del menu " << endl;
+                    cin.ignore();
+                    getline(cin,nombre);
+                    lMenu.insertarMenuRest(codPais, codMenu,codRest,codMenu,nombre,lPais,lCiudad,lRest);
                     break;
                 
                 case 5:
-                    cout << "Ingres el codigo del pais: " << endl;
+                    cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: " << endl;
                     cin >> codCiudad;
@@ -155,7 +166,20 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 4:
-                    // menus
+                     cout << "Ingrese el codigo del menu que quieres eliminar: ";
+                    cin >> codMenu;
+                    cout << "Ingrese el codigo del restaurante del menu: ";
+                    cin >> codRest;
+                    cout << "Ingrese el codigo de la ciudad del menu: ";
+                    cin >> codCiudad;
+                    cout << "Ingrese el codigo del pais del menu: ";
+                    cin >> codPais;
+                    if (lMenu.existeMenuRest(codPais, codCiudad, codRest, codMenu, lCiudad, lPais, lRest)) {
+                        lMenu.eliminar(codMenu);
+                        cout << "Menu eliminado" << endl;
+                    } else {
+                        cout << "No se encontro el menu" << endl;
+                    }
                     break;
                 
                 case 5:
@@ -235,7 +259,7 @@ int main() {
     LRest.cargarRests(LPaises, LCiudad);
     LRest.existeRest(123, 346, 34, LCiudad, LPaises);
     LRest.mostrar();
-    
+
     ListaMenuRest LMenu;
     cout << "hols";
     //LMenu.insertarMenuRest(123,345,34,1,"mcpollo",LPaises, LCiudad, LRest);
