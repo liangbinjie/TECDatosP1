@@ -31,7 +31,7 @@ bool ListaProducto::existeProducto(int pCodPais, int pCodCiudad, int pCodRes, in
     }
 return false;
 }
-
+}
 
 void ListaProducto::insertarProducto(int codPais, int codCiudad, int codRest, int codMenu, int codProducto, string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenu) {
     if (lMenu.existeMenuRest(codPais, codCiudad, codRest, codMenu, lPaises, lCiudades, lRests)) {
@@ -118,9 +118,16 @@ void ListaProducto::cargarProductos(ListaPais& lPaises, ListaCiudad& lCiudades, 
 
 
 void ListaProducto::mostrar() {
-    NodoProducto* temp = primero;
-    while (temp) {
-        std::cout << "ID PRODUCTO: " << temp->codProducto << ", Nombre: " << temp->nombre << std::endl;
-        temp = temp->siguiente;
+    NodoProducto *aux;
+    if (primero==NULL)
+        cout << "No hay elementos";  
+    else {
+        cout << endl;
+        aux = primero;
+        while(aux) {
+        std::cout << "ID PRODUCTO: " << aux->codProducto << ", Nombre: " << aux->nombre<< " -> ";
+        aux = aux->siguiente;
+        }
+         cout << endl;
     }
 }

@@ -185,7 +185,15 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                 case 5:
                    cout << "Ingrese el codigo del producto que quieres eliminar :";
                    cin >> codProducto;
-                   if (lProducto.existeProducto(codProducto)) {
+                   cout << "Ingrese el codigo del menu del producto que quieres eliminar :";
+                   cin >> codMenu;
+                   cout << "Ingrese el codigo del restaurante que tiene el producto que quieres eliminar: ";
+                    cin >> codRest;
+                    cout << "Ingrese el codigo de ciudad del producto: ";
+                    cin >> codCiudad;
+                    cout << "Ingrese el codigo del pais que tiene el producto: ";
+                    cin >> codPais;
+                   if (lProducto.existeProducto(codPais, codCiudad,codRest,codMenu, codProducto, lPais, lCiudad,lRest,lMenu)) {
                        lProducto.eliminar(codProducto);
                    } else {
                        cout << "No se pudo encontrar el producto" << endl;
@@ -270,19 +278,24 @@ int main() {
     LMenu.mostrar();
     LMenu.insertarMenuRest(123,345,2341,2,"llo",LPaises, LCiudad, LRest);
     LMenu.mostrar();
-    cout << "sss" << endl;
     LMenu.insertarMenuRest(123,345,2341,2, "kfc", LPaises, LCiudad, LRest);
-    cout << "pppppp";
     LMenu.existeMenuRest(123,345,2321,2, LPaises, LCiudad, LRest);
     LMenu.mostrar();
     //LMenu.cargarMenuRest(LPaises, LCiudad, LRest);
     //cout << "sss" << endl;
     //LMenu.mostrar();
     ListaProducto LProducto;
+    cout << "prooo" << endl;
     LProducto.cargarProductos(LPaises, LCiudad, LRest, LMenu);
+    LProducto.mostrar();
+    LProducto.insertarProducto(345,987,456,90,59,"mcFlurry", 20, 3000, LPaises, LCiudad, LRest, LMenu);
+     LProducto.insertarProducto(345,987,456,90,59,"helaa", 20, 3000, LPaises, LCiudad, LRest, LMenu);
+    cout<<"dddddddddddddddddddddddddddddddddd";
+    LProducto.mostrar();
+    LMenu.mostrar();
     ListaCliente LCliente;
     LCliente.cargarCliente();
-    clearScreen();
-    menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente);
+    //clearScreen();
+    //menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente);
     return 0;
 }
