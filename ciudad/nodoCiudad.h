@@ -12,6 +12,9 @@ class NodoCiudad {
         NodoCiudad *siguiente;
         NodoCiudad *anterior;
         friend class ListaCiudad;
+        friend class ListaRest;
+        friend class ListaMenuRest;
+        friend class ListaProducto;
         
     public:
         NodoCiudad(int codPais, int pCodCiudad, string nombre);

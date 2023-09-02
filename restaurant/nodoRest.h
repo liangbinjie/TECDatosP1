@@ -14,6 +14,8 @@ class NodoRest {
         NodoRest *anterior;
         
         friend class ListaRest;
+        friend class ListaMenuRest;
+        friend class ListaProducto;
 
     public:
         NodoRest(int pCodPais, int pCodCiudad, int pCodRest, string nombre);

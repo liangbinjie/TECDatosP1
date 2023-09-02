@@ -106,6 +106,22 @@ bool ListaPais::existePais(int codPais) {
     return false;
 }
 
+NodoPais* ListaPais::punteroPais(int codPais) {
+    NodoPais *auxPais;
+    if (primero== NULL)
+        cout << "No hay elementos";  
+    else {
+        auxPais = primero;
+        while(auxPais) {
+            if (auxPais->codigoPais == codPais) {
+                // cout << "El pais si existe" << endl;
+                return auxPais;
+            }
+            auxPais = auxPais->siguiente;
+        }
+    }
+}
+
 void ListaPais::cargarPaises() {
     string str;
     ifstream archivo;

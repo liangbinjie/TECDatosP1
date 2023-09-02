@@ -7,6 +7,7 @@ using namespace std;
 class NodoProducto {
     private:
         NodoProducto* siguiente;
+        NodoProducto *anterior;
         int codPais;
         int codCiudad;
         int codRest;

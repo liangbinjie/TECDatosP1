@@ -15,6 +15,8 @@ class NodoMenuRest {
         NodoMenuRest *anterior;
         
         friend class ListaMenuRest;
+        friend class ListaProducto;
+        
 
     public:
         NodoMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int codMenuRest, string nombre);

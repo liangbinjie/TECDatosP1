@@ -19,8 +19,10 @@ class ListaRest {
         void insertar(int codPais, int codCiudad, int codRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudades);
         bool listaVacia();
         void mostrar();
-        bool existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaCiudad& lCiudad, ListaPais& lPais);
+        bool existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades);
+        void buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades);
         void eliminar(int codRest);
+        NodoRest* punteroRest(int codRest);
         void borrarInicio();
         void cargarRests(ListaPais& lPaises, ListaCiudad& lCiudades);
 };

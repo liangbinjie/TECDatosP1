@@ -28,6 +28,22 @@ bool ListaCiudad::existeCiudad(int codPais, int codCiudad, ListaPais& lPaises) {
     return false;
 }
 
+NodoCiudad* ListaCiudad::punteroCiudad(int codCiudad) {
+    NodoCiudad *auxCiudad;
+    if (primero== NULL)
+        cout << "No hay elementos";  
+    else {
+        auxCiudad = primero;
+        while(auxCiudad) {
+            if (auxCiudad->codigoCiudad == codCiudad) {
+                // cout << "El pais si existe" << endl;
+                return auxCiudad;
+            }
+            auxCiudad = auxCiudad->siguiente;
+        }
+    }
+}
+
 void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises) {
     if (lPaises.existePais(codPais)) {
         if (listaVacia()) {
