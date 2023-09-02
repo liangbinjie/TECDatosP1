@@ -8,6 +8,51 @@ bool ListaProducto::listaVacia() {
     return primero == NULL;
 }
 
+
+void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, int pCodProducto, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRest, ListaMenuRest& lMenu){
+    NodoProducto *auxProducto;
+    if (primero==NULL) {
+        cout << "No hay elementos" << endl;
+    } else {
+        if(primero->codProducto == pCodProducto){
+            if(existeProducto(pCodPais,pCodCiudad,pCodRest,pCodMenu,pCodProducto,lPaises,lCiudades,lRest,lMenu)){
+                NodoPais* auxPais = lPaises.punteroPais(pCodPais);
+                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad);
+                NodoRest* auxRest = lRest.punteroRest(pCodRest);
+                cout << "Datos del producto"<<endl;
+                cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
+                cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< auxCiudad->codigoCiudad<<endl;
+                cout << "Nombre y codigo del restaurante: "<< auxRest->nombre<< "  "<< auxRest->codRest<<endl; 
+                //cout << "Nombre y codigo del menu: "<< aux->nombre<< "  "<< aux->codMenuRest<<endl;  
+                cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl; 
+                cout << "Kcal del producto: "<< auxProducto->kcal<<endl;
+                cout << "Precio del producto: "<< auxProducto->precio<<endl;
+        }
+        }
+        auxProducto = primero->siguiente;
+        while (auxProducto!=primero) {
+            if (auxProducto->codProducto == pCodProducto) {
+                if(existeProducto(pCodPais,pCodCiudad,pCodRest,pCodMenu,pCodProducto,lPaises,lCiudades,lRest,lMenu)){
+                NodoPais* auxPais = lPaises.punteroPais(pCodPais);
+                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad);
+                NodoRest* auxRest = lRest.punteroRest(pCodRest);
+                cout << "Datos del producto"<<endl;
+                cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
+                cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< auxCiudad->codigoCiudad<<endl;
+                cout << "Nombre y codigo del restaurante: "<< auxRest->nombre<< "  "<< auxRest->codRest<<endl; 
+                //cout << "Nombre y codigo del menu: "<< aux->nombre<< "  "<< aux->codMenuRest<<endl;  
+                cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl; 
+                cout << "Kcal del producto: "<< auxProducto->kcal<<endl;
+                cout << "Precio del producto: "<< auxProducto->precio<<endl;    
+                }
+            }
+            auxProducto = auxProducto->siguiente;
+        }
+    }
+    }
+    
+
+
 bool ListaProducto::existeProducto(int pCodPais, int pCodCiudad, int pCodRes, int pCodMenu, int pCodProducto, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenuRest ) {
     NodoProducto* aux = primero;
     if (primero==NULL){

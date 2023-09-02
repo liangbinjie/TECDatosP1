@@ -13,6 +13,9 @@ class NodoPais {
         ListaCiudad *ciudadList;
         friend class ListaPais;
         friend class ListaCiudad;
+        friend class ListaRest;
+        friend class ListaMenuRest;
+        friend class ListaProducto;
         
     public:
         NodoPais(int codigo, string nombre);

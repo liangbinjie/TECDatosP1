@@ -25,6 +25,7 @@ class ListaPais {
         void eliminar(int codPais);
         bool existePais(int codPais);
         void borrarInicio();
+        NodoPais* punteroPais(int codPais);
         ListaCiudad* obtenerListaCiudades(int codPais);
         pNodoPais obtenerPrimerNodo();
 };
