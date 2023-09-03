@@ -17,6 +17,8 @@ public:
     void mostrar();
     bool eliminar(int id);
     void cargarCliente();
+    bool buscarCliente(int id);
+    void modificarNombre(int id, string nombre);
 };
 
 #endif

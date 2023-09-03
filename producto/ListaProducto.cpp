@@ -48,7 +48,7 @@ void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, i
             auxProducto = auxProducto->siguiente;
         }
     }
-    }
+}
     
 
 
@@ -73,8 +73,8 @@ bool ListaProducto::existeProducto(int pCodPais, int pCodCiudad, int pCodRes, in
         }
         aux = aux->siguiente;
     }
-return false;
 }
+return false;
 }
 
 void ListaProducto::insertarProducto(int codPais, int codCiudad, int codRest, int codMenu, int codProducto, string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenu) {
@@ -177,3 +177,4 @@ void ListaProducto::mostrar() {
          cout << endl;
     }
 }
+

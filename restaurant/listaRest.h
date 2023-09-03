@@ -25,6 +25,7 @@ class ListaRest {
         NodoRest* punteroRest(int codRest);
         void borrarInicio();
         void cargarRests(ListaPais& lPaises, ListaCiudad& lCiudades);
+        void modificarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades, string nombre);
 };
 
 #endif

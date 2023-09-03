@@ -42,6 +42,7 @@ NodoCiudad* ListaCiudad::punteroCiudad(int codCiudad) {
             auxCiudad = auxCiudad->siguiente;
         }
     }
+    return 0;
 }
 
 void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises) {
@@ -66,7 +67,7 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
 }
 
 
-void ListaCiudad::mostrar(int ciudad) { // muestra las ciudades de la lista
+void ListaCiudad::mostrar() { // muestra las ciudades de la lista
     NodoCiudad *aux;
     if (primero==NULL)
         cout << "No hay elementos";  

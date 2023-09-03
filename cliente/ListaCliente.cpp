@@ -97,3 +97,29 @@ void ListaCliente::cargarCliente() {
     archivo.close();
     str="";
 }
+
+bool ListaCliente::buscarCliente(int id) {
+    NodoCliente* temp = primero;
+    while (temp) {
+        if (temp->identificacion == id) {
+            cout << "Nombre: " << temp->nombre << endl;
+            return true;
+        }
+        temp = temp->siguiente;
+    }
+    cout << "No se encontro el cliente" << endl;
+    return false;
+}
+
+void ListaCliente::modificarNombre(int id, string nombre) {
+    NodoCliente* temp = primero;
+    while (temp) {
+        if (temp->identificacion == id) {
+            temp->nombre = nombre;
+            cout << "Nombre modificado a " << nombre;
+            return;
+        }
+        temp = temp->siguiente;
+    }
+    cout << "No se encontro el cliente" << endl;
+}
