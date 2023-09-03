@@ -24,7 +24,8 @@ bool ListaCiudad::existeCiudad(int codPais, int codCiudad, ListaPais& lPaises) {
             }
             aux = aux->siguiente;
         }
-    return false; }
+        return false; 
+        }
     return false;
 }
 

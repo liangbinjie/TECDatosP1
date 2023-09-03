@@ -261,9 +261,9 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             cin >> opcion;
             switch(opcion) {
                 case 1:
-                    cout << "Ingrese el numero del pais que quiere MODIFICAR: " << endl;
+                    cout << "Ingrese el numero del pais que quiere MODIFICAR: ";
                     cin >> numPais;
-                    cout << "Ingrese el nuevo nombre que quiere MODIFICAR: " << endl;
+                    cout << "Ingrese el nuevo nombre que quiere MODIFICAR: ";
                     cin.ignore();
                     getline(cin,nombre);
                     lPais.modificarNombre(numPais, nombre);
@@ -274,13 +274,13 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     // lCiudad.
                     break;
                 case 3:
-                    cout << "Ingres el codigo del pais: " << endl;
+                    cout << "Ingres el codigo del pais: ";
                     cin >> codPais;
-                    cout << "Ingrese el codigo de la ciudad: " << endl;
+                    cout << "Ingrese el codigo de la ciudad: ";
                     cin >> codCiudad;
-                    cout << "Ingrese el codigo del rest: " << endl;
+                    cout << "Ingrese el codigo del rest: ";
                     cin >> codRest;
-                    cout << "Ingrese el nuevo nombre del restaurante: " << endl;
+                    cout << "Ingrese el nuevo nombre del restaurante: ";
                     cin.ignore();
                     getline(cin,nombre);
                     if (lRest.existeRest(codPais, codCiudad, codRest, lPais, lCiudad)) {
@@ -296,7 +296,24 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
                 
                 case 5:
-                    // MODIFICAR PRODUCTO
+                    cout << "Ingres el codigo del pais: ";
+                    cin >> codPais;
+                    cout << "Ingrese el codigo de la ciudad: ";
+                    cin >> codCiudad;
+                    cout << "Ingrese el codigo del rest: ";
+                    cin >> codRest;
+                    cout << "Ingrese el codigo del menu: ";
+                    cin >> codMenu;
+                    cout << "Ingrese el codigo del producto: ";
+                    cin >> codProducto;
+                    cout << "Ingrese el nuevo nombre del producto: ";
+                    cin.ignore();
+                    getline(cin,nombre);
+                    cout << "Ingrese el monto de calorias a modificar: ";
+                    cin >> calorias;
+                    cout << "Ingrese el precio a modificar: ";
+                    cin >> precio;
+                    lProducto.modificarProducto(codPais, codCiudad, codRest, codMenu, codProducto, nombre, calorias, precio, lPais, lCiudad, lRest, lMenu);
                     break;
 
                 case 6:

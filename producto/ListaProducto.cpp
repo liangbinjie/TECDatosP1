@@ -59,7 +59,6 @@ bool ListaProducto::existeProducto(int pCodPais, int pCodCiudad, int pCodRes, in
     }else{
         if (primero->codProducto==pCodProducto){
             if(lMenuRest.existeMenuRest(pCodPais,pCodCiudad,pCodRes,pCodMenu,lPais, lCiudad, lRest)==true){
-                cout<<"si existe";
                 return true;
             }
         }
@@ -67,7 +66,6 @@ bool ListaProducto::existeProducto(int pCodPais, int pCodCiudad, int pCodRes, in
         while(aux!=NULL){
             if (aux->codProducto==pCodProducto){
                 if(lMenuRest.existeMenuRest(pCodPais,pCodCiudad,pCodRes,pCodMenu,lPais, lCiudad, lRest)==true){
-                    cout<<"si existe";
                     return true;
             }
         }
@@ -178,3 +176,23 @@ void ListaProducto::mostrar() {
     }
 }
 
+void ListaProducto::modificarProducto(int codPais, int codCiudad, int codRest, int codMenu, int codProducto, string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus) {
+    NodoProducto *aux = primero;
+    if (primero==NULL) {
+        cout << "No hay elementos" << endl;
+    } else {
+        while (aux!=NULL) {
+            cout << aux->codMenu;
+            if (aux->codPais == codPais && aux->codCiudad == codCiudad && aux->codRest == codRest && aux->codMenu && aux->codMenu == codMenu) {
+                aux->nombre = nombre;
+                aux->kcal = kcal;
+                aux->precio = precio;
+                cout << "Producto modificado" << endl;
+                return;
+            }
+            aux = aux->siguiente;
+        }
+    }
+    cout << "No se encontro el producto" << endl;
+    return;
+}
