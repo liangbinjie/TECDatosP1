@@ -18,28 +18,30 @@ void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, i
                 NodoPais* auxPais = lPaises.punteroPais(pCodPais);
                 NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad);
                 NodoRest* auxRest = lRest.punteroRest(pCodRest);
+                NodoMenuRest* auxMenu = lMenu.punteroMenu(pCodMenu);
                 cout << "Datos del producto"<<endl;
                 cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
                 cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< auxCiudad->codigoCiudad<<endl;
                 cout << "Nombre y codigo del restaurante: "<< auxRest->nombre<< "  "<< auxRest->codRest<<endl; 
-                //cout << "Nombre y codigo del menu: "<< aux->nombre<< "  "<< aux->codMenuRest<<endl;  
+                cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl;  
                 cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl; 
                 cout << "Kcal del producto: "<< auxProducto->kcal<<endl;
                 cout << "Precio del producto: "<< auxProducto->precio<<endl;
         }
         }
         auxProducto = primero->siguiente;
-        while (auxProducto!=primero) {
+        while (auxProducto!=NULL) {
             if (auxProducto->codProducto == pCodProducto) {
                 if(existeProducto(pCodPais,pCodCiudad,pCodRest,pCodMenu,pCodProducto,lPaises,lCiudades,lRest,lMenu)){
                 NodoPais* auxPais = lPaises.punteroPais(pCodPais);
                 NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad);
                 NodoRest* auxRest = lRest.punteroRest(pCodRest);
+                NodoMenuRest* auxMenu = lMenu.punteroMenu(pCodMenu);
                 cout << "Datos del producto"<<endl;
                 cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
                 cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< auxCiudad->codigoCiudad<<endl;
                 cout << "Nombre y codigo del restaurante: "<< auxRest->nombre<< "  "<< auxRest->codRest<<endl; 
-                //cout << "Nombre y codigo del menu: "<< aux->nombre<< "  "<< aux->codMenuRest<<endl;  
+                cout << "Nombre y codigo del menu: "<< auxMenu->nombre<< "  "<< auxMenu->codMenuRest<<endl;  
                 cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl; 
                 cout << "Kcal del producto: "<< auxProducto->kcal<<endl;
                 cout << "Precio del producto: "<< auxProducto->precio<<endl;    

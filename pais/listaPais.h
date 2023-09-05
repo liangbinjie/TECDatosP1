@@ -28,6 +28,7 @@ class ListaPais {
         NodoPais* punteroPais(int codPais);
         ListaCiudad* obtenerListaCiudades(int codPais);
         pNodoPais obtenerPrimerNodo();
+        void modificarPais(int pCodPaisOriginal, string nombre);
         bool buscarPais(int id);
         void modificarNombre(int id, string nombre);
 };
