@@ -25,7 +25,7 @@ void ListaPais::insertar(int codPais, string nombre) {
         primero = new NodoPais(codPais, nombre);
     } else {
         if (existePais(codPais)) {
-            cout << endl;
+            cout << "Este pais ya existe" << endl;
         } else {
             pNodoPais aux = primero;
             while (aux->siguiente != NULL) {
@@ -124,6 +124,7 @@ NodoPais* ListaPais::punteroPais(int codPais) {
             auxPais = auxPais->siguiente;
         }
     }
+    return 0;
 }
 
 void ListaPais::cargarPaises() {
@@ -151,4 +152,42 @@ void ListaPais::cargarPaises() {
     }
     archivo.close();
     str="";
+}
+
+
+bool ListaPais::buscarPais(int id) {
+    NodoPais *aux;
+    if (primero== NULL)
+        cout << "No hay elementos";  
+    else {
+        aux = primero;
+        while(aux) {
+            if (aux->codigoPais == id) {
+                cout << "Nombre Pais: " << aux->nombre << endl;
+                return true;
+            }
+            aux = aux->siguiente;
+        }
+    }
+    cout << "El pais no existe" << endl;
+    return false;
+}
+
+void ListaPais::modificarNombre(int id, string nombre) {
+    NodoPais *aux;
+    if (primero== NULL)
+        cout << "No hay elementos";  
+    else {
+        aux = primero;
+        while(aux) {
+            if (aux->codigoPais == id) {
+                aux->nombre = nombre;
+                cout << "Nombre de pais modificado a: " << nombre << endl;
+                return;
+            }
+            aux = aux->siguiente;
+        }
+    }
+    cout << "El pais no existe" << endl;
+    return;
 }

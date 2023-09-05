@@ -21,6 +21,10 @@ bool ListaMenuRest::existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
             cout<<"si existe";
             return true;
             }
+/*
+            if (lRest.existeRest(pCodPais, pCodCiudad, pCodRest, lCiudad ,lPais)==true){;
+            return true;}
+*/
         }
         aux = primero->siguiente;
         while (aux!=NULL) {
@@ -94,6 +98,13 @@ void ListaMenuRest::insertarMenuRest(int codPais, int codCiudad, int codRest, in
             primero = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
         } else {
             if (existeMenuRest(codPais, codCiudad, codRest, codMenuRest, lPaises, lCiudad, lRest)) {
+/*
+    if (lRest.existeRest(codPais,codCiudad, codRest, lCiudad, lPaises)) {
+        if (listaVacia()) {
+            primero = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
+        } else {
+            if (existeMenuRest(codPais, codCiudad, codRest, codMenuRest, lCiudad, lPaises, lRest)) {
+*/
                 cout << "Este menu ya existe, no se puede insertar" << endl;
             } else {
                 pNodoMenuRest aux = primero;
@@ -164,6 +175,7 @@ void ListaMenuRest::mostrar() {
     }
 }
 
+
 void ListaCiudad::eliminar(int codCiudad) {
     cout << codCiudad << endl;
     if (listaVacia()) {
@@ -179,6 +191,16 @@ void ListaCiudad::eliminar(int codCiudad) {
                     break;
 
                 }
+
+void ListaMenuRest::eliminar(int codMenu) {
+    if (listaVacia()) {
+        cout << "No se puede eliminar, lista vacia" << endl;
+    } else {
+        pNodoMenuRest aux = primero;
+        if (aux->codMenuRest == codMenu) {
+            borrarInicio();
+        } else {
+            while (aux->codigoPais != codMenu) {
                 aux = aux->siguiente;
             }
             pNodoCiudad temp = aux;
@@ -188,6 +210,7 @@ void ListaCiudad::eliminar(int codCiudad) {
         }
     }
 }
+
 
 void ListaCiudad::eliminarCiudades(int pais) {
     NodoCiudad *aux;
@@ -206,6 +229,7 @@ void ListaCiudad::eliminarCiudades(int pais) {
     }
 }
 */
+
 
 
 void ListaMenuRest::cargarMenuRest(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {

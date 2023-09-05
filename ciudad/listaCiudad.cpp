@@ -24,7 +24,8 @@ bool ListaCiudad::existeCiudad(int codPais, int codCiudad, ListaPais& lPaises) {
             }
             aux = aux->siguiente;
         }
-    return false; }
+        return false; 
+        }
     return false;
 }
 
@@ -42,6 +43,7 @@ NodoCiudad* ListaCiudad::punteroCiudad(int codCiudad) {
             auxCiudad = auxCiudad->siguiente;
         }
     }
+    return 0;
 }
 
 void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais& lPaises) {
@@ -66,7 +68,7 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
 }
 
 
-void ListaCiudad::mostrar(int ciudad) { // muestra las ciudades de la lista
+void ListaCiudad::mostrar() { // muestra las ciudades de la lista
     NodoCiudad *aux;
     if (primero==NULL)
         cout << "No hay elementos";  
@@ -86,12 +88,13 @@ void ListaCiudad::mostrarDeUnPais(int pais) { // muestra las ciudades de un pais
         cout << "No hay elementos";  
     else {
         aux = primero;
-        while(aux != primero) {
+        while(aux) {
             if(aux->codigoPais==pais){
                 cout << aux->codigoCiudad << " : " << aux->nombre << " -> ";
             }
         aux = aux->siguiente;
         }
+        cout << endl;
     return;
     }
 }
@@ -124,7 +127,7 @@ void ListaCiudad::eliminar(int codCiudad) {
         } else {
             while (aux->codigoPais != codCiudad) {
                 if (aux->codigoCiudad == codCiudad) {
-                    cout << aux->codigoCiudad << endl;
+                    // cout << aux->codigoCiudad << endl;
                     break;
 
                 }

@@ -51,6 +51,7 @@ bool ListaCliente::eliminar(int id) {
         NodoCliente* temp = primero;
         primero = primero->siguiente;
         delete temp;
+        cout << "Se elimino el cliente" << endl; 
         return true;
     }
 
@@ -63,9 +64,11 @@ bool ListaCliente::eliminar(int id) {
         NodoCliente* nodoEliminar = temp->siguiente;
         temp->siguiente = nodoEliminar->siguiente;
         delete nodoEliminar;
+        cout << "Se elimino el cliente" << endl; 
         return true;
     }
 
+    cout << "No se pudo eliminar el cliente" << endl;
     return false;
 }
 
@@ -93,4 +96,30 @@ void ListaCliente::cargarCliente() {
     }
     archivo.close();
     str="";
+}
+
+bool ListaCliente::buscarCliente(int id) {
+    NodoCliente* temp = primero;
+    while (temp) {
+        if (temp->identificacion == id) {
+            cout << "Nombre: " << temp->nombre << endl;
+            return true;
+        }
+        temp = temp->siguiente;
+    }
+    cout << "No se encontro el cliente" << endl;
+    return false;
+}
+
+void ListaCliente::modificarNombre(int id, string nombre) {
+    NodoCliente* temp = primero;
+    while (temp) {
+        if (temp->identificacion == id) {
+            temp->nombre = nombre;
+            cout << "Nombre modificado a " << nombre;
+            return;
+        }
+        temp = temp->siguiente;
+    }
+    cout << "No se encontro el cliente" << endl;
 }
