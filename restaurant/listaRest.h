@@ -2,6 +2,7 @@
 #define LISTAREST_H
 
 #include <iostream>
+using namespace std;
 
 #include "../pais/listaPais.h"
 #include "../ciudad/listaCiudad.h"

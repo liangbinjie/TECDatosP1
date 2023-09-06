@@ -53,6 +53,7 @@ NodoMenuRest* ListaMenuRest::punteroMenu(int pcodMenu) {
             auxMenu = auxMenu->siguiente;
         }
     }
+    return 0;
 }
 
 void ListaMenuRest::buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRest){
