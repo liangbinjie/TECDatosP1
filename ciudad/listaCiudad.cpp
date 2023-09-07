@@ -135,7 +135,7 @@ void ListaCiudad::eliminar(int codCiudad) {
             }
             pNodoCiudad temp = aux;
             aux = aux->anterior;
-            aux->siguiente = aux->siguiente;
+            aux->siguiente = temp->siguiente;
             delete temp;
         }
     }
