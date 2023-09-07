@@ -5,3 +5,4 @@ NodoCliente::NodoCliente(int id, string nom) {
     nombre = nom;
     siguiente = NULL;
 }
+
