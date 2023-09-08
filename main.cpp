@@ -4,6 +4,7 @@
 #include "menuRes/listaMenuRest.h"
 #include "producto/listaProducto.h"
 #include "cliente/listaCliente.h"
+#include "compra/fila.h"
 #include <iostream>
 using namespace std;
 
@@ -11,14 +12,15 @@ void clearScreen() {
     cout << string(50, '\n');
 }
 
-void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenu, ListaProducto& lProducto, ListaCliente& lCliente) {
+void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenu, ListaProducto& lProducto, ListaCliente& lCliente, fila& Fila) {
     cout << "Bienvenido, que desea realizar?" << endl;
     cout << "1. Insertar" << endl;
     cout << "2. Eliminar" << endl;
     cout << "3. Mostrar" << endl;
     cout << "4. Modificar" << endl;
     cout << "5. Buscar" << endl;
-    cout << "6. Salir" << endl;
+    cout << "6. Comprar" << endl;
+    cout << "7. Salir" << endl;
     int numPais;
     int opcion;
     cout << "> ";
@@ -369,9 +371,58 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
 
 
         case 6:
+        	cout << "Que deseas hacer?" << endl;
+        	cout << "1. Hacer fila para comprar" << endl;
+        	cout << "2. Atender a cliente" << endl;
+        	cin >> opcion;
+        	switch(opcion) {
+        		case 1:
+        			if (Fila.largoFila() == 5) {
+        				cout << "No se puede hacer mas fila, porque ya esta lleno" << endl;
+					} else {
+						cout << "Ingrese su identificacion: ";
+						cin >> codCliente;
+						if (lCliente.existeCliente(codCliente)) {
+							Fila.encolar(codCliente);
+							Fila.imprimir();
+						} else {
+							cout << "Esta identificacion no existe en la base de datos" << endl;
+						}
+ 					}
+ 					break;
+
+				case 2:
+					if (Fila.filaVacia()) {
+						cout << "No hay clientes que atender" << endl;
+					} else {
+						Fila.atender();
+                        cout << "Ingrese el pais donde se encuentra el restaurante: ";
+                        cin >> codPais;
+                        cout << "Ingrese la ciudad donde se encuentra el restaurante: ";
+                        cin >> codCiudad;
+                        cout << "Ingrese el codigo del restaurante: ";
+                        cin >> codRest;
+                        cout << "Ingrese el id menu que quieres comprar: ";
+                        cin >> codMenu;
+                        if (lMenu.existeMenuRest(codPais, codCiudad, codRest, codMenu, lPais, lCiudad, lRest)) {
+                            lProducto.mostrarProductosMenu(codPais, codCiudad, codRest, codMenu);
+                        } else {
+                            cout << "No existe este menu" << endl;
+                        }
+
+						// preguntar del menu que quiere y mostrarle los productos
+						// listaNueva.agregar producto a la factura	
+					}
+					break;			
+			}
+			
+			break;
+            
+
+        case 7:
             return;
     }
-    menu(lPais, lCiudad, lRest, lMenu, lProducto, lCliente);
+    menu(lPais, lCiudad, lRest, lMenu, lProducto, lCliente, Fila);
 }
 
 int main() {
@@ -393,8 +444,10 @@ int main() {
     ListaCliente LCliente;
     LCliente.cargarCliente();
     
+    fila Fila;
+    
     clearScreen();
-    menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente);
+    menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente, Fila);
   
     return 0;
 }

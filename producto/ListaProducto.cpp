@@ -198,3 +198,17 @@ void ListaProducto::modificarProducto(int codPais, int codCiudad, int codRest, i
     cout << "No se encontro el producto" << endl;
     return;
 }
+
+void ListaProducto::mostrarProductosMenu(int codPais, int codCiudad, int codRest, int codMenu) {
+    if (primero==NULL) {
+        cout << "No hay productos en la base de datos" << endl;
+    } else {
+        pNodoProducto aux = primero;
+        while (aux) {
+            if (aux->codCiudad == codCiudad && aux->codPais == codPais && aux->codRest == codRest && aux->codMenu == codMenu) {
+                cout << "- " << aux->codProducto << ". " << aux->nombre << endl;
+            }
+            aux = aux->siguiente;
+        }
+    }
+}

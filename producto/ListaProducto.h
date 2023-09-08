@@ -28,6 +28,7 @@ class ListaProducto {
         void mostrar();
         void cargarProductos(ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus);
         void modificarProducto(int codPais, int codCiudad, int codRest, int codMenu, int codProducto, string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus);
+        void mostrarProductosMenu(int codPais, int codCiudad, int codRest, int codMenu);
 };
 
 #endif

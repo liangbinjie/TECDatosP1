@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o pais/nodoPais.o pais/listaPais.o ciudad/nodoCiudad.o ciudad/listaCiudad.o restaurant/nodoRest.o restaurant/listaRest.o menuRes/nodoMenuRest.o menuRes/listaMenuRest.o producto/nodoProducto.o producto/listaProducto.o cliente/nodoCliente.o cliente/listaCliente.o
-LINKOBJ  = main.o pais/nodoPais.o pais/listaPais.o ciudad/nodoCiudad.o ciudad/listaCiudad.o restaurant/nodoRest.o restaurant/listaRest.o menuRes/nodoMenuRest.o menuRes/listaMenuRest.o producto/nodoProducto.o producto/listaProducto.o cliente/nodoCliente.o cliente/listaCliente.o
+OBJ      = main.o pais/nodoPais.o pais/listaPais.o ciudad/nodoCiudad.o ciudad/listaCiudad.o restaurant/nodoRest.o restaurant/listaRest.o menuRes/nodoMenuRest.o menuRes/listaMenuRest.o producto/nodoProducto.o producto/listaProducto.o cliente/nodoCliente.o cliente/listaCliente.o compra/fila.o compra/nodoFila.o
+LINKOBJ  = main.o pais/nodoPais.o pais/listaPais.o ciudad/nodoCiudad.o ciudad/listaCiudad.o restaurant/nodoRest.o restaurant/listaRest.o menuRes/nodoMenuRest.o menuRes/listaMenuRest.o producto/nodoProducto.o producto/listaProducto.o cliente/nodoCliente.o cliente/listaCliente.o compra/fila.o compra/nodoFila.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -62,3 +62,9 @@ cliente/nodoCliente.o: cliente/nodoCliente.cpp
 
 cliente/listaCliente.o: cliente/listaCliente.cpp
 	$(CPP) -c cliente/listaCliente.cpp -o cliente/listaCliente.o $(CXXFLAGS)
+
+compra/fila.o: compra/fila.cpp
+	$(CPP) -c compra/fila.cpp -o compra/fila.o $(CXXFLAGS)
+
+compra/nodoFila.o: compra/nodoFila.cpp
+	$(CPP) -c compra/nodoFila.cpp -o compra/nodoFila.o $(CXXFLAGS)

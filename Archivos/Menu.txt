@@ -1,7 +1,7 @@
 123;345;34;1;HC
-345;987;456;2;Acompañamientos
+345;987;456;2;Acompanamientos
 4567;234;876;3;PolloyNuggets
-12;34;234;230;Acompañamientos
+12;34;234;230;Acompanamientos
 123;345;2341;12;HP
 1;1;1;1;1
 1;1;1;2;1
