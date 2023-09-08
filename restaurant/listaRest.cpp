@@ -108,9 +108,6 @@ void ListaRest::buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais
     }
 }
     
-
-
-
 void ListaRest::mostrar() {
     pNodoRest aux = primero;
     while (aux->siguiente!=primero) {
