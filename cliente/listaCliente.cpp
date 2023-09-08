@@ -73,29 +73,23 @@ bool ListaCliente::eliminar(int id) {
 }
 
 void ListaCliente::cargarCliente() {
-    string str;
-    ifstream archivo;
-    archivo.open("Archivos/Clientes.txt");
-    while (archivo >> str) {
-        int cont = 0;
+    ifstream archivo("Archivos/Clientes.txt");
+    string line;
+    
+    while (getline(archivo, line)) {
+        stringstream ss(line);
+        string temp;
         int id;
-        string name = "", temp;
-        for (char& c : str) {
-            if (c == ';') {
-                if (cont == 0) {
-                    id = stoi(temp);
-                }
-                temp = "";
-                cont++;
-            } else {
-                temp += c;
-            }
-        }
-        name = temp;
+        string name;
+
+        getline(ss, temp, ';');
+        id = stoi(temp);
+
+        getline(ss, name, ';');
+
         ListaCliente::insertar(id, name);
     }
     archivo.close();
-    str="";
 }
 
 bool ListaCliente::buscarCliente(int id) {
