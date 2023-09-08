@@ -152,31 +152,27 @@ void ListaCiudad::eliminar(int codCiudad) {
 }
 
 void ListaCiudad::cargarCiudades(ListaPais& lPais) {
-    string str;
-    ifstream archivo;
-    archivo.open("Archivos/Ciudades.txt");
-    while (archivo >> str) {
-        int cont = 0;
-        int idP,idC;
-        string name = "", temp;
-        for (char& c : str) {
-            if (c == ';') {
-                if (cont == 0) {
-                    idP = stoi(temp);
-                } else if (cont == 1) {
-                    idC = stoi(temp);
-                }
-                temp = "";
-                cont++;
-            } else {
-                temp += c;
-            }
-        }
-        name = temp;
+    ifstream archivo("Archivos/Ciudades.txt");
+    string line;
+    
+    while (getline(archivo, line)) {
+        stringstream ss(line);
+        string temp;
+        int idP, idC;
+        string name;
+
+        getline(ss, temp, ';');
+        idP = stoi(temp);
+
+        getline(ss, temp, ';');
+        idC = stoi(temp);
+
+        getline(ss, name, ';');
+
         ListaCiudad::insertar(idP, idC, name, lPais);
     }
+
     archivo.close();
-    str="";
 }
 
 void ListaCiudad::eliminarCiudades(int pais) {

@@ -7,6 +7,7 @@
 using namespace std;
 
 #include "nodoPais.h"
+#include <sstream>
 typedef NodoPais* pNodoPais;
 
 class ListaPais {

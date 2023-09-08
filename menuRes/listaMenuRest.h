@@ -9,6 +9,7 @@ using namespace std;
 #include "../restaurant/listaRest.h"
 
 #include "nodoMenuRest.h"
+#include <sstream>
 typedef NodoMenuRest* pNodoMenuRest;
 class ListaMenuRest {
     private:

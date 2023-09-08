@@ -140,7 +140,6 @@ void ListaProducto::cargarProductos(ListaPais& lPaises, ListaCiudad& lCiudades, 
         int idP, idC, idR, idM, id, kcal, precio;
         string name;
 
-        // Use getline with ';' as the delimiter to split the line into fields
         getline(ss, temp, ';');
         idP = stoi(temp);
 
@@ -164,7 +163,6 @@ void ListaProducto::cargarProductos(ListaPais& lPaises, ListaCiudad& lCiudades, 
         getline(ss, temp, ';');
         precio = stoi(temp);
 
-        // Now you can use the extracted values to insert the product
         ListaProducto::insertarProducto(idP, idC, idR, idM, id, name, kcal, precio, lPaises, lCiudades, lRests, lMenus);
     }
 

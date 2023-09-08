@@ -4,6 +4,7 @@
 #include <fstream>
 
 #include "NodoCliente.h"
+#include <sstream>
 
 class ListaCliente {
 private:

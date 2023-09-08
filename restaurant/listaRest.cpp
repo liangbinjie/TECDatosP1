@@ -156,33 +156,30 @@ void ListaRest::eliminar(int pCodRest) {
 }
 
 void ListaRest::cargarRests(ListaPais& lPaises, ListaCiudad& lCiudades) {
-    string str;
-    ifstream archivo;
-    archivo.open("Archivos/Restaurantes.txt");
-    while (archivo >> str) {
-        int cont = 0;
-        int idP,idC, idR;
-        string name = "", temp;
-        for (char& c : str) {
-            if (c == ';') {
-                if (cont == 0) {
-                    idP = stoi(temp);
-                } else if (cont == 1) {
-                    idC = stoi(temp);
-                } else if (cont == 2) {
-                    idR = stoi(temp);
-                } 
-                temp = "";
-                cont++;
-            } else {
-                temp += c;
-            }
-        }
-        name = temp;
+    ifstream archivo("Archivos/Restaurantes.txt");
+    string line;
+    
+    while (getline(archivo, line)) {
+        stringstream ss(line);
+        string temp;
+        int idP, idC, idR;
+        string name;
+
+        getline(ss, temp, ';');
+        idP = stoi(temp);
+
+        getline(ss, temp, ';');
+        idC = stoi(temp);
+
+        getline(ss, temp, ';');
+        idR = stoi(temp);
+
+        getline(ss, name, ';');
+
         ListaRest::insertar(idP, idC, idR, name, lPaises, lCiudades);
     }
+
     archivo.close();
-    str="";
 }
 
 void ListaRest::modificarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPais, ListaCiudad& lCiudad, string nombre) {

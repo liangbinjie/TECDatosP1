@@ -128,30 +128,23 @@ NodoPais* ListaPais::punteroPais(int codPais) {
 }
 
 void ListaPais::cargarPaises() {
-    string str;
-    ifstream archivo;
-    archivo.open("Archivos/Paises.txt");
-    while (archivo >> str) {
-        int cont = 0;
-        int idP,idC;
-        string name = "", temp;
-        for (char& c : str) {
-            if (c == ';') {
-                if (cont == 0) {
-                    idP = stoi(temp);
-                }
-                temp = "";
-                cont++;
-            } else {
-                temp += c;
-            }
-        }
-        // cout << temp << endl;
-        name = temp;
+    ifstream archivo("Archivos/Paises.txt");
+    string line;
+    
+    while (getline(archivo, line)) {
+        stringstream ss(line);
+        string temp;
+        int idP;
+        string name;
+
+        getline(ss, temp, ';');
+        idP = stoi(temp);
+
+        getline(ss, name, ';');
+
         ListaPais::insertar(idP, name);
     }
     archivo.close();
-    str="";
 }
 
 

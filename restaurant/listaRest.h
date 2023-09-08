@@ -8,6 +8,7 @@ using namespace std;
 #include "../ciudad/listaCiudad.h"
 
 #include "nodoRest.h"
+#include <sstream>
 typedef NodoRest* pNodoRest;
 
 class ListaRest {

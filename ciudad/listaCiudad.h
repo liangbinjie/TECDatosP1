@@ -7,6 +7,7 @@ using namespace std;
 #include "../pais/listaPais.h"
 
 #include "nodoCiudad.h"
+#include <sstream>
 typedef NodoCiudad* pNodoCiudad;
 class ListaCiudad {
     private:
