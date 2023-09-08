@@ -131,43 +131,45 @@ void ListaProducto::eliminar(int id) {
 }
 
 void ListaProducto::cargarProductos(ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenus) {
-    string str;
-    ifstream archivo;
-    archivo.open("Archivos/Productos.txt");
-    while (archivo >> str) {
-        int cont = 0;
+    ifstream archivo("Archivos/Productos.txt");
+    string line;
+    
+    while (getline(archivo, line)) {
+        stringstream ss(line);
+        string temp;
         int idP, idC, idR, idM, id, kcal, precio;
-        string name = "", temp;
-        for (char& c : str) {
-            if (c == ';') {
-                if (cont == 0) {
-                    idP = stoi(temp);
-                } else if (cont == 1) {
-                    idC = stoi(temp);
-                } else if (cont == 2) {
-                    idR = stoi(temp);
-                } else if (cont == 3) {
-                    idM = stoi(temp);
-                } else if (cont == 4) {
-                    id = stoi(temp);
-                } else if (cont == 5) {
-                    name = temp;
-                } else if (cont == 6) {
-                    kcal = stoi(temp);
-                }
-                temp = "";
-                cont++;
-            } else {
-                temp += c;
-            }
-        }
+        string name;
+
+        // Use getline with ';' as the delimiter to split the line into fields
+        getline(ss, temp, ';');
+        idP = stoi(temp);
+
+        getline(ss, temp, ';');
+        idC = stoi(temp);
+
+        getline(ss, temp, ';');
+        idR = stoi(temp);
+
+        getline(ss, temp, ';');
+        idM = stoi(temp);
+
+        getline(ss, temp, ';');
+        id = stoi(temp);
+
+        getline(ss, name, ';');
+
+        getline(ss, temp, ';');
+        kcal = stoi(temp);
+
+        getline(ss, temp, ';');
         precio = stoi(temp);
+
+        // Now you can use the extracted values to insert the product
         ListaProducto::insertarProducto(idP, idC, idR, idM, id, name, kcal, precio, lPaises, lCiudades, lRests, lMenus);
     }
-    archivo.close();
-    str = "";
-}
 
+    archivo.close();
+}
 
 void ListaProducto::mostrar() {
     NodoProducto *aux;

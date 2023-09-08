@@ -7,6 +7,7 @@
 #include "../ciudad/listaCiudad.h"
 #include "../restaurant/listaRest.h"
 #include "../menuRes/listaMenuRest.h"
+#include <sstream>
 using namespace std;
 #include <fstream>
 
