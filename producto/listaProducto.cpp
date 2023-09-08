@@ -10,6 +10,7 @@ bool ListaProducto::listaVacia() {
 
 void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, int pCodProducto, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRest, ListaMenuRest& lMenu){
     NodoProducto *auxProducto;
+    bool flag=false;
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
     } else {
@@ -27,6 +28,7 @@ void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, i
                 cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl; 
                 cout << "Kcal del producto: "<< auxProducto->kcal<<endl;
                 cout << "Precio del producto: "<< auxProducto->precio<<endl;
+                flag=true;
         }
         }
         auxProducto = primero->siguiente;
@@ -45,10 +47,14 @@ void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, i
                 cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl; 
                 cout << "Kcal del producto: "<< auxProducto->kcal<<endl;
                 cout << "Precio del producto: "<< auxProducto->precio<<endl;    
+                flag=true;
                 }
             }
             auxProducto = auxProducto->siguiente;
         }
+        if(flag==false){
+        	cout<<"Producto no encontrado"<<endl;
+		}
     }
 }
     

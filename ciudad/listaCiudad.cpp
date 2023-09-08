@@ -99,6 +99,16 @@ void ListaCiudad::mostrarDeUnPais(int pais) { // muestra las ciudades de un pais
     }
 }
 
+void ListaCiudad::modificarCiudad(int pCodPais, int pCodCiudad, string pnombre, ListaPais& LPais){
+    if(existeCiudad(pCodPais,pCodCiudad,LPais)){
+       NodoCiudad* auxCiudad = punteroCiudad(pCodCiudad);
+       auxCiudad->nombre = pnombre; 
+       cout <<"Cambio realizado con exito";
+    }else{
+        cout <<"Incongruencias con la ubicacion";
+    }
+}
+
 void ListaCiudad::borrarInicio() {
     if (listaVacia()) {
         cout << "Lista vacia" << endl;

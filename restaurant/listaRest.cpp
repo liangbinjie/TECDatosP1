@@ -72,6 +72,7 @@ void ListaRest::insertar(int codPais, int codCiudad, int codRest, string nombre,
 
 void ListaRest::buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades){
     NodoRest *aux;
+    bool flag=false;
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
     } else {
@@ -83,6 +84,7 @@ void ListaRest::buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais
                 cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
                 cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< aux->codCiudad<<endl;
                 cout << "Nombre y codigo del restaurante: "<< aux->nombre<< "  "<< aux->codRest<<endl;  
+                flag=true;
         }
         }
         aux = primero->siguiente;
@@ -95,12 +97,16 @@ void ListaRest::buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais
                 cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
                 cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< aux->codCiudad<<endl;
                 cout << "Nombre y codigo del restaurante: "<< aux->nombre<< "  "<< aux->codRest<<endl;    
+                flag=true;
                 }
             }
             aux = aux->siguiente;
         }
+        if(flag==false){
+        	cout<<"Restaurante no encontrado"<<endl;
+		}
     }
-    }
+}
     
 
 

@@ -27,6 +27,7 @@ class ListaCiudad {
         void cargarCiudades(ListaPais& lPaises);
         void mostrarDeUnPais(int pais); // funcion para mostrar las ciudades de un pais en especifico
         void eliminarCiudades(int pais);
+        void modificarCiudad(int pais, int ciudad, string nombe,ListaPais& lPaises);
 };
 
 #endif
