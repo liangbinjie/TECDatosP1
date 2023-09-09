@@ -16,7 +16,7 @@ class fila {
 	    int largoFila();
 	    bool filaVacia();        
 	    void encolar(int id); 
-	    void atender ();
+	    int atender ();
 	    void imprimir();
 };
 

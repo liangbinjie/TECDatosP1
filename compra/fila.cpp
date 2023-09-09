@@ -34,21 +34,25 @@ void fila::encolar(int idCliente) {
 	cout << "Nuevo cliente haciendo fila" << endl;
 }
 
-void fila::atender() {
+int fila::atender() {
     if (filaVacia()) {
     	cout << "No hay clientes que atender" << endl;
 	} else {
 		cout << "Atendiendo a cliente: " << primero->idCliente << endl;
+		int idTemp = primero->idCliente;
 		if (primero->siguiente == NULL) {
 			pNodoFila temp = primero;
 			primero = NULL;
 			delete temp;
+			return idTemp;
 		} else {
 			pNodoFila aux = primero;
 			primero = primero->siguiente;
 			delete aux;
+			return idTemp;
 		}
 	}
+	return 0;
 }
 
 void fila::imprimir() {

@@ -5,6 +5,7 @@
 #include "producto/listaProducto.h"
 #include "cliente/listaCliente.h"
 #include "compra/fila.h"
+#include "compra/listaCompra.h"
 #include <iostream>
 using namespace std;
 
@@ -12,7 +13,7 @@ void clearScreen() {
     cout << string(50, '\n');
 }
 
-void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenu, ListaProducto& lProducto, ListaCliente& lCliente, fila& Fila) {
+void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenu, ListaProducto& lProducto, ListaCliente& lCliente, fila& Fila, ListaCompra& lCompra) {
     cout << "Bienvenido, que desea realizar?" << endl;
     cout << "1. Insertar" << endl;
     cout << "2. Eliminar" << endl;
@@ -428,7 +429,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
 					if (Fila.filaVacia()) {
 						cout << "No hay clientes que atender" << endl;
 					} else {
-						Fila.atender();
+						codCliente = Fila.atender();
                         cout << "Ingrese el pais donde se encuentra el restaurante: ";
                         cin >> codPais;
                         cout << "Ingrese la ciudad donde se encuentra el restaurante: ";
@@ -438,13 +439,34 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                         cout << "Ingrese el id menu que quieres comprar: ";
                         cin >> codMenu;
                         if (lMenu.existeMenuRest(codPais, codCiudad, codRest, codMenu, lPais, lCiudad, lRest)) {
-                            lProducto.mostrarProductosMenu(codPais, codCiudad, codRest, codMenu);
+                            // while (true)
+                            while (true) {
+                                lProducto.mostrarProductosMenu(codPais, codCiudad, codRest, codMenu);
+                                int codProd;
+                                string compra = "";
+                                cout << "Que desea comprar?: ";
+                                cin >> codProd;
+                                if (lProducto.existeProducto(codPais, codCiudad, codRest, codMenu, codProd, lPais, lCiudad, lRest, lMenu)) {
+                                    compra += codProd + ";";
+                                    cout << "Producto agregado a la compra" << endl;
+                                } else {
+                                    cout << "Ingrese un producto valido" << endl;
+                                }
+                                cout << "Desea seguir comprando? y/n" << endl;
+                                char seguir;
+                                cin >> seguir;
+                                if (seguir == 'n') {
+                                    //cout << compra << endl;
+                                    lCompra.agregar(codCliente, codPais, codCiudad, codRest, codMenu, compra);
+                                    cout << "Por favor espere en la fila de pagar" << endl;
+                                    //lCompra.mostrar();
+                                    break;
+                                }
+                            }
+
                         } else {
                             cout << "No existe este menu" << endl;
                         }
-
-						// preguntar del menu que quiere y mostrarle los productos
-						// listaNueva.agregar producto a la factura	
 					}
 					break;			
 			}
@@ -455,7 +477,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
         case 7:
             return;
     }
-    menu(lPais, lCiudad, lRest, lMenu, lProducto, lCliente, Fila);
+    menu(lPais, lCiudad, lRest, lMenu, lProducto, lCliente, Fila, lCompra);
 }
 
 int main() {
@@ -478,9 +500,11 @@ int main() {
     LCliente.cargarCliente();
     
     fila Fila;
+
+    ListaCompra lCompra;
     
     clearScreen();
-    menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente, Fila);
+    menu(LPaises, LCiudad, LRest, LMenu, LProducto, LCliente, Fila, lCompra);
   
     return 0;
 }
