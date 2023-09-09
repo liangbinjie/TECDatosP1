@@ -40,6 +40,7 @@ void ListaCliente::mostrar() {
         std::cout << "Identificacion: " << temp->identificacion << ", Nombre: " << temp->nombre << std::endl;
         temp = temp->siguiente;
     }
+    cout << endl;
 }
 
 bool ListaCliente::eliminar(int id) {
@@ -96,6 +97,7 @@ bool ListaCliente::buscarCliente(int id) {
     NodoCliente* temp = primero;
     while (temp) {
         if (temp->identificacion == id) {
+            cout << "Identificacion: " << temp->identificacion << endl;
             cout << "Nombre: " << temp->nombre << endl;
             return true;
         }
@@ -110,7 +112,7 @@ void ListaCliente::modificarNombre(int id, string nombre) {
     while (temp) {
         if (temp->identificacion == id) {
             temp->nombre = nombre;
-            cout << "Nombre modificado a " << nombre;
+            cout << "Nombre modificado a " << nombre << endl;
             return;
         }
         temp = temp->siguiente;

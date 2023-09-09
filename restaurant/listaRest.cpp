@@ -170,26 +170,23 @@ void ListaRest::cargarRests(ListaPais& lPaises, ListaCiudad& lCiudades) {
     archivo.close();
 }
 
-void ListaRest::modificarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPais, ListaCiudad& lCiudad, string nombre) {
+void ListaRest::modificarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPais, ListaCiudad& lCiudad, string pnombre) {
     NodoRest *aux;
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
     } else {
-        if(primero->codRest == pCodRest){
-            if (lCiudad.existeCiudad(pCodPais, pCodCiudad, lPais)){
-                primero->nombre = nombre;
-                return;
-            }
-        }
-        aux = primero->siguiente;
-        while (aux!=primero) {
-            if (aux->codRest == pCodRest) {
-                if(lCiudad.existeCiudad(pCodPais, pCodCiudad, lPais)==true){
-                    aux->nombre = nombre;
+        if(primero->codRest == pCodRest && primero->codigoPais == pCodPais && primero->codCiudad == pCodCiudad){
+            primero->nombre = pnombre;
+            return;
+        } else {
+            aux = primero->siguiente;
+            while (aux!=primero) {
+                if (aux->codRest == pCodRest && aux->codigoPais == pCodPais && aux->codCiudad == pCodCiudad) {
+                    aux->nombre = pnombre;
                     return;
                 }
+                aux = aux->siguiente;
             }
-            aux = aux->siguiente;
         }
     }
     return;
