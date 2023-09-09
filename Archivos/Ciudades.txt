@@ -1,7 +1,9 @@
 123;345;David
+1;345;Ciudad unida
 345;987;Orlando
 4567;234;Guadalajara
 12;34;Bocas del Toro
 123;345;X
 1;1;1
 345,345,Nuevo
+987654321;345;nuevo

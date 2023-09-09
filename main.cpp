@@ -49,7 +49,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 2:
-                    cout << "Ingres el codigo del pais: " << endl;
+                    cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: " << endl;
                     cin >> codCiudad;
@@ -60,7 +60,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 3:
-                    cout << "Ingres el codigo del pais: " << endl;
+                    cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: " << endl;
                     cin >> codCiudad;
@@ -88,7 +88,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
                 
                 case 5:
-                    cout << "Ingres el codigo del pais: " << endl;
+                    cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: " << endl;
                     cin >> codCiudad;
@@ -350,9 +350,11 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     lPais.buscarPais(numPais);
                     break;
                 case 2:
-                    cout << "Ingrese el numero del pais del que quiere ver las ciudades" << endl;
+                    cout << "Ingrese el codigo de pais de la ciudad que quieres buscar: " << endl;
                     cin >> numPais;
-                    lCiudad.mostrarDeUnPais(numPais);
+                    cout << "Ingrese el codigo de ciudad que deseas buscar: " << endl;
+                    cin >> codCiudad;
+                    lCiudad.buscarCiudad(numPais, codCiudad);
                     break;
                 case 3:
                     cout << "Ingrese el numero del pais del que quiere ver el restaurante" << endl;

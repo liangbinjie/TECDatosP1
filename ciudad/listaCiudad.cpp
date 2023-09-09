@@ -29,15 +29,14 @@ bool ListaCiudad::existeCiudad(int codPais, int codCiudad, ListaPais& lPaises) {
     return false;
 }
 
-NodoCiudad* ListaCiudad::punteroCiudad(int codCiudad) {
+NodoCiudad* ListaCiudad::punteroCiudad(int codCiudad, int codPais) {
     NodoCiudad *auxCiudad;
     if (primero== NULL)
         cout << "No hay elementos";  
     else {
         auxCiudad = primero;
         while(auxCiudad) {
-            if (auxCiudad->codigoCiudad == codCiudad) {
-                // cout << "El pais si existe" << endl;
+            if (auxCiudad->codigoCiudad == codCiudad && auxCiudad->codigoPais == codPais) {
                 return auxCiudad;
             }
             auxCiudad = auxCiudad->siguiente;
@@ -60,6 +59,7 @@ void ListaCiudad::insertar(int codPais, int codCiudad, string nombre, ListaPais&
                 }
                 aux->siguiente = new NodoCiudad(codPais, codCiudad, nombre);
                 aux->siguiente->anterior = aux;
+                cout << "Nueva ciudad insertada" << endl;
             }
         }
     } else {
@@ -101,7 +101,7 @@ void ListaCiudad::mostrarDeUnPais(int pais) { // muestra las ciudades de un pais
 
 void ListaCiudad::modificarCiudad(int pCodPais, int pCodCiudad, string pnombre, ListaPais& LPais){
     if(existeCiudad(pCodPais,pCodCiudad,LPais)){
-       NodoCiudad* auxCiudad = punteroCiudad(pCodCiudad);
+       NodoCiudad* auxCiudad = punteroCiudad(pCodCiudad, pCodPais);
        auxCiudad->nombre = pnombre; 
        cout <<"Cambio realizado con exito";
     }else{
@@ -189,5 +189,25 @@ void ListaCiudad::eliminarCiudades(int pais) {
             aux = aux->siguiente;
         }
         cout << endl;
+    }
+}
+
+
+void ListaCiudad::buscarCiudad(int codPais, int codCiudad) {
+    NodoCiudad *aux;
+    if (primero==NULL) {
+        cout << "No hay ciudades" << endl;
+    } else {
+        aux = primero;
+        while (aux) {
+            if (aux->codigoPais == codPais && aux->codigoCiudad == codCiudad) {
+                cout << "Codigo pais: " << aux->codigoPais << endl;
+                cout << "Codigo ciudad: " << aux->codigoCiudad << endl;
+                cout << "Nombre: " << aux->nombre << endl;
+                return;
+            }
+            aux = aux->siguiente;
+        }
+        cout << "No existe esta ciudad" << endl;
     }
 }

@@ -13,17 +13,14 @@ bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
     } else {
-        if(primero->codRest == pCodRest){
-            if (lCiudad.existeCiudad(pCodPais, pCodCiudad, lPais)){
-            return true;
-            }
+        if(primero->codigoPais == pCodPais && primero->codCiudad == pCodCiudad && primero->codRest == pCodRest){
+                return true;
         }
         aux = primero->siguiente;
         while (aux!=primero) {
-            if (aux->codRest == pCodRest) {
-                if(lCiudad.existeCiudad(pCodPais, pCodCiudad, lPais)==true){
+            if (aux->codigoPais == pCodPais && aux->codCiudad == pCodCiudad && aux->codRest == pCodRest){
+                cout << aux->nombre;
                 return true;
-                }
             }
             aux = aux->siguiente;
         }
@@ -48,7 +45,7 @@ NodoRest* ListaRest::punteroRest(int pcodRest) {
 }
 
 void ListaRest::insertar(int codPais, int codCiudad, int codRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudades) {
-     if ((lPaises.existePais(codPais)) && (lCiudades.existeCiudad(codPais, codCiudad, lPaises))) { // verificar que la ciudad este en el mismo pais
+     if (lCiudades.existeCiudad(codPais, codCiudad, lPaises)) { // verificar que la ciudad este en el mismo pais
         if (!existeRest(codPais, codCiudad, codRest, lPaises, lCiudades)) {
             if (listaVacia()) {
                 primero = new NodoRest(codPais, codCiudad, codRest, nombre);
@@ -72,39 +69,29 @@ void ListaRest::insertar(int codPais, int codCiudad, int codRest, string nombre,
 
 void ListaRest::buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades){
     NodoRest *aux;
-    bool flag=false;
-    if (primero==NULL) {
-        cout << "No hay elementos" << endl;
+    if (primero == NULL) {
+        cout << "No hay restaurantes" << endl;
     } else {
-        if(primero->codRest == pCodRest){
-            if(existeRest(pCodPais,pCodCiudad,pCodRest,lPaises,lCiudades)){
-                NodoPais* auxPais = lPaises.punteroPais(pCodPais);
-                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad);
-                cout << "Datos del restaurante"<<endl;
-                cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
-                cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< aux->codCiudad<<endl;
-                cout << "Nombre y codigo del restaurante: "<< aux->nombre<< "  "<< aux->codRest<<endl;  
-                flag=true;
-        }
-        }
-        aux = primero->siguiente;
-        while (aux!=primero) {
-            if (aux->codRest == pCodRest) {
-                if(existeRest(pCodPais,pCodCiudad,pCodRest,lPaises,lCiudades)){
-                NodoPais* auxPais = lPaises.punteroPais(pCodPais);
-                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad);
-                cout << "Datos del restaurante"<<endl;
-                cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
-                cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< aux->codCiudad<<endl;
-                cout << "Nombre y codigo del restaurante: "<< aux->nombre<< "  "<< aux->codRest<<endl;    
-                flag=true;
+        if (primero->codRest == pCodRest && primero->codigoPais == pCodPais && primero->codCiudad == pCodCiudad) {
+            cout << "Datos del restaurante" << endl;
+            cout << "Codigo Pais y nombre: " << pCodPais << " | " << lPaises.punteroPais(pCodPais)->nombre << endl;
+            cout << "Codigo ciudad y nombre: " << pCodCiudad << " | " << lCiudades.punteroCiudad(pCodCiudad, pCodPais)->nombre << endl;
+            cout << "Codigo restaurante y nombre: " << pCodRest << " | " << primero->nombre << endl;
+            return;
+        } else {
+            aux = primero->siguiente;
+            while (aux!=primero) {
+                if (aux->codRest == pCodRest && aux->codigoPais == pCodPais && aux->codCiudad == pCodCiudad) {
+                    cout << "Datos del restaurante" << endl;
+                    cout << "Codigo Pais y nombre: " << pCodPais << " | " << lPaises.punteroPais(pCodPais)->nombre << endl;
+                    cout << "Codigo ciudad y nombre: " << pCodCiudad << " | " << lCiudades.punteroCiudad(pCodCiudad, pCodPais)->nombre << endl;
+                    cout << "Codigo restaurante y nombre: " << pCodRest << " | " << aux->nombre << endl;
+                    return;
                 }
+                aux = aux->siguiente;
             }
-            aux = aux->siguiente;
         }
-        if(flag==false){
-        	cout<<"Restaurante no encontrado"<<endl;
-		}
+        cout << "No se encontro el restaraunte" << endl;
     }
 }
     

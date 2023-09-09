@@ -33,6 +33,7 @@ void ListaPais::insertar(int codPais, string nombre) {
             }
             aux->siguiente = new NodoPais(codPais, nombre);
             aux->siguiente->anterior = aux;
+            cout << "Nuevo pais insertado" << endl;
         }
     }
 }
@@ -118,7 +119,6 @@ NodoPais* ListaPais::punteroPais(int codPais) {
         auxPais = primero;
         while(auxPais) {
             if (auxPais->codigoPais == codPais) {
-                // cout << "El pais si existe" << endl;
                 return auxPais;
             }
             auxPais = auxPais->siguiente;
@@ -156,6 +156,7 @@ bool ListaPais::buscarPais(int id) {
         aux = primero;
         while(aux) {
             if (aux->codigoPais == id) {
+                cout << "Codigo de pais: " << aux->codigoPais << endl;
                 cout << "Nombre Pais: " << aux->nombre << endl;
                 return true;
             }

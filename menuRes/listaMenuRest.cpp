@@ -61,7 +61,7 @@ void ListaMenuRest::buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
         if(primero->codMenuRest == pCodMenu){
             if(existeMenuRest(pCodPais,pCodCiudad,pCodRest,pCodMenu,lPaises,lCiudades,lRest)){
                 NodoPais* auxPais = lPaises.punteroPais(pCodPais);
-                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad);
+                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad, pCodPais);
                 NodoRest* auxRest = lRest.punteroRest(pCodRest);
                 cout << "Datos del menu"<<endl;
                 cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
@@ -76,7 +76,7 @@ void ListaMenuRest::buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
             if (aux->codMenuRest == pCodMenu) {
                 if(existeMenuRest(pCodPais,pCodCiudad,pCodRest,pCodMenu,lPaises,lCiudades,lRest)){
                 NodoPais* auxPais = lPaises.punteroPais(pCodPais);
-                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad);
+                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad, pCodPais);
                 NodoRest* auxRest = lRest.punteroRest(pCodRest);
                 cout << "Datos del menu"<<endl;
                 cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
@@ -109,6 +109,7 @@ void ListaMenuRest::insertarMenuRest(int codPais, int codCiudad, int codRest, in
                 }
                 aux->siguiente = new NodoMenuRest(codPais, codCiudad, codRest, codMenuRest, nombre);
                 aux->siguiente->anterior = aux;
+                cout << "Nuevo menu insertado" << endl;
             }
         }
     } else {
