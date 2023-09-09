@@ -9,78 +9,46 @@ bool ListaProducto::listaVacia() {
 }
 
 void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, int pCodProducto, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRest, ListaMenuRest& lMenu){
-    NodoProducto *auxProducto;
-    bool flag=false;
+    NodoProducto *aux;
     if (primero==NULL) {
         cout << "No hay elementos" << endl;
     } else {
-        if(primero->codProducto == pCodProducto){
-            if(existeProducto(pCodPais,pCodCiudad,pCodRest,pCodMenu,pCodProducto,lPaises,lCiudades,lRest,lMenu)){
-                NodoPais* auxPais = lPaises.punteroPais(pCodPais);
-                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad, pCodPais);
-                NodoRest* auxRest = lRest.punteroRest(pCodRest, pCodCiudad, pCodPais);
-                NodoMenuRest* auxMenu = lMenu.punteroMenu(pCodMenu);
+        aux = primero;
+        while (aux) {
+            if (aux->codMenu == pCodMenu && aux->codPais == pCodPais && aux->codCiudad == pCodCiudad && aux->codRest == pCodRest && aux->codProducto==pCodProducto) {
                 cout << "Datos del producto"<<endl;
-                cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
-                cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< auxCiudad->codigoCiudad<<endl;
-                cout << "Nombre y codigo del restaurante: "<< auxRest->nombre<< "  "<< auxRest->codRest<<endl; 
-                cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl;  
-                cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl; 
-                cout << "Kcal del producto: "<< auxProducto->kcal<<endl;
-                cout << "Precio del producto: "<< auxProducto->precio<<endl;
-                flag=true;
-        }
-        }
-        auxProducto = primero->siguiente;
-        while (auxProducto!=NULL) {
-            if (auxProducto->codProducto == pCodProducto) {
-                if(existeProducto(pCodPais,pCodCiudad,pCodRest,pCodMenu,pCodProducto,lPaises,lCiudades,lRest,lMenu)){
-                NodoPais* auxPais = lPaises.punteroPais(pCodPais);
-                NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad, pCodPais);
-                NodoRest* auxRest = lRest.punteroRest(pCodRest, pCodCiudad, pCodPais);
-                NodoMenuRest* auxMenu = lMenu.punteroMenu(pCodMenu);
-                cout << "Datos del producto"<<endl;
-                cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
-                cout << "Nombre y codigo de la ciudad: "<<auxCiudad->nombre<< "  "<< auxCiudad->codigoCiudad<<endl;
-                cout << "Nombre y codigo del restaurante: "<< auxRest->nombre<< "  "<< auxRest->codRest<<endl; 
-                cout << "Nombre y codigo del menu: "<< auxMenu->nombre<< "  "<< auxMenu->codMenuRest<<endl;  
-                cout << "Nombre y codigo del producto: "<< auxProducto->nombre<< "  "<< auxProducto->codProducto<<endl; 
-                cout << "Kcal del producto: "<< auxProducto->kcal<<endl;
-                cout << "Precio del producto: "<< auxProducto->precio<<endl;    
-                flag=true;
-                }
+                cout << "Nombre y codigo del pais: "<< lPaises.punteroPais(pCodPais)->nombre<< "  " << lPaises.punteroPais(pCodPais)->codigoPais<<endl;
+                cout << "Nombre y codigo de la ciudad: "<< lCiudades.punteroCiudad(pCodCiudad, pCodPais)->nombre<< "  "<< lCiudades.punteroCiudad(pCodCiudad, pCodPais)->codigoCiudad<<endl;
+                cout << "Nombre y codigo del restaurante: "<< lRest.punteroRest(pCodRest, pCodCiudad, pCodPais)->nombre<< "  "<< lRest.punteroRest(pCodRest, pCodCiudad, pCodPais)->codRest<<endl; 
+                cout << "Nombre y codigo del producto: "<< aux->nombre<< "  "<< aux->codProducto<<endl; 
+                cout << "Kcal del producto: "<< aux->kcal<<endl;
+                cout << "Precio del producto: "<< aux->precio<<endl;
+                return;
             }
-            auxProducto = auxProducto->siguiente;
+            aux = aux->siguiente;
         }
-        if(flag==false){
-        	cout<<"Producto no encontrado"<<endl;
-		}
+        cout << "No se encontro el producto" << endl;
     }
 }
     
 
 
-bool ListaProducto::existeProducto(int pCodPais, int pCodCiudad, int pCodRes, int pCodMenu, int pCodProducto, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenuRest ) {
+bool ListaProducto::existeProducto(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, int pCodProducto, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenuRest ) {
     NodoProducto* aux = primero;
     if (primero==NULL){
-        cout << "No hay elementos";
+        cout << "No hay elementos" << endl;
     }else{
-        if (primero->codProducto==pCodProducto){
-            if(lMenuRest.existeMenuRest(pCodPais,pCodCiudad,pCodRes,pCodMenu,lPais, lCiudad, lRest)==true){
-                return true;
-            }
-        }
-        aux = primero->siguiente;
-        while(aux!=NULL){
-            if (aux->codProducto==pCodProducto){
-                if(lMenuRest.existeMenuRest(pCodPais,pCodCiudad,pCodRes,pCodMenu,lPais, lCiudad, lRest)==true){
+        aux = primero;
+        while(aux!=NULL) {
+            if (aux->codProducto==pCodProducto) {
+                if (aux->codPais == pCodPais && aux->codCiudad == pCodCiudad && aux->codRest == pCodRest && aux->codMenu==pCodMenu) {
                     return true;
+                }
             }
+            aux = aux->siguiente;
         }
-        aux = aux->siguiente;
     }
-}
-return false;
+    return false;
 }
 
 void ListaProducto::insertarProducto(int codPais, int codCiudad, int codRest, int codMenu, int codProducto, string nombre, int kcal, int precio, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRests, ListaMenuRest& lMenu) {
@@ -90,16 +58,15 @@ void ListaProducto::insertarProducto(int codPais, int codCiudad, int codRest, in
             primero = new NodoProducto( codPais,  codCiudad,  codRest,  codMenu,  codProducto,  nombre,  kcal,  precio);
         } else {
             if(existeProducto(codPais, codCiudad, codRest, codMenu, codProducto, lPaises, lCiudades, lRests, lMenu)){
-                cout <<"Este producto ya existe en el menu, no se puede insertar";
+                cout <<"Este producto ya existe en el menu, no se puede insertar" << endl;
             } else {
                 NodoProducto* aux = primero;
                 while (aux->siguiente!=NULL) {
                 aux = aux->siguiente;
                 }
                 aux->siguiente = new NodoProducto(codPais, codCiudad, codRest, codMenu, codProducto,  nombre,  kcal,  precio);
-               aux->siguiente->anterior = aux;
+                aux->siguiente->anterior = aux;
             }
-            
         }
     } else {
         cout << "Incongruencias con la ubicacion" << endl;

@@ -60,6 +60,7 @@ void ListaMenuRest::buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
                 cout << "Codigo menu y nombre: " << pCodMenu << " | " << aux->nombre << endl; 
                 return;
             }
+            aux = aux->siguiente;
         }
     }
 }
