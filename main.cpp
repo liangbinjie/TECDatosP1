@@ -170,7 +170,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 4:
-                    /*cout << "Ingrese el codigo del menu que quieres eliminar: ";
+                    cout << "Ingrese el codigo del menu que quieres eliminar: ";
                     cin >> codMenu;
                     cout << "Ingrese el codigo del restaurante del menu: ";
                     cin >> codRest;
@@ -178,14 +178,8 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     cin >> codCiudad;
                     cout << "Ingrese el codigo del pais del menu: ";
                     cin >> codPais;
-                    if (lMenu.existeMenuRest(codPais, codCiudad, codRest, codMenu, lPais, lCiudad, lRest)) {
-                        lMenu.eliminar(codMenu);
-                        cout << "Menu eliminado" << endl;
-                    } else {
-                        cout << "No se encontro el menu" << endl;
-                    }
+                    lMenu.eliminar(codMenu, codPais, codCiudad, codRest);
                     break;
-                */
                 case 5:
                    cout << "Ingrese el codigo del producto que quieres eliminar :";
                    cin >> codProducto;
@@ -299,7 +293,18 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 4:
-                    // MODIFICAR MENU
+                    cout << "Ingres el codigo del pais: ";
+                    cin >> codPais;
+                    cout << "Ingrese el codigo de la ciudad: ";
+                    cin >> codCiudad;
+                    cout << "Ingrese el codigo del rest: ";
+                    cin >> codRest;
+                    cout << "Ingrese el codigo del menu: ";
+                    cin >> codMenu;
+                    cout << "Ingrese el nuevo nombre del menu: ";
+                    cin.ignore();
+                    getline(cin,nombre);
+                    lMenu.modificarMenu(codPais,codCiudad, codRest, nombre, codMenu);
                     break;
                 
                 case 5:

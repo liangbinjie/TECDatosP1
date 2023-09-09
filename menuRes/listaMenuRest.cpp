@@ -130,3 +130,45 @@ void ListaMenuRest::cargarMenuRest(ListaPais& lPais, ListaCiudad& lCiudad, Lista
 
     archivo.close();
 }
+
+void ListaMenuRest::modificarMenu(int codPais, int codCiudad, int codRest, string name, int codMenu) {
+    NodoMenuRest* aux = primero;
+    if (primero == NULL) {
+        cout << "No hay menus en la base de datos" << endl;
+        return;
+    } else {
+        while (aux) {
+            if (aux->codigoPais == codPais && aux->codCiudad == codCiudad && aux->codRest == codRest && aux->codMenuRest == codMenu) {
+                aux->nombre = name;
+                cout << "Menu modificado" << endl;
+                return;
+            }
+            aux = aux->siguiente;
+        }
+    }
+    cout << "No se encontro el menu";
+    return;
+}
+
+void ListaMenuRest::eliminar(int codMenu, int codPais, int codCiudad, int codRest) {
+    NodoMenuRest* aux = primero;
+    if (primero == NULL) {
+        cout << "No hay menus en la base de datos" << endl;
+        return;
+    } else {
+        while (aux) {
+            if (aux->codigoPais == codPais && aux->codCiudad == codCiudad && aux->codRest == codRest && aux->codMenuRest == codMenu) {
+                break;
+            }
+            aux = aux->siguiente;
+        }
+        pNodoMenuRest temp = aux;
+        aux = aux->anterior;
+        aux->siguiente = temp->siguiente;
+        delete temp;
+        cout << "Menu eliminado" << endl;
+        return;
+    }
+    cout << "No se encontro el menu";
+    return;
+}

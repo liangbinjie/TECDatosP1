@@ -21,13 +21,14 @@ class ListaMenuRest {
 
         bool listaVacia();
         void mostrar();
-        void eliminar(int codCiudad);
+        void eliminar(int codMenu, int codPais, int codCiudad, int codRest);
         bool existeMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenuRest, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest);
         void insertarMenuRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest);
         void borrarInicio();
         NodoMenuRest* punteroMenu(int pcodMenu);
         void buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRest);
         void cargarMenuRest(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest);
+        void modificarMenu(int codPais, int codCiudad, int codRest, string name, int codMenu);
 };
 
 #endif

@@ -157,8 +157,8 @@ void ListaProducto::modificarProducto(int codPais, int codCiudad, int codRest, i
         cout << "No hay elementos" << endl;
     } else {
         while (aux!=NULL) {
-            cout << aux->codMenu;
-            if (aux->codPais == codPais && aux->codCiudad == codCiudad && aux->codRest == codRest && aux->codMenu && aux->codMenu == codMenu) {
+            // cout << aux->codMenu;
+            if (aux->codPais == codPais && aux->codCiudad == codCiudad && aux->codRest == codRest && aux->codMenu == codMenu) {
                 aux->nombre = nombre;
                 aux->kcal = kcal;
                 aux->precio = precio;
