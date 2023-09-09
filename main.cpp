@@ -84,7 +84,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     cout << "Ingrese el nombre del menu " << endl;
                     cin.ignore();
                     getline(cin,nombre);
-                    lMenu.insertarMenuRest(codPais, codMenu,codRest,codMenu,nombre,lPais,lCiudad,lRest);
+                    lMenu.insertarMenuRest(codPais, codCiudad, codRest,codMenu,nombre,lPais,lCiudad,lRest);
                     break;
                 
                 case 5:

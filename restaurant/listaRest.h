@@ -24,7 +24,7 @@ class ListaRest {
         bool existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades);
         void buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades);
         void eliminar(int codRest);
-        NodoRest* punteroRest(int codRest);
+        NodoRest* punteroRest(int pcodRest, int codCiudad, int codPais);
         void borrarInicio();
         void cargarRests(ListaPais& lPaises, ListaCiudad& lCiudades);
         void modificarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades, string nombre);

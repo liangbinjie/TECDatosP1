@@ -14,7 +14,7 @@ bool ListaCiudad::existeCiudad(int codPais, int codCiudad, ListaPais& lPaises) {
     NodoCiudad* aux;
     if (primero == NULL) {
         cout << "No hay elementos";
-    } else {
+    } else {    
         aux = primero;
         while (aux) {
             if ((aux->codigoCiudad == codCiudad) && (aux->codigoPais == codPais)) {

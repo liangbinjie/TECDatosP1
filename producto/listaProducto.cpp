@@ -18,7 +18,7 @@ void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, i
             if(existeProducto(pCodPais,pCodCiudad,pCodRest,pCodMenu,pCodProducto,lPaises,lCiudades,lRest,lMenu)){
                 NodoPais* auxPais = lPaises.punteroPais(pCodPais);
                 NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad, pCodPais);
-                NodoRest* auxRest = lRest.punteroRest(pCodRest);
+                NodoRest* auxRest = lRest.punteroRest(pCodRest, pCodCiudad, pCodPais);
                 NodoMenuRest* auxMenu = lMenu.punteroMenu(pCodMenu);
                 cout << "Datos del producto"<<endl;
                 cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;
@@ -37,7 +37,7 @@ void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, i
                 if(existeProducto(pCodPais,pCodCiudad,pCodRest,pCodMenu,pCodProducto,lPaises,lCiudades,lRest,lMenu)){
                 NodoPais* auxPais = lPaises.punteroPais(pCodPais);
                 NodoCiudad* auxCiudad = lCiudades.punteroCiudad(pCodCiudad, pCodPais);
-                NodoRest* auxRest = lRest.punteroRest(pCodRest);
+                NodoRest* auxRest = lRest.punteroRest(pCodRest, pCodCiudad, pCodPais);
                 NodoMenuRest* auxMenu = lMenu.punteroMenu(pCodMenu);
                 cout << "Datos del producto"<<endl;
                 cout << "Nombre y codigo del pais: "<< auxPais->nombre<< "  " << auxPais->codigoPais<<endl;

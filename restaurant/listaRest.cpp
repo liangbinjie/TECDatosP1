@@ -15,27 +15,28 @@ bool ListaRest::existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais
     } else {
         if(primero->codigoPais == pCodPais && primero->codCiudad == pCodCiudad && primero->codRest == pCodRest){
                 return true;
-        }
-        aux = primero->siguiente;
-        while (aux!=primero) {
-            if (aux->codigoPais == pCodPais && aux->codCiudad == pCodCiudad && aux->codRest == pCodRest){
-                cout << aux->nombre;
-                return true;
+        } else {
+            aux = primero->siguiente;
+            while (aux!=primero) {
+                if (aux->codigoPais == pCodPais && aux->codCiudad == pCodCiudad && aux->codRest == pCodRest){
+                    // cout << aux->nombre;
+                    return true;
+                }
+                aux = aux->siguiente;
             }
-            aux = aux->siguiente;
         }
     }
     return false;
 }
 
-NodoRest* ListaRest::punteroRest(int pcodRest) {
+NodoRest* ListaRest::punteroRest(int pcodRest, int codCiudad, int codPais) {
     NodoRest *auxRest;
     if (primero== NULL)
         cout << "No hay elementos";  
     else {
         auxRest = primero;
         while(auxRest) {
-            if (auxRest->codRest == pcodRest) {
+            if (auxRest->codRest == pcodRest && auxRest->codCiudad == codCiudad && auxRest->codigoPais==codPais) {
                 return auxRest;
             }
             auxRest = auxRest->siguiente;
