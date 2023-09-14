@@ -14,11 +14,13 @@ Es importante tomar en cuenta que Dev++ está diseñado para uso en Windows.
 Si tienen otro sistema operativo, como Mac o Linux, seria recomendable descargarse el compilador GCC, para poder compilar y ejecutar los programas.
 
 Despues de haber instalado Dev++, vamos a la carpeta donde descomprimimos el proyecto
-Buscamos el archivo con nombre EDP1.dev
-Verificar que sea el formato de archivo .dev, ya que es el formato que utilzia el IDE de DEV++ para abrir el proyecto.
+Buscamos el archivo con nombre `EDP1.dev`
 
-Con el proyecto abierto en el DEV++, presionamos F11 o presionamos con el mouse el siguiente icono en la siguiente imagen:
-![imagen](https://github.com/liangbinjie/TECDatosP1/assets/67171031/880ada54-71ba-4782-b6d3-3f05de2b6397)
+Verificar que sea el formato de archivo `.dev`, ya que es el formato que utilzia el IDE de DEV++ para abrir el proyecto.
+
+Con el proyecto abierto en el DEV++, presionamos `F11` o presionamos con el mouse el siguiente icono en la siguiente imagen:
+
+![imagen](https://github.com/liangbinjie/TECDatosP1/assets/67171031/98245755-0eb6-47b1-85cd-7c8aa27035ce)
 
 Despues de eso, ya el programa iniciara a ejecutarse para poder ser probado
 
