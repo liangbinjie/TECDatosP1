@@ -4,3 +4,18 @@
 123;Peru
 1;Pais Unido
 987654321;nuevo
+10001;Argentina
+24567;Brazil
+39842;Canada
+50123;Denmark
+67890;Egypt
+10001;France
+24567;Germany
+39842;Hungary
+50123;Italy
+67890;Japan
+10001;Korea
+24567;Mexico
+39842;Norway
+50123;Portugal
+67890;Russia

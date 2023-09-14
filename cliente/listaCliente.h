@@ -20,6 +20,7 @@ public:
     void cargarCliente();
     bool buscarCliente(int id);
     void modificarNombre(int id, string nombre);
+    void reporteClientes();
 };
 
 #endif

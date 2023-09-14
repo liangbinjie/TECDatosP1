@@ -119,3 +119,16 @@ void ListaCliente::modificarNombre(int id, string nombre) {
     }
     cout << "No se encontro el cliente" << endl;
 }
+
+void ListaCliente::reporteClientes() {
+    ofstream archivo;
+    archivo.open ("reportes/clientes.txt");
+    NodoCliente* temp = primero;
+    while (temp) {
+        archivo << "Identificacion: " << temp->identificacion << endl;
+        archivo << "Nombre: " << temp->nombre << endl;
+        archivo << "----------------\n"; 
+        temp = temp->siguiente;
+    }
+    archivo.close();
+}

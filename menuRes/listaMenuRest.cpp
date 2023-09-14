@@ -58,6 +58,8 @@ void ListaMenuRest::buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, i
                 cout << "Codigo ciudad y nombre: " << pCodCiudad << " | " << lCiudades.punteroCiudad(pCodCiudad, pCodPais)->nombre << endl;
                 cout << "Codigo restaurante y nombre: " << pCodRest << " | " << lRest.punteroRest(pCodRest, pCodCiudad, pCodPais)->nombre << endl;
                 cout << "Codigo menu y nombre: " << pCodMenu << " | " << aux->nombre << endl; 
+                aux->contador++;
+                cout<<aux->contador<<endl;
                 return;
             }
             aux = aux->siguiente;
@@ -100,6 +102,42 @@ void ListaMenuRest::mostrar() {
     cout << endl;
     }
 }
+
+
+void ListaMenuRest::menuMasBuscado() {
+    NodoMenuRest *aux= primero; // Supongo que primerNodo es el puntero al primer elemento de tu lista
+    ofstream archivo;
+    NodoMenuRest *auxMenu= primero;;
+    archivo.open("reportes/MenuMasBuscado.txt", ios::out);
+    if (archivo.fail()) {
+        cout << "No se pudo abrir el archivo" << endl;
+        exit(1);
+    }
+    
+    //aux = aux->siguiente;
+    auxMenu = aux; //auxRest->siguiente;
+    cout<<primero->nombre;
+    cout<<aux->nombre;
+            do {
+            	cout<<auxMenu->contador<<endl;
+            	cout<<aux->contador<<endl;
+                if (auxMenu->contador < aux->contador){
+                	cout<<auxMenu->nombre<< auxMenu->contador<<endl;
+                	cout<<aux->nombre<< aux->contador<<endl;
+                	auxMenu=aux;
+                    cout<<auxMenu->nombre<< auxMenu->contador<<endl;
+                }
+                aux = aux->siguiente;
+            } while (aux!=NULL);
+
+	
+        archivo << auxMenu->nombre << endl;
+
+    archivo.close();
+}
+
+
+
 
 void ListaMenuRest::cargarMenuRest(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest) {
     ifstream archivo("Archivos/Menu.txt");
@@ -158,17 +196,26 @@ void ListaMenuRest::eliminar(int codMenu, int codPais, int codCiudad, int codRes
     } else {
         while (aux) {
             if (aux->codigoPais == codPais && aux->codCiudad == codCiudad && aux->codRest == codRest && aux->codMenuRest == codMenu) {
-                break;
+                if (aux->anterior == NULL) {
+                    primero = aux->siguiente;
+                    if (primero) {
+                        primero->anterior = NULL;
+                    }
+                } else {
+                    mostrar();
+                    NodoMenuRest* temp = aux;
+                    aux = aux->anterior;
+                    aux->siguiente = temp->siguiente;
+                    if (temp->siguiente) {
+                        temp->siguiente->anterior = aux;
+                    }
+                    delete temp;
+                }
+                cout << "Menu eliminado" << endl;
+                return;
             }
             aux = aux->siguiente;
         }
-        pNodoMenuRest temp = aux;
-        aux = aux->anterior;
-        aux->siguiente = temp->siguiente;
-        delete temp;
-        cout << "Menu eliminado" << endl;
-        return;
     }
-    cout << "No se encontro el menu";
-    return;
+    cout << "No se encontro el menu" << endl;
 }

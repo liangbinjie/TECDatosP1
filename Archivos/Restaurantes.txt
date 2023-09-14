@@ -6,3 +6,15 @@
 1;1;1;No lo se
 987654321;345;1;nuevo 
 123;345;1;muevo2
+10001;1;1;Delicioso Bistro
+24567;2;2;Sabor Brasileiro
+39842;3;3;Maple Leaf Grill
+50123;4;4;Nordic Flavors
+10001;1;5;Le Petit Gourmet
+24567;2;6;Berlin Bites
+39842;3;7;Budapest Delights
+50123;4;8;Roma Ristorante
+10001;1;9;Seoul Spice
+24567;2;10;Mexican Fiesta
+39842;3;11;Oslo Oceanside
+50123;4;12;Lisboa Fusion

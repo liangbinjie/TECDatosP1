@@ -9,6 +9,7 @@ class NodoRest {
         int codigoPais;
         int codCiudad;
         int codRest;
+        int contador;
         string nombre;
         NodoRest *siguiente;
         NodoRest *anterior;

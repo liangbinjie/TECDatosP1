@@ -151,6 +151,27 @@ void ListaCiudad::eliminar(int codCiudad) {
     }
 }
 
+void ListaCiudad::reporteCiudades(int pais) {
+ ofstream archivo;
+    archivo.open("reportes/Ciudades.txt", ios::out);
+    if (archivo.fail()) {
+        cout << "No se pudo abrir el archivo" << endl;
+        exit(1);
+    }
+ NodoCiudad *aux;
+    if (primero==NULL)
+        cout << "No hay elementos";  
+    else {
+        aux = primero;
+        while(aux) {
+            if(aux->codigoPais==pais){
+                archivo << aux->nombre <<endl;
+            }
+        aux = aux->siguiente;
+        }
+    } archivo.close();
+}
+
 void ListaCiudad::cargarCiudades(ListaPais& lPais) {
     ifstream archivo("Archivos/Ciudades.txt");
     string line;

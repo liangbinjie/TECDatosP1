@@ -10,6 +10,7 @@ NodoProducto::NodoProducto(int cp, int cc, int cr, int cm, int cpro, string pNom
     kcal = kc;
     precio = p;
     siguiente = NULL;
+    contador = 0;
 }
 
 NodoProducto::NodoProducto(int cp, int cc, int cr, int cm, int cpro, string pNombre, int kc, int p, NodoProducto* sigNodo) {
@@ -22,4 +23,5 @@ NodoProducto::NodoProducto(int cp, int cc, int cr, int cm, int cpro, string pNom
     kcal = kc;
     precio = p;
     siguiente = sigNodo;
+    contador = 0;
 }

@@ -21,6 +21,7 @@ class ListaPais {
 
         void cargarPaises();
         bool listaVacia();
+        void reportePaises();
         void insertar(int codPais, string nombre);
         void mostrar();
         void eliminar(int codPais);

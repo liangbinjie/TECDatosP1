@@ -21,6 +21,7 @@ class ListaRest {
         void insertar(int codPais, int codCiudad, int codRest, string nombre, ListaPais& lPaises, ListaCiudad& lCiudades);
         bool listaVacia();
         void mostrar();
+        void reporteRestBuscado();
         bool existeRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades);
         void buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades);
         void eliminar(int codRest);
@@ -28,6 +29,7 @@ class ListaRest {
         void borrarInicio();
         void cargarRests(ListaPais& lPaises, ListaCiudad& lCiudades);
         void modificarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais& lPaises, ListaCiudad& lCiudades, string nombre);
+        void restPaisCiudad(int pCodPais, int pCodCiudad,  ListaPais& lPaises, ListaCiudad& lCiudades);
 };
 
 #endif

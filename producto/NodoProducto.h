@@ -16,6 +16,7 @@ class NodoProducto {
         string nombre;
         int kcal;
         int precio;
+        int contador;
 
         friend class ListaProducto;
     

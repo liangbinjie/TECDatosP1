@@ -14,14 +14,17 @@ void clearScreen() {
 }
 
 void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenu, ListaProducto& lProducto, ListaCliente& lCliente, fila& Fila, ListaCompra& lCompra) {
-    cout << "Bienvenido, que desea realizar?" << endl;
+    cout << endl;
+	cout << "Bienvenido, que desea realizar?" << endl;
+	cout << endl;
     cout << "1. Insertar" << endl;
     cout << "2. Eliminar" << endl;
     cout << "3. Mostrar" << endl;
     cout << "4. Modificar" << endl;
     cout << "5. Buscar" << endl;
     cout << "6. Comprar" << endl;
-    cout << "7. Salir" << endl;
+    cout << "7. Reportes" << endl;
+    cout << "8. Salir" << endl;
     int numPais;
     int opcion;
     cout << "> ";
@@ -30,7 +33,9 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
     int codPais, codCiudad, codRest, codMenu, codProducto, codCliente, calorias, precio;
     switch(opcion) {
         case 1:
+        	cout << endl;
             cout << "Que deseas insertar?" << endl;
+            cout << endl;
             cout << "1. Pais" << endl;
             cout << "2. Ciudad" << endl;
             cout << "3. Restaurante" << endl;
@@ -41,6 +46,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             cin >> opcion;
             switch(opcion) {
                 case 1:
+                	cout << endl;
                     cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el nombre del pais: " << endl;
@@ -50,6 +56,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 2:
+                	cout << endl;
                     cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: " << endl;
@@ -61,6 +68,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 3:
+                	cout << endl;
                     cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: " << endl;
@@ -74,6 +82,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
                 
                 case 4:
+                	cout << endl;
                     cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: " << endl;
@@ -89,6 +98,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
                 
                 case 5:
+                	cout << endl;
                     cout << "Ingrese el codigo del pais: " << endl;
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: " << endl;
@@ -110,6 +120,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 6:
+                	cout << endl;
                     cout << "Ingrese la identificacion del cliente: " << endl;
                     cin >> codCliente;
                     cout << "Ingrese el nombre del cliente: " << endl;
@@ -121,7 +132,9 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             break;
         
         case 2:
+        	cout << endl;
             cout << "Que deseas eliminar?" << endl;
+            cout << endl;
             cout << "1. Pais" << endl;
             cout << "2. Ciudad" << endl;
             cout << "3. Restaurante" << endl;
@@ -131,7 +144,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             cout << "> ";
             cin >> opcion;
             switch(opcion) {
-                case 1:
+                case 1:cout << endl;
                     cout << "Ingrese el codigo del pais que quieres eliminar: ";
                     cin >> codPais;
                     if (lPais.existePais(codPais)) {
@@ -143,6 +156,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     }
                     break;
                 case 2:
+                	cout << endl;
                     cout << "Ingrese el codigo de la ciudad que quieres eliminar :";
                     cin >> codCiudad;
                     cout << "Ingrese el codigo del pais de la ciudad: ";
@@ -156,6 +170,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 3:
+                	cout << endl;
                     cout << "Ingrese el codigo del restaurante que quieres eliminar: ";
                     cin >> codRest;
                     cout << "Ingrese el codigo del pais del restaurante: ";
@@ -171,6 +186,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 4:
+                	cout << endl;
                     cout << "Ingrese el codigo del menu que quieres eliminar: ";
                     cin >> codMenu;
                     cout << "Ingrese el codigo del restaurante del menu: ";
@@ -182,6 +198,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     lMenu.eliminar(codMenu, codPais, codCiudad, codRest);
                     break;
                 case 5:
+                	cout << endl;
                    cout << "Ingrese el codigo del producto que quieres eliminar :";
                    cin >> codProducto;
                    cout << "Ingrese el codigo del menu del producto que quieres eliminar :";
@@ -200,6 +217,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
                 
                 case 6:
+                	cout << endl;
                     cout << "Ingrese la identificacion del cliente que quieres eliminar :";
                     cin >> codCliente;
                     if (lCliente.existeCliente(codCliente)) {
@@ -212,7 +230,9 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             break;
         
         case 3:
+        	cout << endl;
             cout << "Que deseas mostrar?" << endl;
+            cout << endl;
             cout << "1. Pais" << endl;
             cout << "2. Ciudad" << endl;
             cout << "3. Restaurante" << endl;
@@ -223,31 +243,39 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             cin >> opcion;
             switch(opcion) {
                 case 1:
+                	cout << endl;
                     lPais.mostrar();
                     break;
                 case 2:
+                	cout << endl;
                     lCiudad.mostrar();
                     break;
                 case 3:
+                	cout << endl;
                     lRest.mostrar();
                     break;
 
                 case 4:
+                	cout << endl;
                     lMenu.mostrar();
                     break;
                 
                 case 5:
+                	cout << endl;
                     lProducto.mostrar();
                     break;
 
                 case 6:
+                	cout << endl;
                     lCliente.mostrar();
                     break; 
             }
             break;
 
         case 4:
+        	cout << endl;
             cout << "Que deseas MODIFICAR?" << endl;
+            cout << endl;
             cout << "1. Pais" << endl;
             cout << "2. Ciudad" << endl;
             cout << "3. Restaurante" << endl;
@@ -258,6 +286,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             cin >> opcion;
             switch(opcion) {
                 case 1:
+                	cout << endl;
                     cout << "Ingrese el numero del pais que quiere MODIFICAR: ";
                     cin >> numPais;
                     cout << "Ingrese el nuevo nombre que quiere MODIFICAR: ";
@@ -266,6 +295,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     lPais.modificarNombre(numPais, nombre);
                     break;
                 case 2:
+                	cout << endl;
                     cout << "Ingrese el codigo del pais al que pertenece la ciudad: ";
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: ";
@@ -276,6 +306,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                 	lCiudad.modificarCiudad(codPais, codCiudad, nombre, lPais);
                     break;
                 case 3:
+                	cout << endl;
                     cout << "Ingres el codigo del pais: ";
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: ";
@@ -294,6 +325,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 4:
+                	cout << endl;
                     cout << "Ingres el codigo del pais: ";
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: ";
@@ -309,6 +341,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
                 
                 case 5:
+                	cout << endl;
                     cout << "Ingres el codigo del pais: ";
                     cin >> codPais;
                     cout << "Ingrese el codigo de la ciudad: ";
@@ -330,6 +363,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     break;
 
                 case 6:
+                	cout << endl;
                     cout << "Ingrese la identificacion del cliente que desea modificar: ";
                     cin >> codCliente;
                     cout << "Ingrese el nuevo nombre: ";
@@ -340,7 +374,9 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             break;
         
         case 5:
+        	cout << endl;
             cout << "Que deseas BUSCAR?" << endl;
+            cout << endl;
             cout << "1. Pais" << endl;
             cout << "2. Ciudad" << endl;
             cout << "3. Restaurante" << endl;
@@ -351,11 +387,13 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             cin >> opcion;
             switch(opcion) {
                 case 1:
+                	cout << endl;
                     cout << "Ingrese el numero del pais que quiere mostrar: " << endl;
                     cin >> numPais;
                     lPais.buscarPais(numPais);
                     break;
                 case 2:
+                	cout << endl;
                     cout << "Ingrese el codigo de pais de la ciudad que quieres buscar: " << endl;
                     cin >> numPais;
                     cout << "Ingrese el codigo de ciudad que deseas buscar: " << endl;
@@ -363,6 +401,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     lCiudad.buscarCiudad(numPais, codCiudad);
                     break;
                 case 3:
+                	cout << endl;
                     cout << "Ingrese el numero del pais del que quiere ver el restaurante" << endl;
                     cin >> codPais;
                     cout << "Ingrese el numero de la ciudad del que quiere ver el restaurante" << endl;
@@ -372,6 +411,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     lRest.buscarRest(codPais, codCiudad, codRest, lPais, lCiudad);
                     break;
                 case 4:
+                	cout << endl;
                     cout << "Ingrese el numero del pais del que quiere ver el menu" << endl;
                     cin >> codPais;
                     cout << "Ingrese el numero de la ciudad del que quiere ver el menu" << endl;
@@ -383,6 +423,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     lMenu.buscarMenuRest(codPais, codCiudad, codRest, codMenu, lPais, lCiudad, lRest);
                     break;
                 case 5:
+                	cout << endl;
                     cout << "Ingrese el numero del pais del que quiere ver el producto" << endl;
                     cin >> codPais;
                     cout << "Ingrese el numero de la ciudad del que quiere ver el producto" << endl;
@@ -396,6 +437,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                     lProducto.buscarProducto(codPais, codCiudad, codRest, codMenu, codProducto, lPais, lCiudad, lRest, lMenu);
                     break;
                 case 6:
+                	cout << endl;
                     cout << "Ingrese la identificacion del cliente: ";
                     cin >> codCliente;
                     lCliente.buscarCliente(codCliente);
@@ -405,12 +447,15 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
 
 
         case 6:
+        	cout << endl;
         	cout << "Que deseas hacer?" << endl;
+        	cout << endl;
         	cout << "1. Hacer fila para comprar" << endl;
         	cout << "2. Atender a cliente" << endl;
         	cin >> opcion;
         	switch(opcion) {
         		case 1:
+        			cout << endl;
         			if (Fila.largoFila() == 5) {
         				cout << "No se puede hacer mas fila, porque ya esta lleno" << endl;
 					} else {
@@ -426,6 +471,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
  					break;
 
 				case 2:
+					cout << endl;
 					if (Fila.filaVacia()) {
 						cout << "No hay clientes que atender" << endl;
 					} else {
@@ -448,6 +494,7 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
                                 cin >> codProd;
                                 if (lProducto.existeProducto(codPais, codCiudad, codRest, codMenu, codProd, lPais, lCiudad, lRest, lMenu)) {
                                     compra += codProd + ";";
+                                    lProducto.aumentarCompra(codPais, codCiudad, codRest, codMenu, codProd, lPais, lCiudad, lRest, lMenu);
                                     cout << "Producto agregado a la compra" << endl;
                                 } else {
                                     cout << "Ingrese un producto valido" << endl;
@@ -475,6 +522,82 @@ void menu(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRes
             
 
         case 7:
+            cout << endl;
+            cout << "Reportes" << endl;
+            cout << endl;
+            cout << "1. Paises" << endl;
+            cout << "2. Ciudades" << endl;
+            cout << "3. Restaurantes" << endl;
+            cout << "4. Clientes" << endl;
+            cout << "5. Restaurante mas buscado" << endl;
+            cout << "6. Menu mas buscado" << endl;
+            cout << "7. Producto mas comprado" << endl;
+            cout << "8. Consultar el precio de un producto" << endl;
+            cout << "> ";
+            cin >> opcion;
+            switch(opcion) {
+                case 1:
+                	cout << endl;
+                    cout << "Reporte del pais: " << endl;
+                    lPais.reportePaises();
+                    cout << "Proceso finalizado" << endl;
+                    break;
+                case 2:
+                    cout << endl;
+                    cout << "Ingrese el codigo del pais del que quiere ver las ciudades" << endl;
+                    cin >> codPais;
+                    lCiudad.reporteCiudades(codPais);
+                    cout << "Proceso finalizado" << endl;
+                    break;
+                case 3:
+                	cout << endl;
+                    cout << "Ingrese el numero del pais del que quiere ver el restaurante" << endl;
+                    cin >> codPais;
+                    cout << "Ingrese el numero de la ciudad del que quiere ver el restaurante" << endl;
+                    cin >> codCiudad;
+                    lRest.restPaisCiudad(codPais, codCiudad, lPais, lCiudad);
+                    cout << "Proceso finalizado" << endl;
+                    break;
+                case 4:
+                	lCliente.reporteClientes();
+                    cout << "Proceso finalizado" << endl;
+                    break;
+                case 5:
+                	cout << endl;
+                    lRest.reporteRestBuscado();
+                    cout << "Proceso finalizado" << endl;
+                    break;
+                case 6:
+                	cout << endl;
+                    lMenu.menuMasBuscado();
+                    cout << "Proceso finalizado" << endl;
+                    break; 
+                case 7:
+                    cout << endl;
+                    lProducto.productoMasComprado();
+                    cout << "Proceso finalizado" << endl;
+                    break;
+
+                case 8:
+                    cout << endl;
+                    cout << "Ingrese el numero del pais del que quiere ver el producto" << endl;
+                    cin >> codPais;
+                    cout << "Ingrese el numero de la ciudad del que quiere ver el producto" << endl;
+                    cin >> codCiudad;
+                    cout << "Ingrese el numero del restaurante del que quiere ver el producto" << endl;
+                    cin >> codRest;
+                    cout << "Ingrese el numero del menu del que quiere ver el producto" << endl;
+                    cin >> codMenu;
+                    cout << "Ingrese el numero del producto" << endl;
+                    cin >> codProducto;
+                    lProducto.precio(codPais, codCiudad, codRest, codMenu, codProducto, lPais, lCiudad, lRest, lMenu);
+                    cout << "Proceso finalizado" << endl;
+                    break;
+            }
+            break;
+
+            
+    	case 8:
             return;
     }
     menu(lPais, lCiudad, lRest, lMenu, lProducto, lCliente, Fila, lCompra);

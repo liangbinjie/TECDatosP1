@@ -7,3 +7,18 @@
 1;1;1
 345,345,Nuevo
 987654321;345;nuevo
+10001;1;Buenos Aires
+24567;2;Rio de Janeiro
+39842;3;Toronto
+50123;4;Copenhagen
+67890;5;Cairo
+10001;6;Paris
+24567;7;Berlin
+39842;8;Budapest
+50123;9;Rome
+67890;10;Tokyo
+10001;11;Seoul
+24567;12;Mexico City
+39842;13;Oslo
+50123;14;Lisbon
+67890;15;Moscow

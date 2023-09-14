@@ -26,6 +26,7 @@ class ListaMenuRest {
         void insertarMenuRest(int codPais, int codCiudad, int codRest, int codMenuRest, string nombre, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest);
         void borrarInicio();
         NodoMenuRest* punteroMenu(int pcodMenu);
+        void menuMasBuscado();
         void buscarMenuRest(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRest);
         void cargarMenuRest(ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest);
         void modificarMenu(int codPais, int codCiudad, int codRest, string name, int codMenu);

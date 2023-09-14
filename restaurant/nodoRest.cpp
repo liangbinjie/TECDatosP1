@@ -7,6 +7,7 @@ NodoRest::NodoRest(int pCodPais, int pCodCiudad, int pCodRest, string pNombre) {
     nombre = pNombre;
     siguiente = NULL;
     anterior = NULL;
+    contador = 0;
 }
 
 NodoRest::NodoRest(int pCodPais, int pCodCiudad, int pCodRest, string pNombre, NodoRest* sigNodo) {
@@ -14,5 +15,6 @@ NodoRest::NodoRest(int pCodPais, int pCodCiudad, int pCodRest, string pNombre, N
     codCiudad = pCodCiudad;
     codRest = pCodRest;
     nombre = pNombre;
+    contador = 0;
     siguiente = sigNodo;
 }

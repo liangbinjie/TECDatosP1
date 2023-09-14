@@ -10,6 +10,7 @@ class NodoMenuRest {
         int codCiudad;
         int codRest;
         int codMenuRest;
+        int contador;
         string nombre;
         NodoMenuRest *siguiente;
         NodoMenuRest *anterior;

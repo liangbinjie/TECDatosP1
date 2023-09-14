@@ -78,7 +78,9 @@ void ListaRest::buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais
             cout << "Codigo Pais y nombre: " << pCodPais << " | " << lPaises.punteroPais(pCodPais)->nombre << endl;
             cout << "Codigo ciudad y nombre: " << pCodCiudad << " | " << lCiudades.punteroCiudad(pCodCiudad, pCodPais)->nombre << endl;
             cout << "Codigo restaurante y nombre: " << pCodRest << " | " << primero->nombre << endl;
-            return;
+            primero->contador++;
+            cout<<primero->contador;
+			return;
         } else {
             aux = primero->siguiente;
             while (aux!=primero) {
@@ -87,6 +89,7 @@ void ListaRest::buscarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaPais
                     cout << "Codigo Pais y nombre: " << pCodPais << " | " << lPaises.punteroPais(pCodPais)->nombre << endl;
                     cout << "Codigo ciudad y nombre: " << pCodCiudad << " | " << lCiudades.punteroCiudad(pCodCiudad, pCodPais)->nombre << endl;
                     cout << "Codigo restaurante y nombre: " << pCodRest << " | " << aux->nombre << endl;
+                    aux->contador++;
                     return;
                 }
                 aux = aux->siguiente;
@@ -143,6 +146,39 @@ void ListaRest::eliminar(int pCodRest) {
     }
 }
 
+void ListaRest::reporteRestBuscado() {
+    NodoRest *aux= primero; // Supongo que primerNodo es el puntero al primer elemento de tu lista
+    ofstream archivo;
+    NodoRest *auxRest= primero;;
+    archivo.open("reportes/RestauranteMasBuscado.txt", ios::out);
+    if (archivo.fail()) {
+        cout << "No se pudo abrir el archivo" << endl;
+        exit(1);
+    }
+    
+    //aux = aux->siguiente;
+    auxRest = aux; //auxRest->siguiente;
+    // cout<<primero->nombre;
+    // cout<<aux->nombre;
+            do {
+            	// cout<<auxRest->contador<<endl;
+            	// cout<<aux->contador<<endl;
+                if (auxRest->contador < aux->contador){
+                	// cout<<auxRest->nombre<< auxRest->contador<<endl;
+                	// cout<<aux->nombre<< aux->contador<<endl;
+                	auxRest=aux;
+                    // cout<<auxRest->nombre<< auxRest->contador<<endl;
+                }
+                aux = aux->siguiente;
+            } while (aux!=primero);
+
+	
+        archivo << auxRest->nombre << endl;
+
+    archivo.close();
+}
+
+
 void ListaRest::cargarRests(ListaPais& lPaises, ListaCiudad& lCiudades) {
     ifstream archivo("Archivos/Restaurantes.txt");
     string line;
@@ -192,3 +228,30 @@ void ListaRest::modificarRest(int pCodPais, int pCodCiudad, int pCodRest, ListaP
     return;
 }
 
+void ListaRest::restPaisCiudad(int pCodPais, int pCodCiudad, ListaPais& lPaises, ListaCiudad& lCiudades) {
+    NodoRest *aux;
+    ofstream archivo;
+    if (primero == NULL) {
+        cout << "No hay restaurantes" << endl;
+    } else {
+        archivo.open("reportes/restPaisCiudad.txt");
+        archivo << "Restaurantes en el pais: " << pCodPais << "Ciudad: " << pCodCiudad << endl;
+        if (primero->codigoPais == pCodPais && primero->codCiudad == pCodCiudad) {
+            archivo << "Codigo Pais y nombre: " << pCodPais << " | " << lPaises.punteroPais(pCodPais)->nombre << endl;
+            archivo << "Codigo ciudad y nombre: " << pCodCiudad << " | " << lCiudades.punteroCiudad(pCodCiudad, pCodPais)->nombre << endl;
+            archivo << "Codigo restaurante y nombre: " << primero->codRest << primero->nombre << endl;
+            archivo << "- - - - - - - - -  - - - -\n";
+        }
+        aux = primero->siguiente;
+        while (aux!=primero) {
+            if (aux->codigoPais == pCodPais && aux->codCiudad == pCodCiudad) {
+                archivo << "Codigo Pais y nombre: " << pCodPais << " | " << lPaises.punteroPais(pCodPais)->nombre << endl;
+                archivo << "Codigo ciudad y nombre: " << pCodCiudad << " | " << lCiudades.punteroCiudad(pCodCiudad, pCodPais)->nombre << endl;
+                archivo << "Codigo restaurante y nombre: " << aux->codRest << " | " << aux->nombre << endl;
+                archivo << "- - - - - - - - -  - - - -\n";
+            }
+            aux = aux->siguiente;
+        }
+        archivo.close();
+    }
+}

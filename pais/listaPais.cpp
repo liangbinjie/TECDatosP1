@@ -1,5 +1,9 @@
 #include "listaPais.h"
 #include <string>
+#include <stdlib.h>
+#include <fstream>
+#include <cstdio>
+
 
 
 ListaPais::ListaPais() {
@@ -126,6 +130,25 @@ NodoPais* ListaPais::punteroPais(int codPais) {
     }
     return 0;
 }
+
+
+void ListaPais::reportePaises() {
+    NodoPais *aux = primero; // Supongo que primerNodo es el puntero al primer elemento de tu lista
+    ofstream archivo;
+    archivo.open("reportes/Paises.txt", ios::out);
+    if (archivo.fail()) {
+        cout << "No se pudo abrir el archivo" << endl;
+        exit(1);
+    }
+
+    while (aux) {
+        archivo << aux->nombre << endl;
+        aux = aux->siguiente;
+    }
+
+    archivo.close();
+}
+
 
 void ListaPais::cargarPaises() {
     ifstream archivo("Archivos/Paises.txt");

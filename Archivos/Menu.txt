@@ -5,3 +5,18 @@
 123;345;2341;12;HP
 1;1;1;1;menu
 987654321;345;1;1;nuevo menu
+10001;1;1;1;Lunch Menu
+24567;2;2;1;Traditional Brazilian Dishes
+39842;3;3;1;Canadian Specialties
+50123;4;4;1;Nordic Cuisine Selection
+67890;5;5;1;Pharaoh's Feast Specialties
+10001;1;5;2;French Delights
+24567;2;6;2;German Classics
+39842;3;7;2;Hungarian Favorites
+50123;4;8;2;Italian Treasures
+67890;5;10;1;Tokyo Tasting Menu
+10001;1;9;3;Korean Specials
+24567;2;10;3;Mexican Flavors
+39842;3;11;3;Norwegian Seafood
+50123;4;12;3;Portuguese Culinary Journey
+67890;5;15;1;Russian Gastronomy

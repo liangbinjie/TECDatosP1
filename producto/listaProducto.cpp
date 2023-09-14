@@ -30,6 +30,31 @@ void ListaProducto::buscarProducto(int pCodPais, int pCodCiudad, int pCodRest, i
         cout << "No se encontro el producto" << endl;
     }
 }
+
+void ListaProducto::precio(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, int pCodProducto, ListaPais& lPaises, ListaCiudad& lCiudades, ListaRest& lRest, ListaMenuRest& lMenu){
+    NodoProducto *aux;
+    ofstream archivo;
+    archivo.open ("reportes/precioProducto.txt");
+    if (primero==NULL) {
+        cout << "No hay elementos" << endl;
+    } else {
+        aux = primero;
+        while (aux) {
+            if (aux->codMenu == pCodMenu && aux->codPais == pCodPais && aux->codCiudad == pCodCiudad && aux->codRest == pCodRest && aux->codProducto==pCodProducto) {
+                archivo << "Datos del producto"<<endl;
+                archivo << "Nombre y codigo del pais: "<< lPaises.punteroPais(pCodPais)->nombre<< "  " << lPaises.punteroPais(pCodPais)->codigoPais<<endl;
+                archivo << "Nombre y codigo del restaurante: "<< lRest.punteroRest(pCodRest, pCodCiudad, pCodPais)->nombre<< "  "<< lRest.punteroRest(pCodRest, pCodCiudad, pCodPais)->codRest<<endl; 
+                archivo << "Nombre y codigo del producto: "<< aux->nombre<< "  "<< aux->codProducto<<endl; 
+                archivo << "Kcal del producto: "<< aux->kcal<<endl;
+                archivo << "Precio del producto: "<< aux->precio<<endl;
+                archivo.close();
+                return;
+            }
+            aux = aux->siguiente;
+        }
+        cout << "No se encontro el producto" << endl;
+    }
+}
     
 
 
@@ -180,6 +205,47 @@ void ListaProducto::mostrarProductosMenu(int codPais, int codCiudad, int codRest
         while (aux) {
             if (aux->codCiudad == codCiudad && aux->codPais == codPais && aux->codRest == codRest && aux->codMenu == codMenu) {
                 cout << "- " << aux->codProducto << ". " << aux->nombre << endl;
+            }
+            aux = aux->siguiente;
+        }
+    }
+}
+
+void ListaProducto::productoMasComprado() {
+    if (primero==NULL) {
+        cout << "No hay productos en la base de datos" << endl;
+    } else {
+        ofstream archivo;
+        archivo.open("reportes/productoMasBuscado.txt");
+        pNodoProducto aux = primero;
+        pNodoProducto temp = primero;
+        int mayor = primero->contador;
+        while (aux) {
+            if (aux->contador > mayor) {
+                temp = aux;
+            }
+            aux = aux->siguiente;
+        }
+        archivo << "Producto mas comprado: " << endl;
+        archivo << temp->nombre << endl;
+        archivo << temp->codProducto << endl;
+        archivo << "Compras: " << temp->contador << endl;
+        archivo.close();
+    }
+}
+
+void ListaProducto::aumentarCompra(int pCodPais, int pCodCiudad, int pCodRest, int pCodMenu, int pCodProducto, ListaPais& lPais, ListaCiudad& lCiudad, ListaRest& lRest, ListaMenuRest& lMenuRest ) {
+    NodoProducto* aux = primero;
+    if (primero==NULL){
+        cout << "No hay elementos" << endl;
+    }else{
+        aux = primero;
+        while(aux!=NULL) {
+            if (aux->codProducto==pCodProducto) {
+                if (aux->codPais == pCodPais && aux->codCiudad == pCodCiudad && aux->codRest == pCodRest && aux->codMenu==pCodMenu) {
+                    aux->contador++;
+                    return;
+                }
             }
             aux = aux->siguiente;
         }
