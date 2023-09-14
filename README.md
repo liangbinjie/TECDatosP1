@@ -4,15 +4,21 @@ Proyecto 1 | TEC Estructuras de Datos | Base de datos de Restaurantes
 Nicole Parra y Binjie Liang
 
 ## Manual de Uso
-Despues de haber descargado y descomprimido el proyecto en un directorio, la forma mas rapida de ejecutarla seria por medio de la terminal usando gcc (si lo tienes instalado).
+Despues de haber descargado y descomprimido el archivo zip
+La carpeta tendra varios archivos. 
 
-Para ejecutarlo usando la terminal, primero debemos de dirigirnos al directorio donde está guardado el proyecto, usando el comando `cd directorio/donde/se/encuentra`
+Para este proyecto se utilizo el IDE Dev++ como plataforma de desarrollo, por lo tanto
+Si no lo tienen instalado en la compu, este seria el link de descarga: https://sourceforge.net/projects/orwelldevcpp/
+Es importante tomar en cuenta que Dev++ está diseñado para uso en Windows.
 
-Despues de eso, compilamos usando gcc, usando el siguiente comando `g++ main.cpp */*.cpp`
+Si tienen otro sistema operativo, como Mac o Linux, seria recomendable descargarse el compilador GCC, para poder compilar y ejecutar los programas.
 
-Eso nos va a generar un archivo ejecutable, y para ejecutarlo simplemente escribimos en la terminal `./a` 
+Despues de haber instalado Dev++, vamos a la carpeta donde descomprimimos el proyecto
+Buscamos el archivo con nombre EDP1.dev
+Verificar que sea el formato de archivo .dev, ya que es el formato que utilzia el IDE de DEV++ para abrir el proyecto.
 
-Por defecto, el archivo ejecutable se llama `a.exe`, hay veces que dependiendo del sistema operativo, simplemente se escribe en la terminal `a`.
+Con el proyecto abierto en el DEV++, presionamos F11 o presionamos con el mouse el siguiente icono en la siguiente imagen:
+![imagen](https://github.com/liangbinjie/TECDatosP1/assets/67171031/880ada54-71ba-4782-b6d3-3f05de2b6397)
 
-## Avances
-![imagen](https://github.com/liangbinjie/TECDatosP1/assets/67171031/af4c22a8-ea51-44a3-ac29-b644a3699322)
+Despues de eso, ya el programa iniciara a ejecutarse para poder ser probado
+
